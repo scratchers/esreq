@@ -82,6 +82,8 @@
 		<div id="page-content-wrapper">
 			<div id="page-content-container" class='container well' style='background-color:white;'>
 
+				@yield('content')
+
 			</div>
 		</div>
 
