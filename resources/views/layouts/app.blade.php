@@ -5,8 +5,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>Request Access to Enterprise Systems</title>
+	<title>{{ config('app.name') }}</title>
+
+	<script>
+		window.Laravel = <?php echo json_encode([
+			'csrfToken' => csrf_token(),
+		]); ?>
+	</script>
 
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -61,15 +68,33 @@
 				</ul>
 
 				<div id='login_nav_div' class='top_nav navbar-right pull-right-md pull-left-xs'>
-					<ul class="nav navbar-nav navigation-menu">
-						<?php
-// 						    if (isset($_SESSION["username"])) {
-// 								echo "<li id='logout'><a href='?logout'>Logout $_SESSION[username]</a></li>";
-// 						    }
-// 						    else {
-// 								echo "<li id='login'><a href='#login'>Login</a></li>";
-// 						    }
-						?>
+					<ul class="nav navbar-nav navbar-right navigation-menu">
+						<!-- Authentication Links -->
+						@if (Auth::guest())
+							<li><a href="{{ url('/login') }}">Login</a></li>
+							<li><a href="{{ url('/register') }}">Register</a></li>
+						@else
+							<li><a href="{{ url('/home') }}">Home</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+									{{ Auth::user()->name }} <span class="caret"></span>
+								</a>
+
+								<ul class="dropdown-menu" role="menu">
+									<li>
+										<a href="{{ url('/logout') }}"
+											onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+											Logout
+										</a>
+
+										<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+											{{ csrf_field() }}
+										</form>
+									</li>
+								</ul>
+							</li>
+						@endif
 					</ul>
 				</div>
 			</div><!--/#navbar.nav-collapse -->
@@ -206,22 +231,21 @@
 
 	</div><!-- /#wrapper -->
 
-</body>
-
-<script>
-	function auto_expand_textarea( ta ){ ta.keyup(function(e) {
-		while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css('borderTopWidth')) + parseFloat($(this).css('borderBottomWidth'))) {
-			$(this).height($(this).height()+1);
-		};
-	})}
-	$(function(){
-		$('textarea').each(function(){
-			var ta = $(this);
-			auto_expand_textarea( ta );
+	<script>
+		function auto_expand_textarea( ta ){ ta.keyup(function(e) {
+			while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css('borderTopWidth')) + parseFloat($(this).css('borderBottomWidth'))) {
+				$(this).height($(this).height()+1);
+			};
+		})}
+		$(function(){
+			$('textarea').each(function(){
+				var ta = $(this);
+				auto_expand_textarea( ta );
+			});
 		});
-	});
-	$(".top_nav").find("a").each(function(){
-		if ( $(this).attr("href") == "<?php echo $_SERVER['SCRIPT_NAME'];?>" || $(this).attr("href") == "<?php echo dirname($_SERVER['SCRIPT_NAME'])."/";?>" )
-		$(this).parent().addClass("active");
-	});
-</script>
+		$(".top_nav").find("a").each(function(){
+			if ( $(this).attr("href") == "<?php echo $_SERVER['SCRIPT_NAME'];?>" || $(this).attr("href") == "<?php echo dirname($_SERVER['SCRIPT_NAME'])."/";?>" )
+			$(this).parent().addClass("active");
+		});
+	</script>
+</body>
