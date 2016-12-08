@@ -79,6 +79,17 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'odbc' => [
+            'driver' => 'odbc',
+            'dsn' => 'Driver='.env('DB_DRIVER').
+                     ';Server='.env('DB_HOST').
+                     ';Database='.env('DB_DATABASE'),
+            'grammar' => 'SqlServerGrammar',
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'database' => '',
+        ],
+
     ],
 
     /*
