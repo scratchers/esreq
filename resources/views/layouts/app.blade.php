@@ -65,6 +65,11 @@
 
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul id='top_navigation_menu' class='top_nav nav navbar-nav navigation-menu'>
+					@if (Auth::guest())
+						<li><a href="{{ url('/register') }}">Register</a></li>
+					@else
+						<li><a href="{{ url('/home') }}">Home</a></li>
+					@endif
 				</ul>
 
 				<div id='login_nav_div' class='top_nav navbar-right pull-right-md pull-left-xs'>
@@ -72,27 +77,17 @@
 						<!-- Authentication Links -->
 						@if (Auth::guest())
 							<li><a href="{{ url('/login') }}">Login</a></li>
-							<li><a href="{{ url('/register') }}">Register</a></li>
 						@else
-							<li><a href="{{ url('/home') }}">Home</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-									{{ Auth::user()->name }} <span class="caret"></span>
+							<li>
+								<a href="{{ url('/logout') }}"
+									onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+									Logout {{ Auth::user()->name }}
 								</a>
 
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<a href="{{ url('/logout') }}"
-											onclick="event.preventDefault();
-													document.getElementById('logout-form').submit();">
-											Logout
-										</a>
-
-										<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-											{{ csrf_field() }}
-										</form>
-									</li>
-								</ul>
+								<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+									{{ csrf_field() }}
+								</form>
 							</li>
 						@endif
 					</ul>
