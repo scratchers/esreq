@@ -41,6 +41,10 @@
 	<link rel='stylesheet' href='/css/uark.css'></link>
 	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
+    <!-- datatables -->
+    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <link rel='stylesheet' href='//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css'></link>
+
 </head>
 <body>
 	<div id="header-bg"></div>
@@ -235,5 +239,8 @@
 			if ( $(this).attr("href") == "<?php echo $_SERVER['SCRIPT_NAME'];?>" || $(this).attr("href") == "<?php echo dirname($_SERVER['SCRIPT_NAME'])."/";?>" )
 			$(this).parent().addClass("active");
 		});
+        $(document).ready(function(){
+            $('.datatable').DataTable();
+        });
 	</script>
 </body>

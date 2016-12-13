@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/requests', 'EsrequestsController@index');
+Route::get('/esrequests', 'EsrequestsController@index');

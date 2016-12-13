@@ -18,4 +18,9 @@ class Esrequest extends Model
         'SAS',
         'Teradata',
     ];
+
+    public function fields()
+    {
+        return $this->fillable;
+    }
 }

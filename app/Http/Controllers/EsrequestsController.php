@@ -9,7 +9,8 @@ class EsrequestsController extends Controller
 {
     function index()
     {
-        $requests = Esrequest::all();
-        return $requests;
+        $esrequests = Esrequest::all();
+        $fields = $esrequests->first()->fields();
+        return view('esrequests.index', compact('esrequests', 'fields'));
     }
 }

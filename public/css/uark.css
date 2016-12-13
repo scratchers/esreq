@@ -235,3 +235,12 @@ footer .nav > li > a:hover, footer .nav > li > a:focus {
   float: left;
   margin-right: 2em;
 }
+
+.datatable .sorting,
+.datatable .sorting_asc,  .datatable .sorting_asc_disabled,
+.datatable .sorting_desc, .datatable .sorting_desc_disabled {
+	background-position: center left !important;
+}
+tr.odd {
+    background-color: #f9f9f9 !important;
+}
