@@ -240,7 +240,9 @@
 			$(this).parent().addClass("active");
 		});
         $(document).ready(function(){
-            $('.datatable').DataTable();
+            $('.datatable').DataTable({
+                "order": [[ 1, "desc" ]]
+            });
         });
 	</script>
 </body>

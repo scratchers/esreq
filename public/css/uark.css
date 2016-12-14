@@ -244,3 +244,33 @@ footer .nav > li > a:hover, footer .nav > li > a:focus {
 tr.odd {
     background-color: #f9f9f9 !important;
 }
+
+.text-xs-left .text-sm-left .text-md-left .text-lg-left { text-align: left; }
+.text-xs-right .text-sm-right .text-md-right .text-lg-right { text-align: right; }
+.text-xs-center .text-sm-center .text-md-center .text-lg-center { text-align: center; }
+.text-xs-justify .text-sm-justify .text-md-justify .text-lg-justify { text-align: justify; }
+
+@media (min-width:768px) {
+    .text-sm-left { text-align: left; }
+    .text-sm-right { text-align: right; }
+    .text-sm-center { text-align: center; }
+    .text-sm-justify { text-align: justify; }
+}
+
+@media (min-width:992px) {
+    .text-md-left { text-align: left; }
+    .text-md-right { text-align: right; }
+    .text-md-center { text-align: center; }
+    .text-md-justify { text-align: justify; }
+}
+
+@media (min-width:1200px) {
+    .text-lg-left { text-align: left; }
+    .text-lg-right { text-align: right; }
+    .text-lg-center { text-align: center; }
+    .text-lg-justify { text-align: justify; }
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #ffffff;
+}
