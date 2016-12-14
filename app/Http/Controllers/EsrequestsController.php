@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Esrequest;
 
 class EsrequestsController extends Controller
@@ -19,5 +19,16 @@ class EsrequestsController extends Controller
         $esrequest = Esrequest::findOrFail($id);
         $fields = $esrequest->fields();
         return view('esrequests.show', compact('esrequest', 'fields'));
+    }
+
+    function create()
+    {
+        return view('esrequests.create');
+    }
+
+    function store()
+    {
+        Esrequest::create(Request::all());
+        return redirect('esrequests');
     }
 }
