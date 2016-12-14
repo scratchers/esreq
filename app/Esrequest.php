@@ -21,6 +21,6 @@ class Esrequest extends Model
 
     public function fields()
     {
-        return $this->fillable;
+        return array_merge($this->fillable, ['created_at','fulfilled_at']);
     }
 }
