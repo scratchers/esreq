@@ -19,6 +19,18 @@ class Esrequest extends Model
         'Teradata',
     ];
 
+    protected $dates = [
+        'date_begin',
+        'date_end',
+        'fulfilled_at',
+    ];
+
+    // https://github.com/laravel/framework/issues/1756
+    protected function getDateFormat()
+    {
+        return 'Y-m-d H:i:s.u';
+    }
+
     public function fields()
     {
         return array_merge($this->fillable, ['created_at','fulfilled_at']);
