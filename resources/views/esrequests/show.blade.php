@@ -11,10 +11,10 @@
 
     @if (!empty($esrequest))
         <div class="well">
-        @foreach($fields as $field)
+        @foreach($fields as $key => $value)
             <div class="row row-striped">
-                <div class="col-xs-12 col-md-2 text-md-right"><strong>{{ $field }}</strong></div>
-                <div class="col-xs-12 col-md-10">{{ $esrequest->$field }}</div>
+                <div class="col-xs-12 col-md-2 text-md-right"><strong>{{ $key }}</strong></div>
+                <div class="col-xs-12 col-md-10">{{ $value }}</div>
             </div>
         @endforeach
         </div>

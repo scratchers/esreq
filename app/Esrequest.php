@@ -6,30 +6,62 @@ use Illuminate\Database\Eloquent\Model;
 
 class Esrequest extends Model
 {
-    public static $platforms = [
-        'IBM',
-        'Microsoft',
-        'SAP',
-        'SAS',
-        'Teradata',
-    ];
+    public static function platforms()
+    {
+        return [
+            'IBM',
+            'Microsoft',
+            'SAP',
+            'SAS',
+            'Teradata',
+        ];
+    }
+
+    public static function courseInfo()
+    {
+        return [
+            'course_name',
+            'date_begin',
+            'date_end',
+        ];
+    }
+
+    public static function accounts()
+    {
+        return [
+            'faculty_accounts',
+            'student_accounts',
+        ];
+    }
+
+    public static function metadata()
+    {
+        return [
+            'created_at',
+            'updated_at',
+            'fulfilled_at',
+            'cancelled_at',
+        ];
+    }
 
     protected $fillable = [
-        'course_name',
-        'faculty_accounts',
-        'student_accounts',
-        'date_begin',
-        'date_end',
         'IBM',
         'Microsoft',
         'SAP',
         'SAS',
         'Teradata',
+        'faculty_accounts',
+        'student_accounts',
+        'course_name',
+        'date_begin',
+        'date_end',
     ];
 
     protected $dates = [
         'date_begin',
         'date_end',
+        'created_at',
+        'updated_at',
         'fulfilled_at',
         'cancelled_at',
     ];
@@ -40,9 +72,40 @@ class Esrequest extends Model
         return 'Y-m-d H:i:s.u';
     }
 
-    public function fields()
+    public function getPlatforms(Bool $string = false)
     {
-        return array_merge($this->fillable, ['created_at','fulfilled_at']);
+        $platforms = [];
+        foreach(static::platforms() as $platform){
+            if(!empty($this->$platform)){
+                $platforms []= $platform;
+            }
+        }
+        if($string){
+            return implode(', ',$platforms);
+        }
+        return $platforms;
+    }
+
+    public function getAllValuesFor(String ...$static_methods)
+    {
+        foreach($static_methods as $static_method){
+            foreach(static::$static_method() as $field){
+                $info[$field] = $this->$field ?? null;
+            }
+        }
+        return $info ?? [];
+    }
+
+    public function getValuesFor(String ...$static_methods)
+    {
+        foreach($static_methods as $static_method){
+            foreach(static::$static_method() as $field){
+                if(!empty($this->$field)){
+                    $info[$field] = $this->$field;
+                }
+            }
+        }
+        return $info ?? [];
     }
 
     public function setFacultyAccountsAttribute($value) {

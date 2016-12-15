@@ -25,7 +25,7 @@ class CreateEsrequest extends FormRequest
     public function rules()
     {
         return [
-            'IBM' => 'required_without_all:'.implode(',',Esrequest::$platforms),
+            'IBM' => 'required_without_all:'.implode(',',Esrequest::platforms()),
             'faculty_accounts' => 'required_without_all:student_accounts',
             'date_begin' => 'date',
             'date_end'   => 'date',

@@ -10,14 +10,17 @@ class EsrequestsController extends Controller
     function index()
     {
         $esrequests = Esrequest::all();
-        $fields = null !== $esrequests->first() ? $esrequests->first()->fields() : [];
-        return view('esrequests.index', compact('esrequests', 'fields'));
+        return view('esrequests.index', compact('esrequests'));
     }
 
     function show($id)
     {
         $esrequest = Esrequest::findOrFail($id);
-        $fields = $esrequest->fields();
+        $fields = array_merge(
+            ['platforms' => $esrequest->getPlatforms(true)],
+            $esrequest->getAllValuesFor('accounts', 'metadata'),
+            $esrequest->getValuesFor('courseInfo')
+        );
         return view('esrequests.show', compact('esrequest', 'fields'));
     }
 
