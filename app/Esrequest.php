@@ -44,4 +44,24 @@ class Esrequest extends Model
     {
         return array_merge($this->fillable, ['created_at','fulfilled_at']);
     }
+
+    public function setFacultyAccountsAttribute($value) {
+        $this->attributes['faculty_accounts'] = empty($value)?0:$value;
+    }
+
+    public function setStudentAccountsAttribute($value) {
+        $this->attributes['student_accounts'] = empty($value)?0:$value;
+    }
+
+    public function setCourseNameAttribute($value) {
+        $this->attributes['course_name'] = empty($value)?null:$value;
+    }
+
+    public function setDateBeginAttribute($value) {
+        $this->attributes['date_begin'] = empty($value)?null:$value;
+    }
+
+    public function setDateEndAttribute($value) {
+        $this->attributes['date_end'] = empty($value)?null:$value;
+    }
 }
