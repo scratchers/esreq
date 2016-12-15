@@ -8,6 +8,11 @@ use Auth;
 
 class EsrequestsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ['only' => 'create']);
+    }
+
     function index()
     {
         $esrequests = Esrequest::all();
