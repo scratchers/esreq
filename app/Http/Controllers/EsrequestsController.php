@@ -10,7 +10,7 @@ class EsrequestsController extends Controller
     function index()
     {
         $esrequests = Esrequest::all();
-        $fields = $esrequests->first()->fields();
+        $fields = null !== $esrequests->first() ? $esrequests->first()->fields() : [];
         return view('esrequests.index', compact('esrequests', 'fields'));
     }
 
