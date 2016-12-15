@@ -16,6 +16,8 @@ class CreateEsRequestsTable extends Migration
         Schema::create('esrequests', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('user_id')->unsigned();
+
             $table->boolean('IBM')->default(false);
             $table->boolean('Microsoft')->default(false);
             $table->boolean('SAP')->default(false);
@@ -32,6 +34,10 @@ class CreateEsRequestsTable extends Migration
             $table->timestamps();
             $table->timestamp('fulfilled_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users');
         });
     }
 

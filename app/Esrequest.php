@@ -127,4 +127,9 @@ class Esrequest extends Model
     public function setDateEndAttribute($value) {
         $this->attributes['date_end'] = empty($value)?null:$value;
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

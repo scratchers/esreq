@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Esrequest;
 use App\Http\Requests\CreateEsrequest;
+use Auth;
 
 class EsrequestsController extends Controller
 {
@@ -31,7 +32,8 @@ class EsrequestsController extends Controller
 
     function store(CreateEsrequest $request)
     {
-        Esrequest::create($request->all());
+        $esrequest = new Esrequest($request->all());
+        Auth::user()->esrequests()->save($esrequest);
         return redirect('esrequests');
     }
 }
