@@ -15,18 +15,23 @@ class CreateEsRequestsTable extends Migration
     {
         Schema::create('esrequests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('course_name');
-            $table->unsignedSmallInteger('faculty_accounts')->default(0);
-            $table->unsignedSmallInteger('student_accounts')->default(0);
-            $table->date('date_begin');
-            $table->date('date_end');
+
             $table->boolean('IBM')->default(false);
             $table->boolean('Microsoft')->default(false);
             $table->boolean('SAP')->default(false);
             $table->boolean('SAS')->default(false);
             $table->boolean('Teradata')->default(false);
-            $table->timestamp('fulfilled_at')->nullable();
+
+            $table->unsignedSmallInteger('faculty_accounts')->default(0);
+            $table->unsignedSmallInteger('student_accounts')->default(0);
+
+            $table->string('course_name')->nullable();
+            $table->date('date_begin')->nullable();
+            $table->date('date_end')->nullable();
+
             $table->timestamps();
+            $table->timestamp('fulfilled_at')->nullable();
+            $table->timestamp('cancelled_at')->nullable();
         });
     }
 
