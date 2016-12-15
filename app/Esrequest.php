@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Esrequest extends Model
 {
+    public static $platforms = [
+        'IBM',
+        'Microsoft',
+        'SAP',
+        'SAS',
+        'Teradata',
+    ];
+
     protected $fillable = [
         'course_name',
         'faculty_accounts',
@@ -23,6 +31,7 @@ class Esrequest extends Model
         'date_begin',
         'date_end',
         'fulfilled_at',
+        'cancelled_at',
     ];
 
     // https://github.com/laravel/framework/issues/1756

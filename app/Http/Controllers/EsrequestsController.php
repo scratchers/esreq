@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 use App\Esrequest;
+use App\Http\Requests\CreateEsrequest;
 
 class EsrequestsController extends Controller
 {
@@ -26,9 +26,9 @@ class EsrequestsController extends Controller
         return view('esrequests.create');
     }
 
-    function store()
+    function store(CreateEsrequest $request)
     {
-        Esrequest::create(Request::all());
+        Esrequest::create($request->all());
         return redirect('esrequests');
     }
 }
