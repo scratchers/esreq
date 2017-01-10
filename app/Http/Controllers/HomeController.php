@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Esrequest;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -27,5 +28,16 @@ class HomeController extends Controller
     {
         $esrequests = Auth::user()->esrequests()->get();
         return view('esrequests.index', compact('esrequests'));
+    }
+
+    public function show($id)
+    {
+        $esrequest = Esrequest::findOrFail($id);
+
+        if (Gate::denies('view-esrequest', $esrequest)) {
+            return abort('403');
+        }
+
+        return app(EsrequestsController::class)->show($esrequest);
     }
 }

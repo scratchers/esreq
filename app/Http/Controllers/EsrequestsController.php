@@ -19,9 +19,12 @@ class EsrequestsController extends Controller
         return view('esrequests.index', compact('esrequests'));
     }
 
-    function show($id)
+    function show($esrequest)
     {
-        $esrequest = Esrequest::findOrFail($id);
+        if ( ! $esrequest instanceof Esrequest ){
+            $esrequest = Esrequest::findOrFail($esrequest);
+        }
+
         $fields = array_merge(
             ['platforms' => $esrequest->getPlatforms(true)],
             $esrequest->getAllValuesFor('accounts', 'metadata'),
