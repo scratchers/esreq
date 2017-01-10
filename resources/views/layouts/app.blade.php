@@ -73,6 +73,7 @@
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
 						<li><a href="{{ url('/home') }}">Home</a></li>
+						<li><a href="{{ url('/create') }}">Create Request</a></li>
 					@endif
 				</ul>
 
