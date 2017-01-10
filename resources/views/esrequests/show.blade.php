@@ -2,9 +2,9 @@
 
 @section('content')
     <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li><a href="{{ action('EsrequestsController@index') }}">Requests</a></li>
-        <li class="active">Details</li>
+        <li><a href="/">Welcome</a></li>
+        <li><a href="{{ substr(url()->current(), 0, strrpos( url()->current(), '/') ) }}">Requests</a></li>
+        <li class="active">{{ $esrequest->id }}</li>
     </ol>
 
     <h1>Request Details</h1>

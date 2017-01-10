@@ -17,7 +17,7 @@
             <tbody>
                 @foreach($esrequests as $esrequest)
                     <tr>
-                        <td><a href="{{ action('EsrequestsController@show', $esrequest->id) }}" class="btn btn-primary">Details</a></td>
+                        <td><a href="{{ url()->current() }}/{{ $esrequest->id }}" class="btn btn-primary">Details</a></td>
                         <td>{{ $esrequest->created_at }}</td>
                         <td>{{ $esrequest->date_begin }}</td>
                         <td>{{ $esrequest->fulfilled_at }}</td>

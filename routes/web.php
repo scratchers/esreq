@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/home/{id}', 'EsrequestsController@show');
 
 Route::get('/create',          'EsrequestsController@create');
 Route::post('/create',         'EsrequestsController@store');

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Esrequest;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $esrequests = Auth::user()->esrequests()->get();
+        return view('esrequests.index', compact('esrequests'));
     }
 }

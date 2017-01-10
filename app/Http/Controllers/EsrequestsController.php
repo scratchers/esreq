@@ -39,6 +39,6 @@ class EsrequestsController extends Controller
     {
         $esrequest = new Esrequest($request->all());
         Auth::user()->esrequests()->save($esrequest);
-        return redirect('esrequests');
+        return redirect('home');
     }
 }
