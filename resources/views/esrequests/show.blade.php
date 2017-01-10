@@ -21,4 +21,8 @@
     @else
         <p>No request.</p>
     @endif
+
+    @if ( strpos( url()->current(), '/admin/') !== false )
+        @include('esrequests.fulfill-inc')
+    @endif
 @endsection
