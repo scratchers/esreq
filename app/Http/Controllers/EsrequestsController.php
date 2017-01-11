@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Esrequest;
 use App\Http\Requests\CreateEsrequest;
 use Auth;
+use Carbon\Carbon;
 
 class EsrequestsController extends Controller
 {
@@ -47,6 +48,9 @@ class EsrequestsController extends Controller
 
     function fulfill($esrequest)
     {
+        $esrequest = Esrequest::findOrFail($esrequest);
+        $esrequest->fulfilled_at = new Carbon;
+        $esrequest->save();
         return $this->show($esrequest);
     }
 }
