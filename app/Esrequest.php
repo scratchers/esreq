@@ -108,6 +108,15 @@ class Esrequest extends Model
         return $info ?? [];
     }
 
+    public function getFields()
+    {
+        return array_merge(
+            ['platforms' => $this->getPlatforms(true)],
+            $this->getAllValuesFor('accounts', 'metadata'),
+            $this->getValuesFor('courseInfo')
+        );
+    }
+
     public function setFacultyAccountsAttribute($value) {
         $this->attributes['faculty_accounts'] = empty($value)?0:$value;
     }

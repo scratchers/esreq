@@ -27,11 +27,8 @@ class EsrequestsController extends Controller
             $esrequest = Esrequest::findOrFail($esrequest);
         }
 
-        $fields = array_merge(
-            ['platforms' => $esrequest->getPlatforms(true)],
-            $esrequest->getAllValuesFor('accounts', 'metadata'),
-            $esrequest->getValuesFor('courseInfo')
-        );
+        $fields = $esrequest->getFields();
+
         return view('esrequests.show', compact('esrequest', 'fields'));
     }
 
