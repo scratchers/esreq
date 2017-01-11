@@ -4,11 +4,11 @@
         <h3>Accounts/Passwords/Notes to Requestor</h3>
 
         <div class="form-group">
-            {!! Form::textarea('note', null, ['class'=>'form-control']) !!}
+            {!! Form::textarea('note', $esrequest->note, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Fulfill</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
 
     {!! Form::close() !!}

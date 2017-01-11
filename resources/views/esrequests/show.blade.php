@@ -24,5 +24,7 @@
 
     @if ( strpos( url()->current(), '/admin/') !== false )
         @include('esrequests.fulfill-inc')
+    @else
+        {{ $esrequest->note }}
     @endif
 @endsection

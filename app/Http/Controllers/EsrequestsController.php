@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Esrequest;
 use App\Http\Requests\CreateEsrequest;
+use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
 
@@ -46,10 +47,11 @@ class EsrequestsController extends Controller
         return redirect('home');
     }
 
-    function fulfill($esrequest)
+    function fulfill($id, Request $request)
     {
-        $esrequest = Esrequest::findOrFail($esrequest);
+        $esrequest = Esrequest::findOrFail($id);
         $esrequest->fulfilled_at = new Carbon;
+        $esrequest->note = $request->input('note');
         $esrequest->save();
         return $this->show($esrequest);
     }
