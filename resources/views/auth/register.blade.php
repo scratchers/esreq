@@ -23,6 +23,18 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('institution_url') ? ' has-error' : '' }}">
+                            <label for="institution_url" class="col-md-4 control-label">Institution Website:</label>
+                            <div class="col-md-6">
+                                <input name="institution_url" id="institution_url" class="form-control" value="{{ old('institution_url') ?: 'https://' }}" type="url" required autofocus>
+
+                                @if ($errors->has('institution'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('institution') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label for="first_name" class="col-md-4 control-label">First Name</label>
@@ -107,12 +119,13 @@ $( function() {
     $( "#institution" ).autocomplete({
         source: [
             @foreach (App\Institution::get() as $institution)
-            { label: "{{ $institution->name }}", value: {{ $institution->id }} },
+            { label: "{{ $institution->name }}", id: {{ $institution->id }}, url: "{{ $institution->url }}" },
             @endforeach
         ],
         select: function( event, ui ) {
-            $( "#institution" ).val( ui.item.label ).attr( "readonly", true );
-            $( "#institution_id" ).val( ui.item.value );
+            $( "#institution" ).val(  ui.item.label  ).attr( "readonly", true );
+            $( "#institution_url" ).val( ui.item.url ).attr( "readonly", true );
+            $( "#institution_id"  ).val( ui.item.id );
             return false;
         }
     });
