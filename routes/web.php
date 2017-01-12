@@ -18,11 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home',       'HomeController@index');
-Route::get('/home/{id}',  'HomeController@show');
+Route::get('/home/{esrequest}',  'HomeController@show');
 
 Route::get ('/create',    'EsrequestsController@create');
 Route::post('/create',    'EsrequestsController@store');
 
 Route::get ('/admin',      'EsrequestsController@index');
-Route::get ('/admin/{id}', 'EsrequestsController@show');
-Route::post('/admin/{id}', 'EsrequestsController@fulfill');
+Route::get ('/admin/{esrequest}', 'EsrequestsController@show');
+Route::post('/admin/{esrequest}', 'EsrequestsController@fulfill');

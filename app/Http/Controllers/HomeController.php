@@ -30,10 +30,8 @@ class HomeController extends Controller
         return view('esrequests.index', compact('esrequests'));
     }
 
-    public function show($id)
+    public function show(Esrequest $esrequest)
     {
-        $esrequest = Esrequest::findOrFail($id);
-
         if (Gate::denies('view-esrequest', $esrequest)) {
             return abort('403');
         }

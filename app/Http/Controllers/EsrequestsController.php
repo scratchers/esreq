@@ -25,7 +25,7 @@ class EsrequestsController extends Controller
 
     function show(Esrequest $esrequest)
     {
-        return view('esrequests.show', compact('esrequest', 'fields'));
+        return view('esrequests.show', compact('esrequest'));
     }
 
     function create()
@@ -40,9 +40,8 @@ class EsrequestsController extends Controller
         return redirect('home');
     }
 
-    function fulfill($id, Request $request)
+    function fulfill(Esrequest $esrequest, Request $request)
     {
-        $esrequest = Esrequest::findOrFail($id);
         $esrequest->fulfilled_at = new Carbon;
         $esrequest->note = $request->input('note');
         $esrequest->save();
