@@ -23,12 +23,8 @@ class EsrequestsController extends Controller
         return view('esrequests.index', compact('esrequests'));
     }
 
-    function show($esrequest)
+    function show(Esrequest $esrequest)
     {
-        if ( ! $esrequest instanceof Esrequest ){
-            $esrequest = Esrequest::findOrFail($esrequest);
-        }
-
         $fields = $esrequest->getFields();
 
         return view('esrequests.show', compact('esrequest', 'fields'));
