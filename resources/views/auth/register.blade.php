@@ -10,14 +10,15 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('institution_id') ? ' has-error' : '' }}">
-                            <label for="institution_id" class="col-md-4 control-label">Institution:</label>
+                        <input name="institution_id" id="institution_id" type="hidden">
+                        <div class="form-group{{ $errors->has('institution') ? ' has-error' : '' }}">
+                            <label for="institution" class="col-md-4 control-label">Institution:</label>
                             <div class="col-md-6">
-                                <input name="institution_id" id="institution_id" class="form-control" value="{{ old('institution_id') }}" required autofocus>
+                                <input name="institution" id="institution" class="form-control" value="{{ old('institution') }}" required autofocus>
 
-                                @if ($errors->has('institution_id'))
+                                @if ($errors->has('institution'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('institution_id') }}</strong>
+                                        <strong>{{ $errors->first('institution') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -100,4 +101,22 @@
         </div>
     </div>
 </div>
+
+<script>
+$( function() {
+    $( "#institution" ).autocomplete({
+        source: [
+            @foreach (App\Institution::get() as $institution)
+            { label: "{{ $institution->name }}", value: {{ $institution->id }} },
+            @endforeach
+        ],
+        select: function( event, ui ) {
+            $( "#institution" ).val( ui.item.label ).attr( "readonly", true );
+            $( "#institution_id" ).val( ui.item.value );
+            return false;
+        }
+    });
+} );
+</script>
+
 @endsection
