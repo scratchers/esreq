@@ -47,6 +47,7 @@ class EsrequestsController extends Controller
         $esrequest->save();
         Mail::to($esrequest->user()->get())
             ->send(new FulfillEsrequest($esrequest));
+        flash('Request fulfilled.', 'success');
         return $this->show($esrequest);
     }
 }

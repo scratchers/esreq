@@ -73,6 +73,8 @@
 
 	<div id="page-content-container" class='container'>
 
+        @include('flash::message')
+
 		@yield('content')
 
 	</div>
