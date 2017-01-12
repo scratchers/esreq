@@ -8,43 +8,13 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>{{ config('app.name') }}</title>
-
-	<script>
-		window.Laravel = <?php echo json_encode([
-			'csrfToken' => csrf_token(),
-		]); ?>
-	</script>
-
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
-	<!-- jQuery-UI -->
-	<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
-	<link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css'>
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<!-- Bootstrap JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js'></script>
-		<script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
-	<![endif]-->
-
-	<!-- FONT AWESOME -->
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'></link>
-
-	<!-- UARK -->
-	<link rel='stylesheet' href='/css/uark.css'></link>
 	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
-    <!-- datatables -->
-    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'></link>
     <link rel='stylesheet' href='//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css'></link>
-
+	<link rel='stylesheet' href='/css/uark.css'></link>
 </head>
 <body>
 	<div id="header-bg"></div>
@@ -224,22 +194,39 @@
 		</div>
 	</footer>
 
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js'></script>
+		<script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
+	<![endif]-->
+    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
 	<script>
+		window.Laravel = <?php echo json_encode([
+			'csrfToken' => csrf_token(),
+		]); ?>
+
 		function auto_expand_textarea( ta ){ ta.keyup(function(e) {
 			while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css('borderTopWidth')) + parseFloat($(this).css('borderBottomWidth'))) {
 				$(this).height($(this).height()+1);
 			};
 		})}
+
 		$(function(){
 			$('textarea').each(function(){
 				var ta = $(this);
 				auto_expand_textarea( ta );
 			});
 		});
+
 		$(".top_nav").find("a").each(function(){
 			if ( $(this).attr("href") == "<?php echo $_SERVER['SCRIPT_NAME'];?>" || $(this).attr("href") == "<?php echo dirname($_SERVER['SCRIPT_NAME'])."/";?>" )
 			$(this).parent().addClass("active");
 		});
+
         $(document).ready(function(){
             $('.datatable').DataTable({
                 "order": [[ 1, "desc" ]]
@@ -247,3 +234,4 @@
         });
 	</script>
 </body>
+</html>
