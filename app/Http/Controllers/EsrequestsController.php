@@ -7,6 +7,8 @@ use App\Http\Requests\CreateEsrequest;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use App\Mail\FulfillEsrequest;
+use Illuminate\Support\Facades\Mail;
 
 class EsrequestsController extends Controller
 {
@@ -50,6 +52,8 @@ class EsrequestsController extends Controller
         $esrequest->fulfilled_at = new Carbon;
         $esrequest->note = $request->input('note');
         $esrequest->save();
+        Mail::to($esrequest->user()->get())
+            ->send(new FulfillEsrequest($esrequest));
         return $this->show($esrequest);
     }
 }
