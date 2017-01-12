@@ -25,8 +25,6 @@ class EsrequestsController extends Controller
 
     function show(Esrequest $esrequest)
     {
-        $fields = $esrequest->getFields();
-
         return view('esrequests.show', compact('esrequest', 'fields'));
     }
 

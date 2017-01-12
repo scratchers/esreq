@@ -11,7 +11,7 @@
 
     @if (!empty($esrequest))
         <div class="well">
-        @foreach($fields as $key => $value)
+        @foreach($esrequest->getFields() as $key => $value)
             <div class="row row-striped">
                 <div class="col-xs-12 col-md-2 text-md-right"><strong>{{ $key }}</strong></div>
                 <div class="col-xs-12 col-md-10">{{ $value }}</div>
