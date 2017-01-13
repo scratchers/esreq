@@ -28,9 +28,9 @@
                             <div class="col-md-6">
                                 <input name="institution_url" id="institution_url" class="form-control" value="{{ old('institution_url') ?: 'https://' }}" type="url" required autofocus>
 
-                                @if ($errors->has('institution'))
+                                @if ($errors->has('institution_url'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('institution') }}</strong>
+                                        <strong>{{ $errors->first('institution_url') }}</strong>
                                     </span>
                                 @endif
                             </div>
