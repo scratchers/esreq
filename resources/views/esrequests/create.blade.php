@@ -35,6 +35,9 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                         <label>{!! Form::checkbox('SAP') !!}SAP</label>
+                        <div class="alert alert-warning" role="alert">
+                            Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> Member
+                        </div>
                     </div>
                 </div>
             </div>
