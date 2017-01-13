@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Institution;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -47,12 +48,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ];
+
+        if ( empty($data['institution_id']) ) {
+            $rules['institution'] =  'required|string|max:255|unique:institutions,name';
+            $rules['institution_url'] = 'required|url|max:255|unique:institutions,url|active_url';
+        } else {
+            $rules['institution_id'] = 'integer|min:1|exists:institution,id';
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -63,7 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if ( empty($data['institution_id']) ) {
+            $institution = Institution::create([
+                'name' => $data['institution'],
+                'url'  => $data['institution_url'],
+            ]);
+
+            $data['institution_id'] = $institution->id;
+        }
+
         return User::create([
+            'institution_id' => $data['institution_id'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],

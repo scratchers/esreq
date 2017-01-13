@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'institution_id',
     ];
 
     /**
@@ -26,6 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function institution()
+    {
+        return $this->belongsTo('App\Institution');
+    }
 
     public function esrequests()
     {
