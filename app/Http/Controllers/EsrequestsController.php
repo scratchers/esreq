@@ -23,6 +23,12 @@ class EsrequestsController extends Controller
         return view('esrequests.index', compact('esrequests'));
     }
 
+    function new()
+    {
+        $esrequests = Esrequest::whereNull('fulfilled_at')->get();
+        return view('esrequests.index', compact('esrequests'));
+    }
+
     function show(Esrequest $esrequest)
     {
         return view('esrequests.show', compact('esrequest'));

@@ -23,6 +23,7 @@ Route::get('/home/{esrequest}',  'HomeController@show');
 Route::get ('/create',    'EsrequestsController@create');
 Route::post('/create',    'EsrequestsController@store');
 
-Route::get ('/admin',      'EsrequestsController@index');
+Route::get ('/admin',      'EsrequestsController@new');
+Route::get ('/admin/all',  'EsrequestsController@index');
 Route::get ('/admin/{esrequest}', 'EsrequestsController@show');
 Route::post('/admin/{esrequest}', 'EsrequestsController@fulfill');
