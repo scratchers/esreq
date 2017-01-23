@@ -59,7 +59,7 @@ class RegisterController extends Controller
             $rules['institution'] =  'required|string|max:255|unique:institutions,name';
             $rules['institution_url'] = 'required|url|max:255|unique:institutions,url|active_url';
         } else {
-            $rules['institution_id'] = 'integer|min:1|exists:institution,id';
+            $rules['institution_id'] = 'integer|min:1|exists:institutions,id';
         }
 
         return Validator::make($data, $rules);
