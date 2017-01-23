@@ -27,6 +27,9 @@ class HomeController extends Controller
     public function index()
     {
         $esrequests = Auth::user()->esrequests()->get();
+
+        $esrequests->controller = 'HomeController@show';
+
         return view('esrequests.index', compact('esrequests'));
     }
 
