@@ -44,7 +44,7 @@
                     <div class="checkbox">
                         <label>{!! Form::checkbox('SAP') !!}SAP</label>
                         <div class="alert alert-warning" role="alert">
-                            Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> Member
+                            Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> member.
                         </div>
                     </div>
                 </div>
@@ -89,6 +89,9 @@
                 <div class="col-sm-10">
                     {!! Form::date('date_end', null, ['class'=>'form-control']) !!}
                 </div>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                If no end date is provided, then accounts are subject to deletion after 90 days.
             </div>
         </div>
 
