@@ -55,6 +55,7 @@ class Esrequest extends Model
         'course_name',
         'date_begin',
         'date_end',
+        'user_comment',
     ];
 
     protected $dates = [

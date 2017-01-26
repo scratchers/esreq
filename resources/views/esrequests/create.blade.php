@@ -93,6 +93,14 @@
         </div>
 
         <div class="well">
+            <h3>Optional Comments</h3>
+
+            <div class="form-group">
+                {!! Form::textarea('user_comment', null, ['class'=>'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="well">
             <p>
             <strong>NOTE:</strong> This agreement does not allow a user to copy any data on any computer system; data is to be used used for the classroom, research, development, and analysis purposes. Anyone who uses selected parts of this data agrees to delete all data and references from all computer systems. The <a href="/MUTUAL-CONFIDENTIALITY-AND-NONDISCLOSURE-AGREEMENT.html" target="_blank">MUTUAL CONFIDENTIALITY AND NONDISCLOSURE AGREEMENT</a> (which you are now a part of) does allow faculty to use results for classroom and illustration purposes. It does not allow users to copy data, or portions thereof, for use by third-party software. If you have questions about this agreement, please contact the Enterprise Systems Director at the University of Arkansas.
             </p>

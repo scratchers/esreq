@@ -36,6 +36,7 @@ class CreateEsRequestsTable extends Migration
             $table->timestamp('cancelled_at')->nullable();
 
             $table->longtext('note')->nullable();
+            $table->longtext('user_comment')->nullable();
 
             $table->foreign('user_id')
                   ->references('id')

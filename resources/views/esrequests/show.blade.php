@@ -20,9 +20,21 @@
     @endforeach
     </div>
 
+    @unless ( empty($esrequest->user_comment) )
+    <h2>User Comment</h2>
+    <div class="well">
+        <p>{{ $esrequest->user_comment }}</p>
+    </div>
+    @endunless
+
     @if ( strpos( url()->current(), '/admin/') !== false )
         @include('esrequests.fulfill-inc')
     @else
-        {{ $esrequest->note }}
+        @unless ( empty($esrequest->note) )
+        <h2>Admin Response</h2>
+        <div class="well">
+            <p>{{ $esrequest->note }}</p>
+        </div>
+        @endunless
     @endif
 @endsection
