@@ -141,4 +141,13 @@ class Esrequest extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function userBriefs() : string
+    {
+        $user = $this->user()->first();
+
+        $institution = $user->institution()->first();
+
+        return "{$user->first_name} {$user->last_name}, {$institution->name}";
+    }
 }

@@ -9,6 +9,9 @@
                 <tr>
                     <th>Details</th>
                     <th>Created</th>
+                    @if ( empty($esrequests->controller) )
+                        <th>Requestor</th>
+                    @endif
                     <th>Begins</th>
                     <th>Fulfilled</th>
                 </tr>
@@ -19,6 +22,9 @@
                     <tr>
                         <td><a href="{{ action($esrequests->controller ?? 'EsrequestsController@show', $esrequest->id) }}" class="btn btn-primary">Details</a></td>
                         <td>{{ $esrequest->created_at }}</td>
+                        @if ( empty($esrequests->controller) )
+                            <td>{{ $esrequest->userBriefs() }}</td>
+                        @endif
                         <td>{{ $esrequest->date_begin }}</td>
                         <td>{{ $esrequest->fulfilled_at }}</td>
                     </tr>
