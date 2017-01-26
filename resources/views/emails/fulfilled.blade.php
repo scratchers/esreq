@@ -23,6 +23,21 @@
 </p>
 
 <p>
+    Remote Desktop Connection Instructions:
+    <ul>
+    @foreach ( $esrequest->platforms() as $platform )
+        @if ( !empty($esrequest->$platform) )
+        <li>
+            <a href="{{ url('/downloads/remote-desktop-'.$platform.'.pdf') }}">
+                {{ $platform }}
+            </a>
+        </li>
+        @endif
+    @endforeach
+    </ul>
+</p>
+
+<p>
     {{ $esrequest->note }}
 </p>
 
