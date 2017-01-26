@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Esrequest;
 
-class FulfillEsrequest extends Mailable
+class NewEsrequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class FulfillEsrequest extends Mailable
      */
     public function build()
     {
-        return $this->subject('Your Enterprise Systems Request has been Fulfilled')
-            ->view('emails.fulfilled');
+        return $this->subject('New Enterprise Systems Request')
+            ->view('emails.new');
     }
 }
