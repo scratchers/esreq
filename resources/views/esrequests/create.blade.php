@@ -80,19 +80,27 @@
             <div class="form-group">
                 {!! Form::label('date_begin', 'Start Date:', ['class'=>'control-label col-sm-2']) !!}
                 <div class="col-sm-10">
-                    {!! Form::date('date_begin', null, ['class'=>'form-control']) !!}
+                    {!! Form::text('date_begin', null, ['class'=>'form-control datepicker']) !!}
                 </div>
             </div>
 
             <div class="form-group">
                 {!! Form::label('date_end', 'End Date:', ['class'=>'control-label col-sm-2']) !!}
                 <div class="col-sm-10">
-                    {!! Form::date('date_end', null, ['class'=>'form-control']) !!}
+                    {!! Form::text('date_end', null, ['class'=>'form-control datepicker']) !!}
                 </div>
             </div>
             <div class="alert alert-warning" role="alert">
                 If no end date is provided, then accounts are subject to deletion after 90 days.
             </div>
+
+            <script>
+                $( function() {
+                    $( ".datepicker" ).datepicker({
+                        dateFormat: "yy-mm-dd"
+                    });
+                } );
+            </script>
         </div>
 
         <div class="well">
