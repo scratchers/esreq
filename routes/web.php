@@ -27,3 +27,7 @@ Route::get ('/admin',      'EsrequestsController@new');
 Route::get ('/admin/all',  'EsrequestsController@index');
 Route::get ('/admin/{esrequest}', 'EsrequestsController@show');
 Route::post('/admin/{esrequest}', 'EsrequestsController@fulfill');
+
+Route::get('/instructions', function() {
+    return view('instructions');
+});

@@ -12,7 +12,7 @@ class Esrequest extends Model
             'IBM',
             'Microsoft',
             'SAP',
-            'SAS',
+//             'SAS',
             'Teradata',
         ];
     }
