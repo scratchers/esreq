@@ -22,7 +22,7 @@
 	<div id="header-bg"></div>
 	<div class="container" id="opener" role="banner">
 		<a class="brand" href="http://www.uark.edu/">University of Arkansas</a>
-		<span id="site-heading" class="walton-name"><a href="/">Request Enterprise Systems</a></span>
+		<span id="site-heading" class="walton-name"><a href="/">{{ config('app.name') }}</a></span>
 		<span class="walton-sub-name"><a href="//walton.uark.edu">The Sam M. Walton College of Business</a></span>
 	</div><!-- /#opener banner -->
 

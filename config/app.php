@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Request Enterprise Systems',
+    'name' => env('APP_NAME', 'Request Enterprise Systems Access'),
 
     /*
     |--------------------------------------------------------------------------
