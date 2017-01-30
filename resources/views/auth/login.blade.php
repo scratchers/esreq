@@ -60,6 +60,11 @@
                             </div>
                         </div>
                     </form>
+
+                    <div>
+                        <h2>Don't have an account?</h2>
+                        <a href="{{ url('/register') }}" class="btn btn-success">Register</a>
+                    </div>
                 </div>
             </div>
         </div>
