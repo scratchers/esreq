@@ -3,7 +3,7 @@
 <p>
     There is a
     <a href="{{ url('/admin/'.$esrequest->id) }}">new request</a>
-    for access to Enterprise Systems.
+    for access to Enterprise Systems from {{ $esrequest->userBriefs() }}.
 </p>
 
 <p>
