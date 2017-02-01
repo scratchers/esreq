@@ -20,7 +20,7 @@
 </p>
 
 <p>
-    {{ $esrequest->note }}
+    {{ $esrequest->user_comment }}
 </p>
 
 </body></html>
