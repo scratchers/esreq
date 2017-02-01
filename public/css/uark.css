@@ -1,0 +1,276 @@
+html {
+  background-color: #424242;
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #5a5a5a;
+  font-size: 16px;
+  background-color: white;
+}
+
+
+
+@media (max-width:767px){
+  body {
+    padding-top: 0px;
+  }
+  .navbar {
+    margin-top: 0px;
+  }
+  #opener {
+    display: none;
+  }
+  #site_title_brand {
+	  content: "";
+	  background: url("/images/WaltonLogo2.png") left center no-repeat;
+	  background-size: contain;
+	  position: absolute;
+	  top:0;
+	  height:100%;
+	  width: 200px;
+	  display: block;
+	  font-size: 0;
+	  margin-left: 5px;
+  }
+}
+
+@media (min-width:768px){
+  #header-bg {
+	background-color: #f7f7f7;
+	position: absolute;
+	top:-53px;
+	left:0;
+	width: 100%;
+	height:200px;
+  }
+  #opener .brand {
+      background: url("/images/logo-on-red.png") no-repeat 0 0;
+      display: block;
+      width: 195px;
+      height: 192px;
+      position: absolute;
+      top: 0px;
+      box-shadow: 0 0 10px rgba(0,0,0,.8);
+      padding: 0;
+      margin-left: -11px;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 20;
+  }
+
+  .navigation-menu {
+    margin-left: 200px;
+  }
+
+  .navbar li {
+    text-align: center;
+  }
+
+  .navbar-default .navbar-nav>li>a:hover {
+    border-color: #af0001;
+  }
+  .navbar {
+      margin-top: 115px;
+      margin-bottom: 10px;
+  }
+}
+
+.walton-name {
+  position: absolute;
+  top: 32px;
+  margin-left: 220px;
+}
+
+.walton-name a {
+  text-decoration: none;
+  color: #505050;
+  font-weight: 700;
+  font-size: 40px;
+}
+.walton-name a:hover, .walton-sub-name a:hover {
+  text-decoration: none;
+  color: #aa0000;
+}
+
+.walton-sub-name {
+  position: absolute;
+  top: 75px;
+  margin-left: 220px;
+  font-size: 20px;
+}
+
+.walton-sub-name a {
+  color: #b3b3b3;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  border-color: #af0001;
+  color: #aa0000;
+}
+
+.navbar {
+    z-index: 9;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0px 7px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 0px 7px rgba(0,0,0,.3);
+    box-shadow: 0 0px 7px rgba(0,0,0,.3);
+    border-radius: 0;
+    min-height: 57px;
+    max-height: 57px;
+    margin-bottom: 30px;
+}
+
+#navbar {
+  border-color: transparent;
+  background-color: white;
+}
+
+.navbar li:hover, .navbar a {
+  background-color: #fff;
+  border-top: 5px solid #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #aa0000;
+  margin-top: -5px;
+}
+
+section.gray {
+	position:relative;
+	overflow:hidden;
+	background-color: #f2f2f4;
+	padding-top:30px;
+	padding-bottom:20px;
+	margin-top:15px;
+	margin-bottom: 0;
+}
+section.gray > .container > .row:first-child:before, section.gray > .container > .row:first-child:after,
+section.gray:before, section.gray:after
+{
+	pointer-events: none;
+	position: absolute;
+	content: "";
+	left: 2px;
+	height: 10px;
+	width: 100%;
+	top: -23px;
+	background: #a1a1a1;
+	-webkit-box-shadow: 0 8px 11px #a1a1a1;
+	-moz-box-shadow: 0 8px 11px #a1a1a1;
+	box-shadow: 0 8px 11px #a1a1a1;
+	-webkit-transform: rotate(-.8deg);
+	-moz-transform: rotate(-.8deg);
+	-o-transform: rotate(-.8deg);
+	-ms-transform: rotate(-.8deg);
+	transform: rotate(-.8deg);
+}
+section.gray > .container > .row:first-child:after, section.gray:before
+{
+	-webkit-transform: rotate(.8deg);
+	-moz-transform: rotate(.8deg);
+	-o-transform: rotate(.8deg);
+	-ms-transform: rotate(.8deg);
+	transform: rotate(.8deg);
+	right: 2px;
+}
+section.gray:before, section.gray:after
+{
+	left: 4px;
+	top: auto;
+	bottom: -21px;
+	background: #A7A7A7;
+	-webkit-box-shadow: 0 -5px 11px #a1a1a1;
+	-moz-box-shadow: 0 -5px 11px #a1a1a1;
+	box-shadow: 0 -5px 11px #a1a1a1;
+}
+section.gray:after
+{
+	right: 4px;
+	left: auto;
+}
+
+footer {
+  background-color: #424242;
+  color: #fff;
+  font-weight: 300;
+  display: block;
+  min-height: 100%;
+  padding-top: 25px;
+}
+
+footer a, footer a:hover {
+  color: white;
+}
+
+#footer-walton-name > a {
+  color: #5a5a5a;
+  font-size: x-large;
+}
+
+#footer-logo {
+  font-size: x-large;
+}
+
+footer #social-stack li i:hover {
+    text-shadow: 0 0 4px #fff;
+}
+
+footer .nav > li > a:hover, footer .nav > li > a:focus {
+    background-color: transparent;
+}
+
+#footer-global-links, #social-stack {
+  text-transform: uppercase;
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+}
+
+#footer-global-links li, #social-stack li {
+  float: left;
+  margin-right: 2em;
+}
+
+.datatable .sorting,
+.datatable .sorting_asc,  .datatable .sorting_asc_disabled,
+.datatable .sorting_desc, .datatable .sorting_desc_disabled {
+	background-position: center left !important;
+}
+tr.odd {
+    background-color: #f9f9f9 !important;
+}
+
+.text-xs-left .text-sm-left .text-md-left .text-lg-left { text-align: left; }
+.text-xs-right .text-sm-right .text-md-right .text-lg-right { text-align: right; }
+.text-xs-center .text-sm-center .text-md-center .text-lg-center { text-align: center; }
+.text-xs-justify .text-sm-justify .text-md-justify .text-lg-justify { text-align: justify; }
+
+@media (min-width:768px) {
+    .text-sm-left { text-align: left; }
+    .text-sm-right { text-align: right; }
+    .text-sm-center { text-align: center; }
+    .text-sm-justify { text-align: justify; }
+}
+
+@media (min-width:992px) {
+    .text-md-left { text-align: left; }
+    .text-md-right { text-align: right; }
+    .text-md-center { text-align: center; }
+    .text-md-justify { text-align: justify; }
+}
+
+@media (min-width:1200px) {
+    .text-lg-left { text-align: left; }
+    .text-lg-right { text-align: right; }
+    .text-lg-center { text-align: center; }
+    .text-lg-justify { text-align: justify; }
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #ffffff;
+}
