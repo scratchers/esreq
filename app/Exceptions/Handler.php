@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Mail;
+use Auth;
+use Request;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +35,18 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        $data = [
+            'exception' => $exception,
+            'request'   => Request::fullUrl() . PHP_EOL
+                        . print_r(Request::all(), true),
+            'user'      => Auth::user(),
+        ];
+
+        Mail::send('emails.exception', $data, function ($m) {
+            $m->to(env('MAIL_ERROR_TO_ADDRESS', 'jpucket@uark.edu'))
+            ->subject( 'EXCEPTION THROWN in '.config('app.name') );
+        });
+
         parent::report($exception);
     }
 
