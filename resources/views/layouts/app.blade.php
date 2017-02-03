@@ -48,6 +48,7 @@
 						<li><a href="{{ url('/create') }}">Create Request</a></li>
 					@endif
                     <li><a href="{{ url('/instructions') }}">Instructions</a></li>
+                    <li><a href="http://walton.uark.edu/enterprise/">Department Website</a></li>
 				</ul>
 
 				<div id='login_nav_div' class='top_nav navbar-right pull-right-md pull-left-xs'>
