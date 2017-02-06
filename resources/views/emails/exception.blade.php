@@ -22,4 +22,10 @@
     {{ $user }}
 </pre>
 
+<h2>Server</h2>
+
+<pre>
+    {{ $server }}
+</pre>
+
 </body></html>

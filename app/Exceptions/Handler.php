@@ -8,6 +8,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Mail;
 use Auth;
 use Request;
+use App;
+use App\Exceptions\FilteredServerVariable;
 
 class Handler extends ExceptionHandler
 {
@@ -35,11 +37,14 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        $server = App::make(FilteredServerVariable::class);
+
         $data = [
             'exception' => $exception,
             'request'   => Request::fullUrl() . PHP_EOL
                         . print_r(Request::all(), true),
             'user'      => Auth::user(),
+            'server'    => print_r($server->get(), true),
         ];
 
         Mail::send('emails.exception', $data, function ($m) {
