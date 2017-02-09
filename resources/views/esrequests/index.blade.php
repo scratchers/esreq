@@ -23,7 +23,11 @@
                         <td><a href="{{ action($esrequests->controller ?? 'EsrequestsController@show', $esrequest->id) }}" class="btn btn-primary">Details</a></td>
                         <td>{{ $esrequest->created_at }}</td>
                         @if ( empty($esrequests->controller) )
-                            <td>{{ $esrequest->userBriefs() }}</td>
+
+                            @php $esrequest->bootstrapUserBriefs() @endphp
+
+                            <td>{{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}</td>
+
                         @endif
                         <td>{{ $esrequest->date_begin }}</td>
                         <td>{{ $esrequest->fulfilled_at }}</td>
