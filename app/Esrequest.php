@@ -143,12 +143,16 @@ class Esrequest extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function userBriefs() : string
+    public function bootstrapUserBriefs()
     {
         $user = $this->user()->first();
 
-        $institution = $user->institution()->first();
+        $this->user_institution = $user->institution()->first()->name;
 
-        return "{$user->first_name} {$user->last_name}, {$institution->name}";
+        $this->user_fullname = "{$user->first_name} {$user->last_name}";
+
+        $this->user_email = $user->email;
+
+        return $this;
     }
 }

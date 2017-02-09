@@ -9,7 +9,11 @@
 
     <h1>Request Details</h1>
 
-    <p class="lead">{{ $esrequest->userBriefs() }}</p>
+    <p class="lead">
+        {{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}
+        <br/>
+        <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
+    </p>
 
     <div class="well">
     @foreach($esrequest->getFields() as $key => $value)

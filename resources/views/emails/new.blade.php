@@ -3,7 +3,13 @@
 <p>
     There is a
     <a href="{{ url('/admin/'.$esrequest->id) }}">new request</a>
-    for access to Enterprise Systems from {{ $esrequest->userBriefs() }}.
+    for access to Enterprise Systems.
+</p>
+
+<p>
+    {{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}
+    <br/>
+    <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
 </p>
 
 <p>
