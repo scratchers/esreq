@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Esrequest');
     }
+
+    public function facultyAccounts()
+    {
+        return $this->hasMany(FacultyAccount::class);
+    }
 }
