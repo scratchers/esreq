@@ -52,18 +52,24 @@
         </div>
 
         <div class="well">
-            <h3>Number of Accounts</h3>
+            <h3>Number of New Accounts</h3>
             <div class="form-group">
-                {!! Form::label('faculty_accounts', 'Faculty:', ['class'=>'control-label col-sm-2']) !!}
+                <label for="faculty_accounts" class="control-label col-sm-2">
+                    <input type="checkbox" onclick="$('#faculty_accounts').toggle()">
+                    Faculty:
+                </label>
                 <div class="col-sm-10">
-                    {!! Form::number('faculty_accounts', null, ['class'=>'form-control', 'min'=>0]) !!}
+                    <input id="faculty_accounts" class="form-control" min="0" name="faculty_accounts" type="number" style="display:none">
                 </div>
             </div>
 
             <div class="form-group">
-                {!! Form::label('student_accounts', 'Student:', ['class'=>'control-label col-sm-2']) !!}
+                <label for="student_accounts" class="control-label col-sm-2">
+                    <input type="checkbox" onclick="$('#student_accounts').toggle()">
+                    Student:
+                </label>
                 <div class="col-sm-10">
-                    {!! Form::number('student_accounts', null, ['class'=>'form-control', 'min'=>0]) !!}
+                    <input id="student_accounts" class="form-control" min="0" name="student_accounts" type="number" style="display:none">
                 </div>
             </div>
         </div>
