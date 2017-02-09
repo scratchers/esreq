@@ -37,8 +37,8 @@
     </ul>
 </p>
 
-<p>
-    {{ $esrequest->note }}
-</p>
+<div>
+    <pre>{{ $esrequest->note }}</pre>
+</div>
 
 </body></html>

@@ -35,10 +35,10 @@
         @include('esrequests.fulfill-inc')
     @else
         @unless ( empty($esrequest->note) )
-        <h2>Admin Response</h2>
-        <div class="well">
-            <p>{{ $esrequest->note }}</p>
-        </div>
+            <h2>Admin Response</h2>
+            <div>
+                <pre>{{ $esrequest->note }}</pre>
+            </div>
         @endunless
     @endif
 @endsection
