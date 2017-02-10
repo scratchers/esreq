@@ -24,9 +24,7 @@
                         <td>{{ $esrequest->created_at }}</td>
                         @if ( empty($esrequests->controller) )
 
-                            @php $esrequest->bootstrapUserBriefs() @endphp
-
-                            <td>{{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}</td>
+                            <td>{{ $esrequest->user->first_name }} {{ $esrequest->user->last_name }}, {{ $esrequest->user->institution->name }}</td>
 
                         @endif
                         <td>{{ $esrequest->date_begin }}</td>

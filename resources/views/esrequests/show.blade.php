@@ -10,12 +10,11 @@
     <h1>Request Details</h1>
 
     <p class="lead">
-        {{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}
+        {{ $esrequest->user->first_name }} {{ $esrequest->user->last_name }}, {{ $esrequest->user->institution->name }}
         <br/>
-        <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
+        <a href="mailto:{{ $esrequest->user->email }}">{{ $esrequest->user->email }}</a>
 
         @unless ( empty($esrequest->user->facultyAccounts) )
-            <br/>
             @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
                 <label class="label label-info">{{ $facultyAccount->username }}</label>
             @endforeach

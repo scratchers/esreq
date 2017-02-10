@@ -31,7 +31,6 @@ class EsrequestsController extends Controller
 
     function show(Esrequest $esrequest)
     {
-        $esrequest->bootstrapUserBriefs();
         return view('esrequests.show', compact('esrequest'));
     }
 
@@ -45,8 +44,6 @@ class EsrequestsController extends Controller
         $esrequest = new Esrequest($request->all());
 
         Auth::user()->esrequests()->save($esrequest);
-
-        $esrequest->bootstrapUserBriefs();
 
         Mail::to(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
             ->send(new NewEsrequest($esrequest));
