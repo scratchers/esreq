@@ -13,6 +13,13 @@
         {{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}
         <br/>
         <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
+
+        @unless ( empty($esrequest->user->facultyAccounts) )
+            <br/>
+            @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
+                <label class="label label-info">{{ $facultyAccount->username }}</label>
+            @endforeach
+        @endunless
     </p>
 
     <div class="well">
