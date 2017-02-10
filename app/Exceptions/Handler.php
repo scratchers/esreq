@@ -37,20 +37,22 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        $server = App::make(FilteredServerVariable::class);
+        if ( Reporter::wants($exception) ) {
+            $server = App::make(FilteredServerVariable::class);
 
-        $data = [
-            'exception' => $exception,
-            'request'   => Request::fullUrl() . PHP_EOL
-                        . print_r(Request::all(), true),
-            'user'      => Auth::user(),
-            'server'    => print_r($server->get(), true),
-        ];
+            $data = [
+                'exception' => $exception,
+                'request'   => Request::fullUrl() . PHP_EOL
+                            . print_r(Request::all(), true),
+                'user'      => Auth::user(),
+                'server'    => print_r($server->get(), true),
+            ];
 
-        Mail::send('emails.exception', $data, function ($m) {
-            $m->to(env('MAIL_ERROR_TO_ADDRESS', 'jpucket@uark.edu'))
-            ->subject( 'EXCEPTION THROWN in '.config('app.name') );
-        });
+            Mail::send('emails.exception', $data, function ($message) {
+                $message->to(env('MAIL_ERROR_TO_ADDRESS', 'jpucket@uark.edu'))
+                        ->subject( 'EXCEPTION THROWN in '.config('app.name') );
+            });
+        }
 
         parent::report($exception);
     }
