@@ -5,7 +5,20 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">University of Arkansas Users</div>
+                <div class="panel-body">
+                    <p>
+                        If you're a member of the University of Arkansas, then
+                        login with your UARK credentials using campus central authentication.
+                    </p>
+                    <div>
+                        <a href="{{ url('/idp') }}" class="btn btn-primary">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">External Users</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
