@@ -170,6 +170,7 @@ return [
          */
 
         Laracasts\Flash\FlashServiceProvider::class,
+        StudentAffairsUwm\Shibboleth\ShibbolethServiceProvider::class,
 
         /*
          * Application Service Providers...
