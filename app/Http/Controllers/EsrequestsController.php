@@ -20,12 +20,18 @@ class EsrequestsController extends Controller
     function index()
     {
         $esrequests = Esrequest::all();
+
+        $esrequests->controller = 'EsrequestsController@show';
+
         return view('esrequests.index', compact('esrequests'));
     }
 
     function new()
     {
         $esrequests = Esrequest::whereNull('fulfilled_at')->get();
+
+        $esrequests->controller = 'EsrequestsController@show';
+
         return view('esrequests.index', compact('esrequests'));
     }
 
