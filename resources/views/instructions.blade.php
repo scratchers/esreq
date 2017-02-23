@@ -7,7 +7,7 @@
 <ul>
     @foreach ( App\Esrequest::platforms() as $platform )
         <li>
-            <a href='{{ url("/downloads/remote-desktop-$platform.pdf") }}'>
+            <a href='{{ asset("downloads/remote-desktop-$platform.pdf") }}'>
                 {{ $platform }}
             </a>
         </li>
