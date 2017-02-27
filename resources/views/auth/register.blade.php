@@ -5,7 +5,20 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">University of Arkansas Users</div>
+                <div class="panel-body">
+                    <p>
+                        If you're a member of the University of Arkansas, then there's no need to register.
+                        Just login with your UARK credentials using campus central authentication.
+                    </p>
+                    <div>
+                        <a href="{{ url('/idp') }}" class="btn btn-primary">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">External Users Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}

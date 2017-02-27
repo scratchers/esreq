@@ -9,7 +9,7 @@
                 <tr>
                     <th>Details</th>
                     <th>Created</th>
-                    @if ( empty($esrequests->controller) )
+                    @if ( $esrequests->controller === 'EsrequestsController@show' )
                         <th>Requestor</th>
                     @endif
                     <th>Begins</th>
@@ -20,13 +20,11 @@
             <tbody>
                 @foreach($esrequests as $esrequest)
                     <tr>
-                        <td><a href="{{ action($esrequests->controller ?? 'EsrequestsController@show', $esrequest->id) }}" class="btn btn-primary">Details</a></td>
+                        <td><a href="{{ action($esrequests->controller, $esrequest->id) }}" class="btn btn-primary">Details</a></td>
                         <td>{{ $esrequest->created_at }}</td>
-                        @if ( empty($esrequests->controller) )
+                        @if ( $esrequests->controller === 'EsrequestsController@show' )
 
-                            @php $esrequest->bootstrapUserBriefs() @endphp
-
-                            <td>{{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}</td>
+                            <td>{{ $esrequest->user->first_name }} {{ $esrequest->user->last_name }}, {{ $esrequest->user->institution->name }}</td>
 
                         @endif
                         <td>{{ $esrequest->date_begin }}</td>

@@ -7,7 +7,7 @@
 </p>
 
 <p>
-    {{ $esrequest->user_fullname }}, {{ $esrequest->user_institution }}
+    {{ $esrequest->user->first_name }} {{ $esrequest->user->last_name }}, {{ $esrequest->user->institution->name }}
     <br/>
     <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
 </p>

@@ -7,6 +7,7 @@ use App\Institution;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -21,7 +22,9 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers {
+        register as registersUsersRegister;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -89,5 +92,20 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Intercept registration, checking for UARK users first.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        if ( strpos($request->input('email'), '@uark.edu') !== false ) {
+            return redirect(url('/idp'));
+        }
+
+        return $this->registersUsersRegister($request);
     }
 }

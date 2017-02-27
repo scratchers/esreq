@@ -163,12 +163,14 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
 
         Laracasts\Flash\FlashServiceProvider::class,
+        StudentAffairsUwm\Shibboleth\ShibbolethServiceProvider::class,
 
         /*
          * Application Service Providers...
