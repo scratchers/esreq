@@ -12,15 +12,9 @@ return array(
     |
      */
 
-    'local_login'              => 'LocalLogin',
-    'local_logout'             => 'localLogout',
-    'local_authorized'         => '/home',
-    'local_unauthorized'       => 'loginUnauthorized',
-
-    'idp_login'                => '/Shibboleth.sso/Login',
-    'idp_logout'               => '/Shibboleth.sso/Logout',
-    'shibboleth_authenticated' => '/home',
-    'shibboleth_unauthorized'  => 'loginUnauthorized',
+    'idp_login'     => '/Shibboleth.sso/Login',
+    'idp_logout'    => '/Shibboleth.sso/Logout?return=https%3A%2F%2Fidp.uark.edu%2Fidp%2Fexit.jsp',
+    'authenticated' => '/home',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,8 +29,8 @@ return array(
     |
      */
 
-    'emulate_idp'              => false,
-    'emulate_idp_users'        => array(
+    'emulate_idp'       => false,
+    'emulate_idp_users' => array(
         'admin' => array(
             'uid'         => 'admin',
             'displayName' => 'Admin User',
@@ -69,11 +63,11 @@ return array(
     |
      */
 
-    'local_login_user_field'   => 'local_email',
-    'local_login_pass_field'   => 'local_password',
-    'idp_login_email'          => 'mail',
-    'idp_login_first'          => 'givenName',
-    'idp_login_last'           => 'sn',
+    'idp_login_email'       => 'mail',
+    'idp_login_name'        => 'displayName',
+    'idp_login_first_name'  => 'givenName',
+    'idp_login_last_name'   => 'sn',
+    'idp_login_entitlement' => 'entitlement',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +78,6 @@ return array(
     |
      */
 
-    'add_new_users'            => true, // Should new users be added automatically if they do not exist?
-    'shibboleth_group'         => '1', // What group should the new users be automatically added to?
+    'add_new_users' => true, // Should new users be added automatically if they do not exist?
 
 );

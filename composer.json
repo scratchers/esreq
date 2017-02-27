@@ -10,7 +10,7 @@
         "sbock/odbc-driver": "dev-master",
         "laravelcollective/html": "^5.3",
         "laracasts/flash": "^2.0",
-        "studentaffairsuwm/shibboleth": "dev-optoken",
+        "studentaffairsuwm/shibboleth": "dev-entitlements",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use StudentAffairsUwm\Shibboleth\Entitlement;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,13 @@ class User extends Authenticatable
     public function facultyAccounts()
     {
         return $this->hasMany(FacultyAccount::class);
+    }
+
+    /**
+     * The entitlements that belong to the user.
+     */
+    public function entitlements()
+    {
+        return $this->belongsToMany(Entitlement::class);
     }
 }

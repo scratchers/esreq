@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f92e5de58bf408fb0940322ae7b029a",
+    "content-hash": "110f39feacdbb02fcdd6e3ce71aac336",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1373,29 +1373,38 @@
         },
         {
             "name": "studentaffairsuwm/shibboleth",
-            "version": "dev-optoken",
+            "version": "dev-entitlements",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider.git",
-                "reference": "c94a3ab666b36bd9c954699b97361a48f0b635bb"
+                "reference": "1ab3886c4eb504b253254ca5eac371d7ebfe8320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uawcob/Laravel-Shibboleth-Service-Provider/zipball/c94a3ab666b36bd9c954699b97361a48f0b635bb",
-                "reference": "c94a3ab666b36bd9c954699b97361a48f0b635bb",
+                "url": "https://api.github.com/repos/uawcob/Laravel-Shibboleth-Service-Provider/zipball/1ab3886c4eb504b253254ca5eac371d7ebfe8320",
+                "reference": "1ab3886c4eb504b253254ca5eac371d7ebfe8320",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "5.*",
                 "laravel/framework": "^5.4",
                 "mrclay/shibalike": "1.0.0",
-                "php": ">=5.4.0",
                 "tymon/jwt-auth": "^0.5.10"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.4.*",
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "StudentAffairsUwm\\Shibboleth\\": "src/StudentAffairsUwm/Shibboleth"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "StudentAffairsUwm\\Shibboleth\\Tests\\Stubs\\": "tests/setup/Stubs",
+                    "App\\": "tests/setup/app"
                 }
             },
             "authors": [
@@ -1410,13 +1419,18 @@
                 {
                     "name": "Taylor Donald Harvey Smith",
                     "email": "smit2482@uwm.edu"
+                },
+                {
+                    "name": "Jeff Puckett",
+                    "email": "jeff@jeffpuckett.com"
                 }
             ],
             "description": "Enable basic Shibboleth support for Laravel 5.x",
             "support": {
-                "source": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider/tree/optoken"
+                "source": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider/tree/entitlements",
+                "issues": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider/issues"
             },
-            "time": "2017-02-13T23:26:26+00:00"
+            "time": "2017-02-27 19:48:21"
         },
         {
             "name": "swiftmailer/swiftmailer",

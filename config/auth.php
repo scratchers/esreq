@@ -68,7 +68,6 @@ return [
         'users' => [
             'driver'      => 'shibboleth',
             'model'       => App\User::class,
-            'group_model' => App\Group::class,
         ],
 
         // 'users' => [

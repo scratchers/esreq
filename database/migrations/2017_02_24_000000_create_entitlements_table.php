@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGroupsTable extends Migration
+class CreateEntitlementsTable extends Migration
 {
 
     /**
@@ -13,14 +13,11 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('entitlements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->unique();
+            $table->timestamps();
+            $table->string('name')->unique();
         });
-
-        DB::table('groups')->insert(array(
-            'name' => 'default',
-        ));
     }
 
     /**
@@ -30,6 +27,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('groups');
+        Schema::drop('entitlements');
     }
 }
