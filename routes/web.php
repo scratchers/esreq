@@ -18,6 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::name('home')->get('/home', function () {
+        if ( Auth::user()->isAdmin() ) {
+            return redirect(route('admin.requests.index'));
+        }
+        return redirect(route('customer.requests.index'));
+    });
+
     Route::resource(
         'requests',
         'Customer\EsrequestsController',
