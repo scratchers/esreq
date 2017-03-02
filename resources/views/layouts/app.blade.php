@@ -42,12 +42,12 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul id='top_navigation_menu' class='top_nav nav navbar-nav navigation-menu'>
                     @if (Auth::guest())
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
                     @else
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/create') }}">Create Request</a></li>
+                        <li><a href="{{ route('customer.requests.index') }}">Home</a></li>
+                        <li><a href="{{ route('customer.requests.create') }}">Create Request</a></li>
                     @endif
-                    <li><a href="{{ url('/instructions') }}">Instructions</a></li>
+                    <li><a href="{{ route('instructions') }}">Instructions</a></li>
                     <li><a href="http://walton.uark.edu/enterprise/">Department Website</a></li>
                 </ul>
 
@@ -55,8 +55,11 @@
                     <ul class="nav navbar-nav navbar-right navigation-menu">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
                         @else
+                            @can('administer', Esrequest::class)
+                                <li><a href="{{ route('admin.requests.index') }}">Admin</a></li>
+                            @endcan
                             <li>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
