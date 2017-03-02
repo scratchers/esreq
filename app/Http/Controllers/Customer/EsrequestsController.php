@@ -26,7 +26,12 @@ class EsrequestsController extends Controller
      */
     public function index()
     {
-        return Auth::user()->esrequests;
+        $data = [
+            'esrequests' => Auth::user()->esrequests,
+            'route' => 'customer.requests',
+        ];
+
+        return view('esrequests.index', $data);
     }
 
     /**

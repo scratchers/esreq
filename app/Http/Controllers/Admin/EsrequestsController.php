@@ -29,7 +29,12 @@ class EsrequestsController extends Controller
      */
     public function index()
     {
-        return Esrequest::all();
+        $data = [
+            'esrequests' => Esrequest::all(),
+            'route' => 'admin.requests',
+        ];
+
+        return view('esrequests.index', $data);
     }
 
     /**
