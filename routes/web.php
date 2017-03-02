@@ -17,17 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home',       'HomeController@index');
-Route::get('/home/{esrequest}',  'HomeController@show');
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource(
+        'requests',
+        'Customer\EsrequestsController',
+        ['as' => 'customer']
+    );
 
-Route::get ('/create',    'EsrequestsController@create');
-Route::post('/create',    'EsrequestsController@store');
+    Route::resource(
+        'admin/requests',
+        'Admin\EsrequestsController',
+        ['as' => 'admin']
+    );
+});
 
-Route::get ('/admin',      'EsrequestsController@new');
-Route::get ('/admin/all',  'EsrequestsController@index');
-Route::get ('/admin/{esrequest}', 'EsrequestsController@show');
-Route::post('/admin/{esrequest}', 'EsrequestsController@fulfill');
-
-Route::get('/instructions', function() {
+Route::name('instructions')->get('/instructions', function() {
     return view('instructions');
 });
