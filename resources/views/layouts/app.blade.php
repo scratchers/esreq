@@ -61,15 +61,9 @@
                                 <li><a href="{{ route('admin.requests.index') }}">Admin</a></li>
                             @endcan
                             <li>
-                                <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                <a href="{{ url('/logout') }}">
                                     Logout {{ Auth::user()->first_name }}
                                 </a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
                             </li>
                         @endif
                     </ul>
