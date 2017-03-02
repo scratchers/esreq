@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Esrequest;
+use App\Policies\EsrequestPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        Esrequest::class => EsrequestPolicy::class,
     ];
 
     /**
@@ -25,8 +27,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('view-esrequest', function ($user, $esrequest) {
-            return $user->id == $esrequest->user_id;
+        Gate::before(function ($user) {
+            if ( $user->isAdmin() ) {
+                return true;
+            }
         });
     }
 }

@@ -21,13 +21,23 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource(
         'requests',
         'Customer\EsrequestsController',
-        ['as' => 'customer']
+        [
+            'as' => 'customer',
+            'parameters' => [
+                'requests' => 'esrequest',
+            ]
+        ]
     );
 
     Route::resource(
         'admin/requests',
         'Admin\EsrequestsController',
-        ['as' => 'admin']
+        [
+            'as' => 'admin',
+            'parameters' => [
+                'requests' => 'esrequest',
+            ]
+        ]
     );
 });
 

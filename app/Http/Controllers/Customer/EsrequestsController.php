@@ -5,9 +5,20 @@ namespace App\Http\Controllers\Customer;
 use App\Esrequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class EsrequestsController extends Controller
 {
+    /**
+     * Creates Customer Esrequests Controller with authorization.
+     *
+     * @return EsrequestsController
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Esrequest::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,7 @@ class EsrequestsController extends Controller
      */
     public function index()
     {
-        //
+        return Auth::user()->esrequests;
     }
 
     /**
@@ -47,7 +58,7 @@ class EsrequestsController extends Controller
      */
     public function show(Esrequest $esrequest)
     {
-        //
+        return $esrequest;
     }
 
     /**

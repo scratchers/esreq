@@ -9,6 +9,20 @@ use App\Http\Controllers\Controller;
 class EsrequestsController extends Controller
 {
     /**
+     * Creates Admin Esrequests Controller with authorization.
+     *
+     * @return EsrequestsController
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->authorize('administer', Esrequest::class);
+
+            return $next($request);
+        });
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -47,7 +61,7 @@ class EsrequestsController extends Controller
      */
     public function show(Esrequest $esrequest)
     {
-        //
+        return $esrequest;
     }
 
     /**
