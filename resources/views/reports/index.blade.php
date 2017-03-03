@@ -6,18 +6,16 @@
     <table class="datatable">
         <thead>
             <tr>
-                @foreach ( $columns as $column )
-                    <th>{{ $column }}</th>
-                @endforeach
+                <th>Name</th>
+                <th>Requests</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach ( $rows as $row )
                 <tr>
-                    @foreach ( $columns as $column )
-                        <td>{{ $row->$column }}</td>
-                    @endforeach
+                    <td><a href="{{ $row->link }}">{{ $row->name }}</a></td>
+                    <td>{{ $row->requests }}</td>
                 </tr>
             @endforeach
         </tbody>

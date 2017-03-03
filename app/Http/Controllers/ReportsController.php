@@ -30,18 +30,38 @@ class ReportsController extends Controller
     public function institutions()
     {
         $institutions = Institution::all()->map(function($institution){
+            $institution->link = route('reports.institutions.users', $institution);
+
             $institution->requests = $institution->users->map(function($user){
                 return $user->esrequests->count();
             })->sum();
+
             return $institution;
         });
 
         $data = [
-            'columns' => [
-                'name',
-                'requests',
-            ],
             'rows' => $institutions,
+        ];
+
+        return view('reports.index', $data);
+    }
+
+    /**
+     * Display a summary of user requests from an institution.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function institutionUsers(Institution $institution)
+    {
+        $users = $institution->users->map(function($user){
+            $user->link = '';
+            $user->requests = $user->esrequests->count();
+            $user->name = "{$user->first_name} {$user->last_name}";
+            return $user;
+        });
+
+        $data = [
+            'rows' => $users,
         ];
 
         return view('reports.index', $data);
