@@ -19,6 +19,10 @@ class EsrequestPolicy
      */
     public function view(User $user, Esrequest $esrequest)
     {
+        if ( $this->report($user) ) {
+            return true;
+        }
+
         return $user->id == $esrequest->user_id;
     }
 
@@ -67,5 +71,22 @@ class EsrequestPolicy
     public function administer(User $user)
     {
         return false;
+    }
+
+    /**
+     * Determine whether the user can run reports on esrequests.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function report(User $user)
+    {
+        $reports = env('SHIBBOLETH_REPORTS');
+
+        if ( empty($reports) ) {
+            return false;
+        }
+
+        return $user->entitlements->contains('name', $reports);
     }
 }

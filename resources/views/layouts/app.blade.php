@@ -56,6 +56,9 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
+                            @can('report', Esrequest::class)
+                                <li><a href="{{ route('reports') }}">Reports</a></li>
+                            @endcan
                             @can('administer', Esrequest::class)
                                 <li><a href="{{ route('admin.requests.unfulfilled') }}">Admin</a></li>
                             @endcan

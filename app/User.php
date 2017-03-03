@@ -65,6 +65,10 @@ class User extends Authenticatable
     {
         $admins = env('SHIBBOLETH_ADMINS');
 
+        if ( empty($admins) ) {
+            return false;
+        }
+
         return $this->entitlements->contains('name', $admins);
     }
 }

@@ -50,6 +50,12 @@ Route::group(['middleware' => 'auth'], function(){
             ],
         ]
     );
+
+    Route::name('reports')->get('/reports', function () {
+        return redirect(route('reports.institutions'));
+    });
+    Route::name('reports.institutions')
+         ->get ('reports/institutions', 'ReportsController@institutions');
 });
 
 Route::name('instructions')->get('/instructions', function() {
