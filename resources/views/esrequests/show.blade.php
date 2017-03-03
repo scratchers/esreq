@@ -3,7 +3,7 @@
 @section('content')
     <ol class="breadcrumb">
         <li><a href="/">Welcome</a></li>
-        <li><a href="{{ substr(url()->current(), 0, strrpos( url()->current(), '/') ) }}">Requests</a></li>
+        <li><a href='{{ route("$route.index") }}'>Requests</a></li>
         <li class="active">{{ $esrequest->id }}</li>
     </ol>
 
@@ -37,7 +37,7 @@
     </div>
     @endunless
 
-    @if ( strpos( url()->current(), '/admin/') !== false )
+    @can('administer', Esrequest::class)
         @include('esrequests.fulfill-inc')
     @else
         @unless ( empty($esrequest->note) )
@@ -46,5 +46,5 @@
                 <pre>{{ $esrequest->note }}</pre>
             </div>
         @endunless
-    @endif
+    @endcan
 @endsection

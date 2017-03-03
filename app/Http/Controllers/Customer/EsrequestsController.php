@@ -6,6 +6,7 @@ use App\Esrequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use View;
 
 class EsrequestsController extends Controller
 {
@@ -17,6 +18,8 @@ class EsrequestsController extends Controller
     public function __construct()
     {
         $this->authorizeResource(Esrequest::class);
+
+        View::share('route', 'customer.requests');
     }
 
     /**
@@ -28,7 +31,6 @@ class EsrequestsController extends Controller
     {
         $data = [
             'esrequests' => Auth::user()->esrequests,
-            'route' => 'customer.requests',
         ];
 
         return view('esrequests.index', $data);
@@ -63,7 +65,11 @@ class EsrequestsController extends Controller
      */
     public function show(Esrequest $esrequest)
     {
-        return $esrequest;
+        $data = [
+            'esrequest' => $esrequest,
+        ];
+
+        return view('esrequests.show', $data);
     }
 
     /**

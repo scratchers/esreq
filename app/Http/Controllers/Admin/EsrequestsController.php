@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Esrequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use View;
 
 class EsrequestsController extends Controller
 {
@@ -20,6 +21,8 @@ class EsrequestsController extends Controller
 
             return $next($request);
         });
+
+        View::share('route', 'admin.requests');
     }
 
     /**
@@ -31,7 +34,6 @@ class EsrequestsController extends Controller
     {
         $data = [
             'esrequests' => Esrequest::all(),
-            'route' => 'admin.requests',
         ];
 
         return view('esrequests.index', $data);
@@ -66,7 +68,11 @@ class EsrequestsController extends Controller
      */
     public function show(Esrequest $esrequest)
     {
-        return $esrequest;
+        $data = [
+            'esrequest' => $esrequest,
+        ];
+
+        return view('esrequests.show', $data);
     }
 
     /**
