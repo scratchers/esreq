@@ -45,10 +45,9 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <li><a href="{{ route('customer.requests.index') }}">Home</a></li>
-                        <li><a href="{{ route('customer.requests.create') }}">Create Request</a></li>
+                        <li><a href="{{ route('customer.requests.create') }}">New</a></li>
                     @endif
                     <li><a href="{{ route('instructions') }}">Instructions</a></li>
-                    <li><a href="http://walton.uark.edu/enterprise/">Department Website</a></li>
                 </ul>
 
                 <div id='login_nav_div' class='top_nav navbar-right pull-right-md pull-left-xs'>
@@ -84,9 +83,14 @@
         <div class="container">
             <div class="row" style="padding-top: 30px;">
                 <div class="col-sm-7">
-                    <div id='footer-walton-name'>
-                        <a href="http://walton.uark.edu">Sam M. Walton College of Business</a>
-                    </div>
+                    <ul style="list-style-type: none;">
+                        <li><a href="https://walton.uark.edu/enterprise/">Enterprise Systems</a></li>
+                        <li>
+                            <div id='footer-walton-name'>
+                                <a href="https://information-systems.uark.edu/">Department of Information Systems</a>
+                            </div>
+                        </li>
+                    </ul>
 
                     <p style="margin-bottom: 35px; padding: 20px;">
                         <span style="display:inline-block;">
@@ -109,15 +113,13 @@
                 <div class="col-sm-5">
                     <div class="row">
                         <div class="col-md-8 hidden-xs visible-sm visible-md visible-lg">
-                            <a href="http://walton.uark.edu">
+                            <a href="https://walton.uark.edu">
                                 <img alt="Sam M. Walton College of Business at the University of Arkansas" src="/images/WaltonLogo2.png" class="img-responsive">
                             </a>
                         </div>
 
                         <div class="col-md-4 hidden-xs hidden-sm visible-md visible-lg">
-                            <a href="http://accredited.aacsb.edu/students">
-                                <img alt="AACSB Accredited" src="/images/aacsb-large.png" width="120px" class="img-responsive" style="filter: alpha(opacity=30); opacity: 0.3">
-                            </a>
+                            <img alt="AACSB Accredited" src="/images/aacsb-large.png" width="120px" class="img-responsive" style="filter: alpha(opacity=30); opacity: 0.3">
                         </div>
                     </div>
                 </div>
