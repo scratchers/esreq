@@ -8,7 +8,7 @@ use App\Esrequest;
 class CreateEsrequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Authorization is handled in App\Policies\EsrequestPolicy
      *
      * @return bool
      */

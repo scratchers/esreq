@@ -12,7 +12,7 @@
     <h1>Create Request</h1>
 
     <div class="well">
-    {!! Form::open(['class'=>'form-horizontal']) !!}
+    {!! Form::open(['class'=>'form-horizontal', 'route'=>'customer.requests.store']) !!}
         <div class="well">
             <h3>Platforms</h3>
             <div class="form-group"> 

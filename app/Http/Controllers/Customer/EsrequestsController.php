@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use View;
+use Mail;
+use App\Http\Requests\CreateEsrequest;
+use App\Mail\NewEsrequest;
 
 class EsrequestsController extends Controller
 {
@@ -43,7 +46,7 @@ class EsrequestsController extends Controller
      */
     public function create()
     {
-        //
+        return view('esrequests.create');
     }
 
     /**
@@ -52,9 +55,19 @@ class EsrequestsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    function store(CreateEsrequest $request)
     {
-        //
+        $esrequest = new Esrequest($request->all());
+
+        $request->user()->esrequests()->save($esrequest);
+
+        Mail::to(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
+            ->send(new NewEsrequest($esrequest));
+
+        flash('Request submitted.', 'success');
+
+        return redirect(route('customer.requests.show', $esrequest));
     }
 
     /**

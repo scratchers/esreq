@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use View;
 use Carbon\Carbon;
-use App\Mail\{FulfillEsrequest,NewEsrequest};
+use App\Mail\FulfillEsrequest;
 use Illuminate\Support\Facades\Mail;
 
 class EsrequestsController extends Controller
