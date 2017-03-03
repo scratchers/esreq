@@ -6,9 +6,6 @@ use App\Esrequest;
 use App\Http\Requests\CreateEsrequest;
 use Illuminate\Http\Request;
 use Auth;
-use Carbon\Carbon;
-use App\Mail\{FulfillEsrequest,NewEsrequest};
-use Illuminate\Support\Facades\Mail;
 
 class EsrequestsController extends Controller
 {
@@ -57,22 +54,5 @@ class EsrequestsController extends Controller
         flash('Request submitted.', 'success');
 
         return redirect('home');
-    }
-
-    function fulfill(Esrequest $esrequest, Request $request)
-    {
-        $esrequest->fulfilled_at = new Carbon;
-
-        $esrequest->note = $request->input('note');
-
-        $esrequest->save();
-
-        Mail::to($esrequest->user()->get())
-            ->cc(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
-            ->send(new FulfillEsrequest($esrequest));
-
-        flash('Request fulfilled.', 'success');
-
-        return $this->show($esrequest);
     }
 }

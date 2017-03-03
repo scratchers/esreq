@@ -32,10 +32,12 @@ Route::group(['middleware' => 'auth'], function(){
             'as' => 'customer',
             'parameters' => [
                 'requests' => 'esrequest',
-            ]
+            ],
         ]
     );
 
+    Route::name('admin.requests.fulfill')
+         ->post('admin/requests/{esrequest}', 'Admin\EsrequestsController@fulfill');
     Route::resource(
         'admin/requests',
         'Admin\EsrequestsController',
@@ -43,7 +45,7 @@ Route::group(['middleware' => 'auth'], function(){
             'as' => 'admin',
             'parameters' => [
                 'requests' => 'esrequest',
-            ]
+            ],
         ]
     );
 });

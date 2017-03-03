@@ -1,7 +1,7 @@
 <!doctype html><html><body>
 
 <p>
-    <a href="{{ url('/home/'.$esrequest->id) }}">Your request for access</a>
+    <a href="{{ route('customer.requests.show', $esrequest) }}">Your request for access</a>
     to Enterprise Systems
     from the department of Information Systems
     in the Sam M. Walton College of Business
@@ -28,7 +28,7 @@
     @foreach ( $esrequest->platforms() as $platform )
         @if ( !empty($esrequest->$platform) )
         <li>
-            <a href="{{ url('/downloads/remote-desktop-'.$platform.'.pdf') }}">
+            <a href='{{ asset("downloads/remote-desktop-$platform.pdf") }}'>
                 {{ $platform }}
             </a>
         </li>
