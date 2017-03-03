@@ -3,6 +3,19 @@
 @section('content')
     <h1>{{ $h1 or 'Requests' }}</h1>
 
+    <ol class="breadcrumb">
+        <li><a href="{{ route('reports.institutions') }}">Institutions</a></li>
+        @unless ( empty($breadcrumbs) )
+        @foreach ( $breadcrumbs as $breadcrumb )
+            @unless ( empty($breadcrumb['link']) )
+                <li><a href="{{ $breadcrumb['link'] }}">{{ $breadcrumb['text'] }}</a></li>
+            @else
+                <li class="active">{{ $breadcrumb['text'] }}</li>
+            @endunless
+        @endforeach
+        @endunless
+    </ol>
+
     <table class="datatable">
         <thead>
             <tr>

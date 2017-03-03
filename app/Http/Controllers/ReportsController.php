@@ -62,6 +62,9 @@ class ReportsController extends Controller
 
         $data = [
             'rows' => $users,
+            'breadcrumbs' => [
+                ['text' => $institution->name],
+            ],
         ];
 
         return view('reports.index', $data);
