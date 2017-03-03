@@ -63,6 +63,8 @@ class User extends Authenticatable
      */
     public function isAdmin() : bool
     {
-        return false;
+        $admins = env('SHIBBOLETH_ADMINS');
+
+        return $this->entitlements->contains('name', $admins);
     }
 }
