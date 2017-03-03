@@ -55,4 +55,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Entitlement::class);
     }
+
+    /**
+     * Does this user have unfettered access to the system?
+     *
+     * @return bool
+     */
+    public function isAdmin() : bool
+    {
+        $admins = env('SHIBBOLETH_ADMINS');
+
+        return $this->entitlements->contains('name', $admins);
+    }
 }

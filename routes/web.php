@@ -17,17 +17,41 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home',       'HomeController@index');
-Route::get('/home/{esrequest}',  'HomeController@show');
+Route::group(['middleware' => 'auth'], function(){
+    Route::name('home')->get('/home', function () {
+        if ( Auth::user()->isAdmin() ) {
+            return redirect(route('admin.requests.unfulfilled'));
+        }
+        return redirect(route('customer.requests.index'));
+    });
 
-Route::get ('/create',    'EsrequestsController@create');
-Route::post('/create',    'EsrequestsController@store');
+    Route::resource(
+        'requests',
+        'Customer\EsrequestsController',
+        [
+            'as' => 'customer',
+            'parameters' => [
+                'requests' => 'esrequest',
+            ],
+        ]
+    );
 
-Route::get ('/admin',      'EsrequestsController@new');
-Route::get ('/admin/all',  'EsrequestsController@index');
-Route::get ('/admin/{esrequest}', 'EsrequestsController@show');
-Route::post('/admin/{esrequest}', 'EsrequestsController@fulfill');
+    Route::name('admin.requests.fulfill')
+         ->post('admin/requests/{esrequest}', 'Admin\EsrequestsController@fulfill');
+    Route::name('admin.requests.unfulfilled')
+         ->get ('admin/requests/unfulfilled', 'Admin\EsrequestsController@unfulfilled');
+    Route::resource(
+        'admin/requests',
+        'Admin\EsrequestsController',
+        [
+            'as' => 'admin',
+            'parameters' => [
+                'requests' => 'esrequest',
+            ],
+        ]
+    );
+});
 
-Route::get('/instructions', function() {
+Route::name('instructions')->get('/instructions', function() {
     return view('instructions');
 });
