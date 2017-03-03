@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Requests</h1>
+    <h1>{{ $h1 or 'Requests' }}</h1>
 
     <table class="datatable">
         <thead>

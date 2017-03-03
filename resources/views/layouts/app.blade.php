@@ -58,7 +58,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
                             @can('administer', Esrequest::class)
-                                <li><a href="{{ route('admin.requests.index') }}">Admin</a></li>
+                                <li><a href="{{ route('admin.requests.unfulfilled') }}">Admin</a></li>
                             @endcan
                             <li>
                                 <a href="{{ url('/logout') }}">

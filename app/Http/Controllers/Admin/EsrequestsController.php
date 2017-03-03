@@ -43,6 +43,21 @@ class EsrequestsController extends Controller
     }
 
     /**
+     * Display a listing of the outstanding requests.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function unfulfilled()
+    {
+        $data = [
+            'esrequests' => Esrequest::whereNull('fulfilled_at')->get(),
+            'h1' => 'New Requests',
+        ];
+
+        return view('esrequests.index', $data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -20,7 +20,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::name('home')->get('/home', function () {
         if ( Auth::user()->isAdmin() ) {
-            return redirect(route('admin.requests.index'));
+            return redirect(route('admin.requests.unfulfilled'));
         }
         return redirect(route('customer.requests.index'));
     });
@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::name('admin.requests.fulfill')
          ->post('admin/requests/{esrequest}', 'Admin\EsrequestsController@fulfill');
+    Route::name('admin.requests.unfulfilled')
+         ->get ('admin/requests/unfulfilled', 'Admin\EsrequestsController@unfulfilled');
     Route::resource(
         'admin/requests',
         'Admin\EsrequestsController',
