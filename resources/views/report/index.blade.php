@@ -8,8 +8,8 @@
     <table class="datatable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Count</th>
+                <th>{{ $name or 'Name' }}</th>
+                <th>{{ $count or 'Count' }}</th>
             </tr>
         </thead>
 

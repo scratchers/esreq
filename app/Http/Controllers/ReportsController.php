@@ -55,7 +55,7 @@ class ReportsController extends Controller
         $data = [
             'rows' => $reports,
             'breadcrumbs' => [
-                ['text' => 'Institutions'],
+                ['text' => 'All'],
             ],
         ];
 
@@ -124,6 +124,21 @@ class ReportsController extends Controller
      */
     public function users()
     {
+        $users = User::all()->map(function($user){
+            $user->link = route('report.users.show', $user);
+            $user->requests = $user->esrequests->count();
+            $user->name = "{$user->first_name} {$user->last_name}";
+            return $user;
+        });
+
+        $data = [
+            'rows' => $users,
+            'breadcrumbs' => [
+                ['text' => 'Requests'],
+            ],
+        ];
+
+        return view('report.index', $data);
     }
 
     /**
@@ -142,6 +157,8 @@ class ReportsController extends Controller
                 $request->requests = $request->faculty_accounts + $request->student_accounts;
                 return $request;
             }),
+            'name'  => 'Created',
+            'count' => 'Accounts',
             'breadcrumbs' => [
                 [
                     'text' => 'Institutions',
@@ -165,6 +182,21 @@ class ReportsController extends Controller
      */
     public function requests()
     {
+        $data = [
+            'rows' => Esrequest::all()->map(function($request){
+                $request->link = route('report.requests.show', $request);
+                $request->name = $request->created_at;
+                $request->requests = $request->faculty_accounts + $request->student_accounts;
+                return $request;
+            }),
+            'name'  => 'Created',
+            'count' => 'Accounts',
+            'breadcrumbs' => [
+                ['text' => 'Requests'],
+            ],
+        ];
+
+        return view('report.index', $data);
     }
 
     /**
