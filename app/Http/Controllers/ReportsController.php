@@ -261,7 +261,7 @@ class ReportsController extends Controller
                     'text' => $user->institution->name,
                     'link' => route('report.institutions.show', $user->institution),
                 ],
-                ['text' => $user->name],
+                ['text' => "{$user->first_name} {$user->last_name}"],
             ],
         ];
 
