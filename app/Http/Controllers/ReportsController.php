@@ -73,24 +73,24 @@ class ReportsController extends Controller
     {
         $institutions = new stdClass;
         $institutions->name = 'Institutions';
-        $institutions->link = route('report.institutions.index');
-        $institutions->requests = Institution::all()->count();
+        $institutions->id = route('report.institutions.index');
+        $institutions->count = Institution::all()->count();
 
         $users = new stdClass;
         $users->name = 'Users';
-        $users->link = route('report.users.index');
-        $users->requests = User::all()->count();
+        $users->id = route('report.users.index');
+        $users->count = User::all()->count();
 
         $requests = new stdClass;
         $requests->name = 'Requests';
-        $requests->link = route('report.requests.index');
-        $requests->requests = Esrequest::all()->count();
+        $requests->id = route('report.requests.index');
+        $requests->count = Esrequest::all()->count();
 
-        $reports = [
+        $reports = collect([
             $institutions,
             $users,
             $requests,
-        ];
+        ]);
 
         $data = [
             'rows' => $reports,
