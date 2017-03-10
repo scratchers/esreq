@@ -25,14 +25,12 @@
 <p>
     Remote Desktop Connection Instructions:
     <ul>
-    @foreach ( $esrequest->platforms() as $platform )
-        @if ( !empty($esrequest->$platform) )
+    @foreach ( $esrequest->platforms as $platform )
         <li>
-            <a href='{{ asset("downloads/remote-desktop-$platform.pdf") }}'>
-                {{ $platform }}
+            <a href='{{ asset("downloads/remote-desktop-{$platform->name}.pdf") }}'>
+                {{ $platform->name }}
             </a>
         </li>
-        @endif
     @endforeach
     </ul>
 </p>

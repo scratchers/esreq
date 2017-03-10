@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Esrequest;
+use App\Platform;
 
 class CreateEsrequest extends FormRequest
 {
@@ -25,7 +25,7 @@ class CreateEsrequest extends FormRequest
     public function rules()
     {
         return [
-            'IBM' => 'required_without_all:'.implode(',',Esrequest::platforms()),
+            'platform' => 'required',
             'faculty_accounts' => 'required_without_all:student_accounts',
             'date_begin' => 'date',
             'date_end'   => 'date',

@@ -15,40 +15,26 @@
     {!! Form::open(['class'=>'form-horizontal', 'route'=>'customer.requests.store']) !!}
         <div class="well">
             <h3>Platforms</h3>
-            <div class="form-group"> 
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>{!! Form::checkbox('IBM') !!}IBM</label>
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-group"> 
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>{!! Form::checkbox('Microsoft') !!}Microsoft</label>
-                    </div>
-                </div>
-            </div>
+            @foreach ( App\Platform::all() as $platform )
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                {!! Form::checkbox('platform[]', $platform->id) !!}
+                                {{ $platform->name }}
+                            </label>
 
-            <div class="form-group"> 
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>{!! Form::checkbox('Teradata') !!}Teradata</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group"> 
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>{!! Form::checkbox('SAP') !!}SAP</label>
-                        <div class="alert alert-warning" role="alert">
-                            Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> member.
+                            @if ( $platform->name === 'SAP' )
+                                <div class="alert alert-warning" role="alert">
+                                    Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> member.
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+
         </div>
 
         <div class="well">
