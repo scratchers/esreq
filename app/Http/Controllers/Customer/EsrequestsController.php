@@ -10,6 +10,7 @@ use View;
 use Mail;
 use App\Http\Requests\CreateEsrequest;
 use App\Mail\NewEsrequest;
+use App\Platform;
 
 class EsrequestsController extends Controller
 {
@@ -58,9 +59,13 @@ class EsrequestsController extends Controller
 
     function store(CreateEsrequest $request)
     {
-        $esrequest = new Esrequest($request->all());
+        $esrequest = new Esrequest( $request->all() );
 
         $request->user()->esrequests()->save($esrequest);
+
+        $platforms = Platform::find( $request->input('platform') );
+
+        $esrequest->platforms()->sync($platforms);
 
         Mail::to(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
             ->send(new NewEsrequest($esrequest));

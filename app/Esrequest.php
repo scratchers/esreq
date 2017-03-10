@@ -6,17 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Esrequest extends Model
 {
-    public static function platforms()
-    {
-        return [
-            'IBM',
-            'Microsoft',
-            'SAP',
-//             'SAS',
-            'Teradata',
-        ];
-    }
-
     public static function courseInfo()
     {
         return [
@@ -73,20 +62,6 @@ class Esrequest extends Model
         return 'Y-m-d H:i:s.u';
     }
 
-    public function getPlatforms(Bool $string = false)
-    {
-        $platforms = [];
-        foreach(static::platforms() as $platform){
-            if(!empty($this->$platform)){
-                $platforms []= $platform;
-            }
-        }
-        if($string){
-            return implode(', ',$platforms);
-        }
-        return $platforms;
-    }
-
     public function getAllValuesFor(String ...$static_methods)
     {
         foreach($static_methods as $static_method){
@@ -112,7 +87,7 @@ class Esrequest extends Model
     public function getFields()
     {
         return array_merge(
-            ['platforms' => $this->getPlatforms(true)],
+            ['platforms' => implode(',', $this->platforms->pluck('name')->toArray())],
             $this->getAllValuesFor('accounts', 'metadata'),
             $this->getValuesFor('courseInfo')
         );
@@ -141,5 +116,13 @@ class Esrequest extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * The platforms for which this request was made.
+     */
+    public function platforms()
+    {
+        return $this->belongsToMany(Platform::class);
     }
 }
