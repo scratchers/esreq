@@ -231,17 +231,27 @@ class ReportsController extends Controller
      */
     public function user(User $user)
     {
-        $user->name = "{$user->first_name} {$user->last_name}";
+        $sql = "
+            SELECT
+                e.created_at AS 'Created',
+                e.id,
+                SUM(sap.Accounts) AS 'SAP',
+                SUM(ibm.Accounts) AS 'IBM',
+                SUM(teradata.Accounts) AS 'Teradata',
+                SUM(microsoft.Accounts) AS 'Microsoft'
+            FROM esrequests e
+            {$this->joinPlatforms}
+            WHERE e.user_id = {$user->id}
+            GROUP BY e.id, e.created_at
+        ";
+
+        $requests = collect( DB::select( DB::raw($sql) ) )->map(function($request){
+            $request->id = route('report.requests.show', $request->id);
+            return $request;
+        });
 
         $data = [
-            'rows' => $user->esrequests->map(function($request){
-                $request->link = route('report.requests.show', $request);
-                $request->name = $request->created_at;
-                $request->requests = $request->faculty_accounts + $request->student_accounts;
-                return $request;
-            }),
-            'name'  => 'Created',
-            'count' => 'Accounts',
+            'rows' => $requests,
             'breadcrumbs' => [
                 [
                     'text' => 'Institutions',
@@ -265,15 +275,26 @@ class ReportsController extends Controller
      */
     public function requests()
     {
+        $sql = "
+            SELECT
+                e.created_at AS 'Created',
+                e.id,
+                SUM(sap.Accounts) AS 'SAP',
+                SUM(ibm.Accounts) AS 'IBM',
+                SUM(teradata.Accounts) AS 'Teradata',
+                SUM(microsoft.Accounts) AS 'Microsoft'
+            FROM esrequests e
+            {$this->joinPlatforms}
+            GROUP BY e.id, e.created_at
+        ";
+
+        $requests = collect( DB::select( DB::raw($sql) ) )->map(function($request){
+            $request->id = route('report.requests.show', $request->id);
+            return $request;
+        });
+
         $data = [
-            'rows' => Esrequest::all()->map(function($request){
-                $request->link = route('report.requests.show', $request);
-                $request->name = $request->created_at;
-                $request->requests = $request->faculty_accounts + $request->student_accounts;
-                return $request;
-            }),
-            'name'  => 'Created',
-            'count' => 'Accounts',
+            'rows' => $requests,
             'breadcrumbs' => [
                 ['text' => 'Requests'],
             ],
