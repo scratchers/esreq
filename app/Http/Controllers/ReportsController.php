@@ -193,10 +193,24 @@ class ReportsController extends Controller
      */
     public function users()
     {
-        $users = User::all()->map(function($user){
-            $user->link = route('report.users.show', $user);
-            $user->requests = $user->esrequests->count();
-            $user->name = "{$user->first_name} {$user->last_name}";
+        $sql = "
+            SELECT
+                CONCAT(u.first_name, ' ', u.last_name) AS 'User',
+                u.id,
+                COUNT(DISTINCT e.id) AS 'Requests',
+                SUM(sap.Accounts) AS 'SAP',
+                SUM(ibm.Accounts) AS 'IBM',
+                SUM(teradata.Accounts) AS 'Teradata',
+                SUM(microsoft.Accounts) AS 'Microsoft'
+            FROM users u
+            JOIN esrequests e
+              ON u.id = e.user_id
+            {$this->joinPlatforms}
+            GROUP BY u.id, u.first_name, u.last_name
+        ";
+
+        $users = collect( DB::select( DB::raw($sql) ) )->map(function($user){
+            $user->id = route('report.users.show', $user->id);
             return $user;
         });
 
