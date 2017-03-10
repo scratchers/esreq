@@ -235,9 +235,7 @@
         });
 
         $(document).ready(function(){
-            $('.datatable').DataTable({
-                "order": [[ 1, "desc" ]]
-            });
+            $('.datatable').DataTable();
         });
     </script>
 </body>
