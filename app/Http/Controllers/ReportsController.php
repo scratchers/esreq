@@ -7,9 +7,49 @@ use App\Esrequest;
 use App\Institution;
 use App\User;
 use stdClass;
+use DB;
 
 class ReportsController extends Controller
 {
+    protected $joinPlatforms = "
+        LEFT JOIN (
+            SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
+            FROM esrequests e
+            JOIN esrequest_platform ep
+                ON e.id = ep.esrequest_id
+            JOIN platforms p
+                ON ep.platform_id = p.id
+            WHERE p.name = 'SAP'
+        ) sap ON e.id = sap.id
+        LEFT JOIN (
+            SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
+            FROM esrequests e
+            JOIN esrequest_platform ep
+                ON e.id = ep.esrequest_id
+            JOIN platforms p
+                ON ep.platform_id = p.id
+            WHERE p.name = 'IBM'
+        ) ibm ON e.id = ibm.id
+        LEFT JOIN (
+            SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
+            FROM esrequests e
+            JOIN esrequest_platform ep
+                ON e.id = ep.esrequest_id
+            JOIN platforms p
+                ON ep.platform_id = p.id
+            WHERE p.name = 'Teradata'
+        ) teradata ON e.id = teradata.id
+        LEFT JOIN (
+            SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
+            FROM esrequests e
+            JOIN esrequest_platform ep
+                ON e.id = ep.esrequest_id
+            JOIN platforms p
+                ON ep.platform_id = p.id
+            WHERE p.name = 'Microsoft'
+        ) microsoft ON e.id = microsoft.id
+    ";
+
     /**
      * Creates Reports Controller with authorization.
      *
@@ -69,13 +109,27 @@ class ReportsController extends Controller
      */
     public function institutions()
     {
-        $institutions = Institution::all()->map(function($institution){
-            $institution->link = route('report.institutions.show', $institution);
+        $sql = "
+            SELECT
+                i.name AS 'Institution',
+                i.id,
+                COUNT(DISTINCT u.id) AS 'Users',
+                COUNT(DISTINCT e.id) AS 'Requests',
+                SUM(sap.Accounts) AS 'SAP',
+                SUM(ibm.Accounts) AS 'IBM',
+                SUM(teradata.Accounts) AS 'Teradata',
+                SUM(microsoft.Accounts) AS 'Microsoft'
+            FROM institutions i
+            JOIN users u
+              ON i.id = u.institution_id
+            JOIN esrequests e
+              ON u.id = e.user_id
+            {$this->joinPlatforms}
+            GROUP BY i.id, i.name
+        ";
 
-            $institution->requests = $institution->users->map(function($user){
-                return $user->esrequests->count();
-            })->sum();
-
+        $institutions = collect( DB::select( DB::raw($sql) ) )->map(function($institution){
+            $institution->id = route('report.institutions.show', $institution->id);
             return $institution;
         });
 

@@ -8,16 +8,26 @@
     <table class="datatable">
         <thead>
             <tr>
-                <th>{{ $name or 'Name' }}</th>
-                <th>{{ $count or 'Count' }}</th>
+                @foreach ( $rows->first() as $key => $value )
+                    @unless ( $key === 'id' )
+                        <th>{{ $key }}</th>
+                    @endunless
+                @endforeach
             </tr>
         </thead>
 
         <tbody>
             @foreach ( $rows as $row )
                 <tr>
-                    <td><a href="{{ $row->link }}">{{ $row->name }}</a></td>
-                    <td>{{ $row->requests }}</td>
+                    @foreach ( $row as $column => $value )
+                        @unless ( $column === 'id' )
+                            @if ( $loop->first )
+                                <td><a href="{{ $row->id }}">{{ $value }}</a></td>
+                            @else
+                                <td>{{ $value }}</td>
+                            @endif
+                        @endunless
+                    @endforeach
                 </tr>
             @endforeach
         </tbody>
