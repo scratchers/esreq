@@ -5,6 +5,13 @@
 
     @include('report.partials.breadcrumb')
 
+    <div style="padding:5px">
+        <a href="?csv=1" class="btn btn-success">
+            <i class="fa fa-table" aria-hidden="true"></i>
+            Download CSV
+        </a>
+    </div>
+
     <table class="datatable datatable-report">
         <thead>
             <tr>

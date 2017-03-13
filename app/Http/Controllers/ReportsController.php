@@ -8,6 +8,7 @@ use App\Institution;
 use App\User;
 use stdClass;
 use DB;
+use Response;
 
 class ReportsController extends Controller
 {
@@ -65,11 +66,43 @@ class ReportsController extends Controller
     }
 
     /**
+     * Send the response as a CSV download attachment.
+     * http://stackoverflow.com/a/27596496/4233593
+     *
+     * @param  \Illuminate\Support\Collection DB result set
+     * @return \Illuminate\Http\Response
+     */
+    protected function csv($data)
+    {
+        $data = $data->map(function($item){
+            return (array)$item;
+        })->toArray();
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="report.csv"',
+        ];
+
+        // add headers for each column in the CSV download
+        array_unshift($data, array_keys($data[0]));
+
+        $callback = function() use ($data) {
+            $FH = fopen('php://output', 'w');
+            foreach ($data as $row) {
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+
+        return Response::stream($callback, 200, $headers);
+    }
+
+    /**
      * Display a list of reports.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $institutions = new stdClass;
         $institutions->name = 'Institutions';
@@ -92,6 +125,10 @@ class ReportsController extends Controller
             $requests,
         ]);
 
+        if ( $request->has('csv') ) {
+            return $this->csv($reports);
+        }
+
         $data = [
             'rows' => $reports,
             'breadcrumbs' => [
@@ -107,7 +144,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function institutions()
+    public function institutions(Request $request)
     {
         $sql = "
             SELECT
@@ -133,6 +170,10 @@ class ReportsController extends Controller
             return $institution;
         });
 
+        if ( $request->has('csv') ) {
+            return $this->csv($institutions);
+        }
+
         $data = [
             'rows' => $institutions,
             'breadcrumbs' => [
@@ -148,7 +189,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function institution(Institution $institution)
+    public function institution(Request $request, Institution $institution)
     {
         $sql = "
             SELECT
@@ -172,6 +213,10 @@ class ReportsController extends Controller
             return $user;
         });
 
+        if ( $request->has('csv') ) {
+            return $this->csv($users);
+        }
+
         $data = [
             'rows' => $users,
             'breadcrumbs' => [
@@ -191,7 +236,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function users()
+    public function users(Request $request)
     {
         $sql = "
             SELECT
@@ -214,6 +259,10 @@ class ReportsController extends Controller
             return $user;
         });
 
+        if ( $request->has('csv') ) {
+            return $this->csv($users);
+        }
+
         $data = [
             'rows' => $users,
             'breadcrumbs' => [
@@ -229,7 +278,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user(User $user)
+    public function user(Request $request, User $user)
     {
         $sql = "
             SELECT
@@ -249,6 +298,10 @@ class ReportsController extends Controller
             $request->id = route('report.requests.show', $request->id);
             return $request;
         });
+
+        if ( $request->has('csv') ) {
+            return $this->csv($requests);
+        }
 
         $data = [
             'rows' => $requests,
@@ -273,7 +326,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function requests()
+    public function requests(Request $request)
     {
         $sql = "
             SELECT
@@ -292,6 +345,10 @@ class ReportsController extends Controller
             $request->id = route('report.requests.show', $request->id);
             return $request;
         });
+
+        if ( $request->has('csv') ) {
+            return $this->csv($requests);
+        }
 
         $data = [
             'rows' => $requests,
