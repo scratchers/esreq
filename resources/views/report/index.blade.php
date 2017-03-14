@@ -8,6 +8,7 @@
 
 @include('report.partials.breadcrumb')
 
+@unless( Route::is('report') )
 <div style="padding-bottom:15px">
     <form>
         <label for="dateFrom">Date From</label>
@@ -18,6 +19,7 @@
         <a href="{{ url()->current() }}" class="btn btn-default">Clear Date Range</a>
     </form>
 </div>
+@endunless
 
 @unless ( $rows->isEmpty() )
     <table class="datatable datatable-report">
