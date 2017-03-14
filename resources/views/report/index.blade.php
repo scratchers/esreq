@@ -3,9 +3,10 @@
 <?php $query = http_build_query($_GET); ?>
 
 @section('content')
-    <h1>{{ $h1 or 'Requests' }}</h1>
 
-    @include('report.partials.breadcrumb')
+<h1>{{ $h1 or 'Reports' }}</h1>
+
+@include('report.partials.breadcrumb')
 
 <div style="padding-bottom:15px">
     <form>
