@@ -9,6 +9,7 @@ use App\User;
 use stdClass;
 use DB;
 use Response;
+use InvalidArgumentException;
 
 class ReportsController extends Controller
 {
@@ -52,17 +53,84 @@ class ReportsController extends Controller
     ";
 
     /**
-     * Creates Reports Controller with authorization.
+     * Runs the SQL SELECT query and returns array result set
+     * with any necessary date range conditions.
      *
-     * @return ReportsController
+     * @param  string $sql
+     * @return array
      */
-    public function __construct()
+    protected function select(string $sql, Request $request) : array
     {
-        $this->middleware(function ($request, $next) {
-            $this->authorize('report', Esrequest::class);
+        if ( empty($dates = $this->getDateRange($request)) ) {
+            return DB::select( DB::raw($sql) );
+        }
 
-            return $next($request);
-        });
+        $sql = $this->appendWhereDateRangeCondition($sql, $dates);
+
+        return DB::select( DB::raw($sql), $dates );
+    }
+
+    /**
+     * Extracts the date range for the report.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array The date values [from,to] to bind to the query.
+     */
+    protected function getDateRange(Request $request) : array
+    {
+        if ( $request->has('dateFrom') ) {
+            $dates['dateFrom'] = $request->input('dateFrom');
+        }
+
+        if ( $request->has('dateTo') ) {
+            $dates['dateTo'] = $request->input('dateTo');
+        }
+
+        return $dates ?? [];
+    }
+
+    /**
+     * Appends the date range where condition into the SQL SELECT query string.
+     *
+     * @param  string $sql
+     * @return string
+     */
+    protected function appendWhereDateRangeCondition(string $sql, array $dates) : string
+    {
+        $wherePosition = strpos($sql, " GROUP BY ");
+
+        if ( false === $wherePosition ) {
+            throw new InvalidArgumentException("GROUP BY clause not found in: $sql");
+        }
+
+        $where = ' AND '.$this->getWhereDateRangeCondition($dates).PHP_EOL;
+
+        $sql = substr_replace( $sql, $where, $wherePosition, 0 );
+
+        return $sql;
+    }
+
+    /**
+     * Creates the date range where condition.
+     *
+     * @param  array $dates
+     * @return string
+     */
+    protected function getWhereDateRangeCondition(array $dates) : string
+    {
+        if ( empty($dates['dateFrom']) && empty($dates['dateTo']) ) {
+            throw new InvalidArgumentException("dates array cannot be empty.");
+        }
+
+        if ( isset($dates['dateFrom']) && isset($dates['dateTo']) ) {
+            return "e.created_at BETWEEN :dateFrom AND :dateTo";
+        }
+
+        if ( isset($dates['dateFrom']) ) {
+            return "e.created_at >= :dateFrom";
+        }
+
+        return "e.created_at <= :dateTo";
     }
 
     /**
@@ -95,6 +163,20 @@ class ReportsController extends Controller
         };
 
         return Response::stream($callback, 200, $headers);
+    }
+
+    /**
+     * Creates Reports Controller with authorization.
+     *
+     * @return ReportsController
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->authorize('report', Esrequest::class);
+
+            return $next($request);
+        });
     }
 
     /**
@@ -162,10 +244,11 @@ class ReportsController extends Controller
             JOIN esrequests e
               ON u.id = e.user_id
             {$this->joinPlatforms}
+            WHERE 1=1
             GROUP BY i.id, i.name
         ";
 
-        $institutions = collect( DB::select( DB::raw($sql) ) )->map(function($institution){
+        $institutions = collect( $this->select($sql, $request) )->map(function($institution){
             $institution->id = route('report.institutions.show', $institution->id);
             return $institution;
         });
@@ -208,7 +291,7 @@ class ReportsController extends Controller
             GROUP BY u.id, u.first_name, u.last_name
         ";
 
-        $users = collect( DB::select( DB::raw($sql) ) )->map(function($user){
+        $users = collect( $this->select($sql, $request) )->map(function($user){
             $user->id = route('report.users.show', $user->id);
             return $user;
         });
@@ -251,10 +334,11 @@ class ReportsController extends Controller
             JOIN esrequests e
               ON u.id = e.user_id
             {$this->joinPlatforms}
+            WHERE 1=1
             GROUP BY u.id, u.first_name, u.last_name
         ";
 
-        $users = collect( DB::select( DB::raw($sql) ) )->map(function($user){
+        $users = collect( $this->select($sql, $request) )->map(function($user){
             $user->id = route('report.users.show', $user->id);
             return $user;
         });
@@ -294,7 +378,7 @@ class ReportsController extends Controller
             GROUP BY e.id, e.created_at
         ";
 
-        $requests = collect( DB::select( DB::raw($sql) ) )->map(function($request){
+        $requests = collect( $this->select($sql, $request) )->map(function($request){
             $request->id = route('report.requests.show', $request->id);
             return $request;
         });
@@ -338,10 +422,11 @@ class ReportsController extends Controller
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM esrequests e
             {$this->joinPlatforms}
+            WHERE 1=1
             GROUP BY e.id, e.created_at
         ";
 
-        $requests = collect( DB::select( DB::raw($sql) ) )->map(function($request){
+        $requests = collect( $this->select($sql, $request) )->map(function($request){
             $request->id = route('report.requests.show', $request->id);
             return $request;
         });

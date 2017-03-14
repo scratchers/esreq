@@ -5,20 +5,22 @@
 
     @include('report.partials.breadcrumb')
 
-<div>
+<div style="padding-bottom:15px">
     <form>
-        <label for="date-from">Date From</label>
-        <input type="text" id="date-from" name="date-from">
-        <label for="date-to">to</label>
-        <input type="text" id="date-to" name="date-to">
-        <button type="submit" class="btn btn-default">Filter by Date Range</button>
+        <label for="dateFrom">Date From</label>
+        <input type="text" id="dateFrom" name="dateFrom" value="{{ $_GET['dateFrom'] ?? '' }}">
+        <label for="dateTo">to</label>
+        <input type="text" id="dateTo" name="dateTo" value="{{ $_GET['dateTo'] ?? '' }}">
+        <button type="submit" class="btn btn-primary">Filter by Date Range</button>
+        <a href="{{ url()->current() }}" class="btn btn-default">Clear Date Range</a>
     </form>
 </div>
 
+@unless ( $rows->isEmpty() )
     <table class="datatable datatable-report">
         <thead>
             <tr>
-                @foreach ( $rows->first() as $key => $value )
+                @foreach ( $rows->first() ?? [] as $key => $value )
                     @unless ( $key === 'id' )
                         <th>{{ $key }}</th>
                     @endunless
@@ -28,7 +30,7 @@
 
         <tfoot>
             <tr>
-                @foreach ( $rows->first() as $key => $value )
+                @foreach ( $rows->first() ?? [] as $key => $value )
                     @unless ( $key === 'id' )
                         <th></th>
                     @endunless
@@ -52,9 +54,10 @@
             @endforeach
         </tbody>
     </table>
+@endunless
 
 <div style="padding:5px">
-    <a href="?csv=1" class="btn btn-success">
+    <a href="?csv=1&{{ http_build_query($_GET) }}" class="btn btn-success">
         <i class="fa fa-table" aria-hidden="true"></i>
         Download CSV
     </a>
@@ -62,6 +65,8 @@
 
 <script>
 $(document).ready(function() {
+
+    @unless ( $rows->isEmpty() )
     $('.datatable-report').DataTable({
         'initComplete': function(){
             this.api().columns().every(function(col){
@@ -85,9 +90,10 @@ $(document).ready(function() {
             });
         }
     });
+    @endunless
 
     var dateFormat = "yy-mm-dd",
-        from = $( "#date-from" )
+        from = $( "#dateFrom" )
             .datepicker({
                 dateFormat: "yy-mm-dd",
                 defaultDate: "+1w",
@@ -98,7 +104,7 @@ $(document).ready(function() {
             .on( "change", function() {
                 to.datepicker( "option", "minDate", getDate( this ) );
             }),
-        to = $( "#date-to" ).datepicker({
+        to = $( "#dateTo" ).datepicker({
                 dateFormat: "yy-mm-dd",
                 defaultDate: "+1w",
                 changeMonth: true,
