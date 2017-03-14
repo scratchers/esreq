@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<?php $query = http_build_query($_GET); ?>
+
 @section('content')
     <h1>{{ $h1 or 'Requests' }}</h1>
 
@@ -44,7 +46,7 @@
                     @foreach ( $row as $column => $value )
                         @unless ( $column === 'id' )
                             @if ( $loop->first )
-                                <td><a href="{{ $row->id }}">{{ $value }}</a></td>
+                                <td><a href="{{ $row->id }}?{{ $query }}">{{ $value }}</a></td>
                             @else
                                 <td>{{ $value }}</td>
                             @endif
@@ -57,7 +59,7 @@
 @endunless
 
 <div style="padding:5px">
-    <a href="?csv=1&{{ http_build_query($_GET) }}" class="btn btn-success">
+    <a href="?csv=1&{{ $query }}" class="btn btn-success">
         <i class="fa fa-table" aria-hidden="true"></i>
         Download CSV
     </a>
