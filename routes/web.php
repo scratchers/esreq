@@ -50,6 +50,25 @@ Route::group(['middleware' => 'auth'], function(){
             ],
         ]
     );
+
+
+    Route::name('report')
+         ->get ('/report', 'ReportsController@index');
+
+    Route::name('report.institutions.index')
+         ->get ('report/institutions', 'ReportsController@institutions');
+    Route::name('report.institutions.show')
+         ->get ('report/institutions/{institution}', 'ReportsController@institution');
+
+    Route::name('report.users.index')
+         ->get ('report/users', 'ReportsController@users');
+    Route::name('report.users.show')
+         ->get ('report/users/{user}', 'ReportsController@user');
+
+    Route::name('report.requests.index')
+         ->get ('report/requests', 'ReportsController@requests');
+    Route::name('report.requests.show')
+         ->get ('report/requests/{esrequest}', 'ReportsController@request');
 });
 
 Route::name('instructions')->get('/instructions', function() {

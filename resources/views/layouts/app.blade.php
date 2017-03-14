@@ -56,6 +56,9 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
+                            @can('report', Esrequest::class)
+                                <li><a href="{{ route('report') }}">Reports</a></li>
+                            @endcan
                             @can('administer', Esrequest::class)
                                 <li><a href="{{ route('admin.requests.unfulfilled') }}">Admin</a></li>
                             @endcan
@@ -232,9 +235,7 @@
         });
 
         $(document).ready(function(){
-            $('.datatable').DataTable({
-                "order": [[ 1, "desc" ]]
-            });
+            $('.datatable').DataTable();
         });
     </script>
 </body>
