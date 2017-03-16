@@ -3,7 +3,7 @@
     @unless ( empty($breadcrumbs) )
     @foreach ( $breadcrumbs as $breadcrumb )
         @unless ( empty($breadcrumb['link']) )
-            <li><a href="{{ $breadcrumb['link'] }}?{{ $query }}">{{ $breadcrumb['text'] }}</a></li>
+            <li><a href="{{ $breadcrumb['link'] }}?{{ $query or '' }}">{{ $breadcrumb['text'] }}</a></li>
         @else
             <li class="active">{{ $breadcrumb['text'] }}</li>
         @endunless
