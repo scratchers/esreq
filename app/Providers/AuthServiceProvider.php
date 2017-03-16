@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Esrequest;
-use App\Policies\EsrequestPolicy;
+use App\{Esrequest,FacultyAccount};
+use App\Policies\{EsrequestPolicy,FacultyAccountPolicy};
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Esrequest::class => EsrequestPolicy::class,
+        FacultyAccount::class => FacultyAccountPolicy::class,
     ];
 
     /**

@@ -9,6 +9,12 @@
             New Requests
         </a>
     </li>
+
+    <li>
+        <a href="{{ route('admin.facultyAccount.index') }}">
+            Faculty Accounts
+        </a>
+    </li>
 </ul>
 
 @endsection

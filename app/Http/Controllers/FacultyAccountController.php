@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\FacultyAccount;
 use Illuminate\Http\Request;
 
 class FacultyAccountController extends Controller
 {
+    /**
+     * Creates Faculty Account Controller with authorization.
+     *
+     * @return FacultyAccountController
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(FacultyAccount::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,9 @@ class FacultyAccountController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize(FacultyAccount::class);
+
+        return FacultyAccount::with('user', 'platforms')->get();
     }
 
     /**
@@ -40,21 +53,23 @@ class FacultyAccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FacultyAccount $facultyAccount)
     {
-        //
+        $facultyAccount->user;
+        $facultyAccount->platforms;
+        return $facultyAccount;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FacultyAccount $facultyAccount)
     {
         //
     }
@@ -63,10 +78,10 @@ class FacultyAccountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FacultyAccount $facultyAccount)
     {
         //
     }
@@ -74,10 +89,10 @@ class FacultyAccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FacultyAccount $facultyAccount)
     {
         //
     }

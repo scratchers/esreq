@@ -60,6 +60,15 @@ Route::group(['middleware' => 'auth'], function(){
     );
 
 
+    Route::resource(
+        'admin/facultyAccount',
+        'FacultyAccountController',
+        [
+            'as' => 'admin',
+        ]
+    );
+
+
     Route::name('report')
          ->get ('/report', 'ReportsController@index');
 

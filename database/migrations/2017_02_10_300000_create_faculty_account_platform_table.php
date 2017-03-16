@@ -13,7 +13,7 @@ class CreateFacultyAccountPlatformTable extends Migration
      */
     public function up()
     {
-        Schema::create('faculty_account_platforms', function (Blueprint $table) {
+        Schema::create('faculty_account_platform', function (Blueprint $table) {
             $table->integer('faculty_account_id')->unsigned();
             $table->foreign('faculty_account_id')
                 ->references('id')
@@ -33,6 +33,6 @@ class CreateFacultyAccountPlatformTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculty_account_platforms');
+        Schema::dropIfExists('faculty_account_platform');
     }
 }
