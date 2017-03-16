@@ -25,6 +25,14 @@ Route::group(['middleware' => 'auth'], function(){
         return redirect(route('customer.requests.index'));
     });
 
+    Route::name('admin')
+         ->get('/admin', function () {
+            if ( Auth::user()->isAdmin() ) {
+                return view('admin');
+            }
+            return abort(403, "Administrative Access Required");
+        });
+
     Route::resource(
         'requests',
         'Customer\EsrequestsController',

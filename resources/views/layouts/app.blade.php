@@ -60,7 +60,7 @@
                                 <li><a href="{{ route('report') }}">Reports</a></li>
                             @endcan
                             @can('administer', Esrequest::class)
-                                <li><a href="{{ route('admin.requests.unfulfilled') }}">Admin</a></li>
+                                <li><a href="{{ route('admin') }}">Admin</a></li>
                             @endcan
                             <li>
                                 <a href="{{ url('/logout') }}">
