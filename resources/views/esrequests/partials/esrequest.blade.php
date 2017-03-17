@@ -3,11 +3,9 @@
     <br/>
     <a href="mailto:{{ $esrequest->user->email }}">{{ $esrequest->user->email }}</a>
 
-    @unless ( empty($esrequest->user->facultyAccounts) )
-        @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-            <label class="label label-info">{{ $facultyAccount->username }}</label>
-        @endforeach
-    @endunless
+    @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
+        <label class="label label-info">{{ $facultyAccount->username }}</label>
+    @endforeach
 </p>
 
 <div class="well">
