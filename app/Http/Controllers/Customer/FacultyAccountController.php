@@ -25,7 +25,9 @@ class FacultyAccountController extends Controller
      */
     public function index()
     {
-        return FacultyAccount::mine()->with('platforms')->get();
+        $facultyAccounts = FacultyAccount::mine()->with('platforms')->get();
+
+        return view('facultyAccounts.index', compact('facultyAccounts'));
     }
 
     /**

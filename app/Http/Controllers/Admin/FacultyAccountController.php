@@ -27,7 +27,9 @@ class FacultyAccountController extends Controller
     {
         $this->authorize(FacultyAccount::class);
 
-        return FacultyAccount::with('user', 'platforms')->get();
+        $facultyAccounts = FacultyAccount::with('user', 'platforms')->get();
+
+        return view('facultyAccounts.index', compact('facultyAccounts'));
     }
 
     /**
