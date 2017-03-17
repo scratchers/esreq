@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class FacultyAccount extends Model
 {
@@ -30,5 +31,18 @@ class FacultyAccount extends Model
     public function platforms()
     {
         return $this->belongsToMany(Platform::class);
+    }
+
+    /**
+     * Scope query to only user's faculty accounts.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeMine($query)
+    {
+        return $query
+            ->where('faculty_accounts.user_id', '=', Auth::user()->id)
+        ;
     }
 }

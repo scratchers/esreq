@@ -19,10 +19,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::name('home')->get('/home', function () {
-        if ( Auth::user()->isAdmin() ) {
-            return redirect(route('admin.requests.unfulfilled'));
-        }
-        return redirect(route('customer.requests.index'));
+        return view('home');
     });
 
     Route::name('admin')
@@ -61,8 +58,16 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::resource(
+        'facultyAccount',
+        'Customer\FacultyAccountController',
+        [
+            'as' => 'customer',
+        ]
+    );
+
+    Route::resource(
         'admin/facultyAccount',
-        'FacultyAccountController',
+        'Admin\FacultyAccountController',
         [
             'as' => 'admin',
         ]

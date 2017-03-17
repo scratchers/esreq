@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
 use App\FacultyAccount;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FacultyAccountController extends Controller
 {
@@ -24,9 +25,7 @@ class FacultyAccountController extends Controller
      */
     public function index()
     {
-        $this->authorize(FacultyAccount::class);
-
-        return FacultyAccount::with('user', 'platforms')->get();
+        return FacultyAccount::mine()->with('platforms')->get();
     }
 
     /**

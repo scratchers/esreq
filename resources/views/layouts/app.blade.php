@@ -44,7 +44,7 @@
                     @if (Auth::guest())
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
-                        <li><a href="{{ route('customer.requests.index') }}">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('customer.requests.create') }}">New</a></li>
                     @endif
                     <li><a href="{{ route('instructions') }}">Instructions</a></li>
