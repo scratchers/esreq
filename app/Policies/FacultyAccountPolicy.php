@@ -30,7 +30,7 @@ class FacultyAccountPolicy
      */
     public function view(User $user, FacultyAccount $facultyAccount)
     {
-        //
+        return $user->id === $facultyAccount->user_id;
     }
 
     /**
