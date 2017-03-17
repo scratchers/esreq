@@ -30,6 +30,15 @@ Route::group(['middleware' => 'auth'], function(){
             return abort(403, "Administrative Access Required");
         });
 
+    Route::name('impersonate')
+         ->get('/admin/impersonate/{user}', function(App\User $user){
+            if ( env('APP_ENV') === 'local' && Auth::user()->isAdmin() ) {
+                Auth::login($user);
+                return redirect(route('home'));
+            }
+            return abort(403, "Administrative Access Required");
+         });
+
     Route::resource(
         'requests',
         'Customer\EsrequestsController',
