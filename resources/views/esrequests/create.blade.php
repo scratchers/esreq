@@ -38,6 +38,22 @@
         </div>
 
         <div class="well">
+            @unless ( Auth::user()->facultyAccounts->isEmpty() )
+            <h3>Your Existing Faculty Accounts</h3>
+            <ul>
+            @foreach ( Auth::user()->facultyAccounts as $facultyAccount )
+                <li>
+                <a
+                    href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
+                    onclick="return showAjaxModal(this)"
+                >
+                    <label class="label label-info">{{ $facultyAccount->username }}</label>
+                </a>
+                </li>
+            @endforeach
+            </ul>
+            @endunless
+
             <h3>Number of New Accounts</h3>
             <div class="form-group">
                 <label for="faculty_accounts" class="control-label col-sm-2">
