@@ -11,6 +11,7 @@ class MigrateEsrequestPlatformData extends Migration
      */
     public function up()
     {
+        // this *depends* on 2017_03_10_174501_seed_platforms_table.php
         $platforms = [
             1 => 'IBM',
             2 => 'Microsoft',
