@@ -275,6 +275,10 @@ tr.odd {
   background-color: #ffffff;
 }
 
+a label {
+    cursor: pointer;
+}
+
 .label-IBM {
     background-color: #323232;
 }

@@ -4,7 +4,12 @@
     <a href="mailto:{{ $esrequest->user->email }}">{{ $esrequest->user->email }}</a>
 
     @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-        <label class="label label-info">{{ $facultyAccount->username }}</label>
+        <a
+            href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
+            onclick="return showAjaxModal(this)"
+        >
+            <label class="label label-info">{{ $facultyAccount->username }}</label>
+        </a>
     @endforeach
 </p>
 

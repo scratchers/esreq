@@ -233,5 +233,26 @@
             $('.datatable').DataTable();
         });
     </script>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<script>
+function showAjaxModal(a){
+    $.ajax({
+            type: "GET",
+            url: $(a).attr('href'),
+            success: function (data) {
+                $('#myModal .modal-content').html(data);
+                $('#myModal').modal();
+            }
+    });
+    return false;
+}
+</script>
+
 </body>
 </html>

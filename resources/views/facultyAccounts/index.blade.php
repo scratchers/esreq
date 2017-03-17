@@ -6,7 +6,10 @@
 <ul>
     @forelse ( $facultyAccounts as $facultyAccount )
     <li>
-        <a href="{{ route('customer.facultyAccount.show', $facultyAccount) }}">
+        <a
+            href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
+            onclick="return showAjaxModal(this)"
+        >
             {{ $facultyAccount->username }}
         </a>
 
@@ -20,5 +23,4 @@
     <p class="lead">You have no faculty accounts.</p>
     @endforelse
 </ul>
-
 @endsection

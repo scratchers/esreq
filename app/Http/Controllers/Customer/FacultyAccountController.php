@@ -59,9 +59,7 @@ class FacultyAccountController extends Controller
      */
     public function show(FacultyAccount $facultyAccount)
     {
-        $facultyAccount->user;
-        $facultyAccount->platforms;
-        return $facultyAccount;
+        return view('facultyAccounts.partials.show-modal', compact('facultyAccount'));
     }
 
     /**

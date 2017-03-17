@@ -79,4 +79,16 @@ class User extends Authenticatable
 
         return $this->entitlements->contains('name', $admins);
     }
+
+    /**
+     * Provide a friendly display name for the user.
+     *
+     * @return string
+     */
+    public function getNameAttribute() : string
+    {
+        $institution = $this->institution->name;
+
+        return "{$this->first_name} {$this->last_name}, $institution";
+    }
 }
