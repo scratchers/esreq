@@ -66,6 +66,13 @@ class MigrateFacultyAccountsData extends Migration
                 END CATCH
             ");
         }
+
+        DB::insert('
+            INSERT INTO [faculty_accounts] ([username],[password])
+            SELECT [username],[password]
+            FROM [EnterpriseSystemsUsers]
+            WHERE [email] IS NULL AND [firstname] IS NULL
+        ');
     }
 
     /**
