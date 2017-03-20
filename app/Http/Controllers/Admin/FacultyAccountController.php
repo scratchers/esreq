@@ -9,16 +9,6 @@ use App\Http\Controllers\Controller;
 class FacultyAccountController extends Controller
 {
     /**
-     * Creates Faculty Account Controller with authorization.
-     *
-     * @return FacultyAccountController
-     */
-    public function __construct()
-    {
-        $this->authorizeResource(FacultyAccount::class);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

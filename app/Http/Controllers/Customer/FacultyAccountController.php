@@ -9,16 +9,6 @@ use App\Http\Controllers\Controller;
 class FacultyAccountController extends Controller
 {
     /**
-     * Creates Faculty Account Controller with authorization.
-     *
-     * @return FacultyAccountController
-     */
-    public function __construct()
-    {
-        $this->authorizeResource(FacultyAccount::class);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -59,6 +49,7 @@ class FacultyAccountController extends Controller
      */
     public function show(FacultyAccount $facultyAccount)
     {
+        $this->authorize('view', $facultyAccount);
         return view('facultyAccounts.partials.show-modal', compact('facultyAccount'));
     }
 
