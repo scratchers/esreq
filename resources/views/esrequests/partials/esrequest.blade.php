@@ -30,7 +30,7 @@
 @endunless
 
 @if (Auth::user()->can('administer', Esrequest::class) && Route::is('admin.requests.show'))
-    @include('esrequests.fulfill-inc')
+    @include('esrequests.partials.fulfill')
 @else
     @unless ( empty($esrequest->note) )
         <h2>Admin Response</h2>
