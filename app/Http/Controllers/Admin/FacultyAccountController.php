@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\FacultyAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class FacultyAccountController extends Controller
 {
@@ -20,6 +21,22 @@ class FacultyAccountController extends Controller
         $facultyAccounts = FacultyAccount::with('user', 'platforms')->get();
 
         return view('facultyAccounts.index', compact('facultyAccounts'));
+    }
+
+    /**
+     * Assigns a faculty account to a user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function assign(User $user)
+    {
+        $this->authorize(FacultyAccount::class);
+
+        $facultyAccount = FacultyAccount::whereNull('user_id')->first();
+
+        $user->facultyAccounts()->save($facultyAccount);
+
+        return redirect(route('customer.facultyAccount.show', $facultyAccount));
     }
 
     /**

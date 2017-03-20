@@ -18,7 +18,18 @@ class FacultyAccountPolicy
      */
     public function index(User $user)
     {
-        //
+        // depends on admin gate
+    }
+
+    /**
+     * Determine whether the user assign Faculty Accounts to users.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function assign(User $user)
+    {
+        // depends on admin gate
     }
 
     /**

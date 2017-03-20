@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function(){
         ]
     );
 
+    Route::name('admin.facultyAccount.assign')
+         ->get ('admin/facultyAccount/assign/{user}', 'Admin\FacultyAccountController@assign');
     Route::resource(
         'admin/facultyAccount',
         'Admin\FacultyAccountController',
