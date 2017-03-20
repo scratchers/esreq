@@ -23,6 +23,8 @@ class CreateFacultyAccountPlatformTable extends Migration
             $table->foreign('platform_id')
                 ->references('id')
                 ->on('platforms');
+
+            $table->primary(['faculty_account_id', 'platform_id']);
         });
     }
 

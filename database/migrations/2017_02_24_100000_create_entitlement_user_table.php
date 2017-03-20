@@ -25,6 +25,8 @@ class CreateEntitlementUserTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->primary(['entitlement_id', 'user_id']);
         });
     }
 
