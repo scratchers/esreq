@@ -10,14 +10,25 @@ use App\User;
 class FacultyAccountController extends Controller
 {
     /**
+     * Creates Faculty Account Controller with auth middleware.
+     *
+     * @return FacultyAccountController
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->authorize('administer', FacultyAccount::class);
+            return $next($request);
+        });
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $this->authorize(FacultyAccount::class);
-
         $facultyAccounts = FacultyAccount::with('user', 'platforms')->get();
 
         return view('facultyAccounts.index', compact('facultyAccounts'));
@@ -30,8 +41,6 @@ class FacultyAccountController extends Controller
      */
     public function assign(User $user)
     {
-        $this->authorize(FacultyAccount::class);
-
         $facultyAccount = FacultyAccount::whereNull('user_id')->first();
 
         $user->facultyAccounts()->save($facultyAccount);

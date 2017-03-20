@@ -11,28 +11,6 @@ class FacultyAccountPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view facultyAccount index.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function index(User $user)
-    {
-        // depends on admin gate
-    }
-
-    /**
-     * Determine whether the user assign Faculty Accounts to users.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function assign(User $user)
-    {
-        // depends on admin gate
-    }
-
-    /**
      * Determine whether the user can view the facultyAccount.
      *
      * @param  \App\User  $user
@@ -77,5 +55,17 @@ class FacultyAccountPolicy
     public function delete(User $user, FacultyAccount $facultyAccount)
     {
         //
+    }
+
+    /**
+     * Restricts all users from admin functions.
+     * Admins should be globally authorized in AuthServiceProvider::boot
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function administer(User $user)
+    {
+        return false; // depends on admin gate
     }
 }
