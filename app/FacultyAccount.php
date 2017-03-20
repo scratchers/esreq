@@ -45,4 +45,18 @@ class FacultyAccount extends Model
             ->where('faculty_accounts.user_id', '=', Auth::user()->id)
         ;
     }
+
+    /**
+     * Scope query to show count of unused faculty accounts.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCountNew($query)
+    {
+        return $query
+            ->whereNull('user_id')
+            ->count()
+        ;
+    }
 }

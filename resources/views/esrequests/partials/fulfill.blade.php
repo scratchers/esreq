@@ -7,6 +7,7 @@
         >
             Assign New Faculty Account
         </a>
+        {{ App\FacultyAccount::countNew() }} remaining
     </div>
 </div>
 
