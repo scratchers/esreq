@@ -6,6 +6,7 @@ use App\FacultyAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Platform;
 
 class FacultyAccountController extends Controller
 {
@@ -44,6 +45,18 @@ class FacultyAccountController extends Controller
         $facultyAccount = FacultyAccount::whereNull('user_id')->first();
 
         $user->facultyAccounts()->save($facultyAccount);
+
+        return redirect(route('customer.facultyAccount.show', $facultyAccount));
+    }
+
+    /**
+     * Associates a platform with a faculty account.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addplatform(FacultyAccount $facultyAccount, Platform $platform)
+    {
+        $facultyAccount->platforms()->attach($platform);
 
         return redirect(route('customer.facultyAccount.show', $facultyAccount));
     }

@@ -4,6 +4,7 @@
 </div>
 
 <div class="modal-body">
+    <p>Associated Platforms</p>
     <ul>
         @foreach ( $facultyAccount->platforms as $platform )
         <li>
@@ -14,6 +15,25 @@
         @endforeach
     </ul>
 </div>
+
+@can('administer', App\FacultyAccount::class)
+<div class="well" style="margin:10px">
+    <p>Associate Platforms with Faculty Account</p>
+    <ul>
+        @foreach ( App\Platform::all() as $platform )
+        <li style="padding:5px">
+            <a
+                href="{{ route('admin.facultyAccount.addplatform', ['facultyAccount' => $facultyAccount, 'platform' => $platform]) }}"
+                onclick="return showAjaxModal(this)"
+                class="label label-{{ $platform->name }}"
+            >
+                Associate {{ $platform->name }}
+            </a>
+        </li>
+        @endforeach
+    </ul>
+</div>
+@endcan
 
 <div class="modal-footer">
     {{ $facultyAccount->user->name or 'Unassigned' }}
