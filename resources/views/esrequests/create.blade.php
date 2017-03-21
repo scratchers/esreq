@@ -12,8 +12,12 @@
 <h1>Create Request</h1>
 
 {!! Form::open(['class'=>'form-horizontal', 'route'=>'customer.requests.store']) !!}
-<div class="well">
-    <h3>Platforms</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Which platforms do you want to access?</h3>
+  </div>
+
+  <div class="panel-body">
 
     @foreach ( App\Platform::all() as $platform )
         <div class="form-group">
@@ -33,27 +37,44 @@
             </div>
         </div>
     @endforeach
-
+  </div>
 </div>
 
-<div class="well">
-    @unless ( Auth::user()->facultyAccounts->isEmpty() )
-    <h3>Your Existing Faculty Accounts</h3>
-    <ul>
-    @foreach ( Auth::user()->facultyAccounts as $facultyAccount )
-        <li>
-        <a
-            href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
-            onclick="return showAjaxModal(this)"
-        >
-            <label class="label label-info">{{ $facultyAccount->username }}</label>
-        </a>
-        </li>
-    @endforeach
-    </ul>
-    @endunless
+@unless ( Auth::user()->facultyAccounts->isEmpty() )
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Here are your existing faculty accounts:</h3>
+  </div>
 
-    <h3>Number of New Accounts</h3>
+  <div class="panel-body">
+    <p>Click on username for more details:</p>
+    <ul>
+        @foreach ( Auth::user()->facultyAccounts as $facultyAccount )
+            <li>
+                <a
+                    href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
+                    onclick="return showAjaxModal(this)"
+                >
+                    {{ $facultyAccount->username }}
+                </a>
+                @foreach ( $facultyAccount->platforms as $platform )
+                    <label class="label label-{{ $platform->name }}">
+                        {{ $platform->name }}
+                    </label>
+                @endforeach
+            </li>
+        @endforeach
+    </ul>
+  </div>
+</div>
+@endunless
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">How many new accounts would you like?</h3>
+  </div>
+
+  <div class="panel-body">
     <div class="form-group">
         <label for="faculty_accounts" class="control-label col-sm-2">
             <input type="checkbox" onclick="$('#faculty_accounts').toggle()">
@@ -73,10 +94,15 @@
             <input id="student_accounts" class="form-control" min="0" name="student_accounts" type="number" style="display:none">
         </div>
     </div>
+  </div>
 </div>
 
-<div class="well">
-    <h3>Academic Course Information</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">If you're using these accounts for a class, then please tell us about it.</h3>
+  </div>
+
+  <div class="panel-body">
     <div class="form-group">
         {!! Form::label('course_name', 'Course Name:', ['class'=>'control-label col-sm-2']) !!}
         <div class="col-sm-10">
@@ -108,14 +134,17 @@
             });
         } );
     </script>
+  </div>
 </div>
 
-<div class="well">
-    <h3>Optional Comments</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Anything else you would like us to know?</h3>
+  </div>
 
-    <div class="form-group">
-        {!! Form::textarea('user_comment', null, ['class'=>'form-control']) !!}
-    </div>
+  <div class="panel-body">
+    {!! Form::textarea('user_comment', null, ['class'=>'form-control']) !!}
+  </div>
 </div>
 
 <div class="well">
