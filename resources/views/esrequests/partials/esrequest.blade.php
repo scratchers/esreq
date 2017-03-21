@@ -20,7 +20,9 @@
 </div>
 @endunless
 
+<div id="esrequests-partials-facacc">
 @include('esrequests.partials.facacc')
+</div>
 
 @if (Auth::user()->can('administer', Esrequest::class) && Route::is('admin.requests.show'))
     @include('esrequests.partials.fulfill')

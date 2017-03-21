@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function(){
             return abort(403, "Administrative Access Required");
          });
 
+    Route::name('customer.requests.facacc')
+         ->get ('customer/requests/{esrequest}/facacc', 'Customer\EsrequestsController@facacc');
     Route::resource(
         'requests',
         'Customer\EsrequestsController',

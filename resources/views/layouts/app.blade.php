@@ -248,6 +248,15 @@ function showAjaxModal(a){
             success: function (data) {
                 $('#myModal .modal-content').html(data);
                 $('#myModal').modal();
+                @unless ( empty($esrequest) )
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('customer.requests.facacc', $esrequest) }}",
+                    success: function (data) {
+                        $('#esrequests-partials-facacc').html(data);
+                    }
+                });
+                @endunless
             }
     });
     return false;

@@ -5,9 +5,10 @@
   </div>
 
   <div class="panel-body">
+  <p>Click on username for more details:</p>
   <ul>
     @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-        <li>
+        <li style="margin:10px">
             <a
                 href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
                 onclick="return showAjaxModal(this)"
