@@ -77,21 +77,45 @@
   <div class="panel-body">
     <div class="form-group">
         <label for="faculty_accounts" class="control-label col-sm-2">
-            <input type="checkbox" onclick="$('#faculty_accounts').toggle()">
+            <input
+                type="checkbox"
+                onclick="$('#faculty_accounts').toggle()"
+                {{ old('faculty_accounts') ? 'checked' : '' }}
+            >
             Faculty:
         </label>
         <div class="col-sm-10">
-            <input id="faculty_accounts" class="form-control" min="0" name="faculty_accounts" type="number" style="display:none">
+            <input
+                id="faculty_accounts"
+                class="form-control"
+                min="0"
+                name="faculty_accounts"
+                type="number"
+                style="{{ old('faculty_accounts') ? '' : 'display:none' }}"
+                value="{{ old('faculty_accounts') }}"
+            >
         </div>
     </div>
 
     <div class="form-group">
         <label for="student_accounts" class="control-label col-sm-2">
-            <input type="checkbox" onclick="$('#student_accounts').toggle()">
+            <input
+                type="checkbox"
+                onclick="$('#student_accounts').toggle()"
+                {{ old('student_accounts') ? 'checked' : '' }}
+            >
             Student:
         </label>
         <div class="col-sm-10">
-            <input id="student_accounts" class="form-control" min="0" name="student_accounts" type="number" style="display:none">
+            <input
+                id="student_accounts"
+                class="form-control"
+                min="0"
+                name="student_accounts"
+                type="number"
+                style="{{ old('student_accounts') ? '' : 'display:none' }}"
+                value="{{ old('student_accounts') }}"
+            >
         </div>
     </div>
   </div>
