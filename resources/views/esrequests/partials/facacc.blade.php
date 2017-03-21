@@ -8,12 +8,12 @@
   <p>Click on username for more details:</p>
   <ul>
     @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-        <li style="margin:10px">
+        <li>
             <a
                 href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
                 onclick="return showAjaxModal(this)"
             >
-                <label class="label label-info" style="font-size:120%">{{ $facultyAccount->username }}</label>
+                {{ $facultyAccount->username }}
             </a>
             @foreach ( $facultyAccount->platforms as $platform )
                 <label class="label label-{{ $platform->name }}">
