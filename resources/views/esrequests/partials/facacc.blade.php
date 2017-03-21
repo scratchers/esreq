@@ -5,24 +5,28 @@
   </div>
 
   <div class="panel-body">
-  <p>Click on username for more details:</p>
-  <ul>
-    @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-        <li>
-            <a
-                href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
-                onclick="return showAjaxModal(this)"
-            >
-                {{ $facultyAccount->username }}
-            </a>
-            @foreach ( $facultyAccount->platforms as $platform )
-                <label class="label label-{{ $platform->name }}">
-                    {{ $platform->name }}
-                </label>
-            @endforeach
-        </li>
-    @endforeach
-  </ul>
+  @if ( $esrequest->user->facultyAccounts->isEmpty() )
+    <p>User has no faculty accounts assigned.</p>
+  @else
+    <p>Click on username for more details:</p>
+    <ul>
+        @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
+            <li>
+                <a
+                    href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
+                    onclick="return showAjaxModal(this)"
+                >
+                    {{ $facultyAccount->username }}
+                </a>
+                @foreach ( $facultyAccount->platforms as $platform )
+                    <label class="label label-{{ $platform->name }}">
+                        {{ $platform->name }}
+                    </label>
+                @endforeach
+            </li>
+        @endforeach
+    </ul>
+  @endif
   </div>
 
   @can('administer', FacultyAccount::class)
