@@ -14,9 +14,16 @@
 </div>
 
 @unless ( empty($esrequest->user_comment) )
-<h2>User Comment</h2>
-<div class="well">
-    <p>{{ $esrequest->user_comment }}</p>
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">User Comment</h3>
+    </div>
+
+    <div class="panel-body">
+        <p>{{ $esrequest->user_comment }}</p>
+    </div>
+
 </div>
 @endunless
 
@@ -28,9 +35,16 @@
     @include('esrequests.partials.fulfill')
 @else
     @unless ( empty($esrequest->note) )
-        <h2>Admin Response</h2>
-        <div>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Admin Response</h3>
+        </div>
+
+        <div class="panel-body">
             <pre>{{ $esrequest->note }}</pre>
         </div>
+
+    </div>
     @endunless
 @endcan
