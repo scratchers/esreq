@@ -1,16 +1,3 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <a
-            href="{{ route('admin.facultyAccount.assign', $esrequest->user) }}"
-            onclick="return showAjaxModal(this)"
-            class="btn btn-primary"
-        >
-            Assign New Faculty Account
-        </a>
-        {{ App\FacultyAccount::countNew() }} remaining
-    </div>
-</div>
-
 <div class="well">
     {!! Form::open(['class'=>'form-horizontal']) !!}
 
