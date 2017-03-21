@@ -11,6 +11,15 @@
             <label class="label label-{{ $platform->name }}">
                 {{ $platform->name }}
             </label>
+            @can('administer', App\FacultyAccount::class)
+                <a
+                    href="{{ route('admin.facultyAccount.rmplatform', ['facultyAccount' => $facultyAccount, 'platform' => $platform]) }}"
+                    onclick="return showAjaxModal(this)"
+                    style="color:red"
+                >
+                    &nbsp;<i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            @endcan
         </li>
         @endforeach
     </ul>

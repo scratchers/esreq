@@ -62,6 +62,18 @@ class FacultyAccountController extends Controller
     }
 
     /**
+     * Dissociates a platform from a faculty account.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function rmplatform(FacultyAccount $facultyAccount, Platform $platform)
+    {
+        $facultyAccount->platforms()->detach($platform);
+
+        return redirect(route('customer.facultyAccount.show', $facultyAccount));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
