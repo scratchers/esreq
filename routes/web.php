@@ -30,14 +30,16 @@ Route::group(['middleware' => 'auth'], function(){
             return abort(403, "Administrative Access Required");
         });
 
+    if ( env('APP_ENV') === 'local' ) {
     Route::name('impersonate')
-         ->get('/admin/impersonate/{user}', function(App\User $user){
-            if ( env('APP_ENV') === 'local' && Auth::user()->isAdmin() ) {
+         ->get('/impersonate/{user}', function(App\User $user){
+            if ( Auth::user()->isAdmin() ) {
                 Auth::login($user);
                 return redirect(route('home'));
             }
             return abort(403, "Administrative Access Required");
          });
+    }
 
     Route::name('customer.requests.facacc')
          ->get ('customer/requests/{esrequest}/facacc', 'Customer\EsrequestsController@facacc');
