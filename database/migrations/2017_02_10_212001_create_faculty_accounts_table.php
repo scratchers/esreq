@@ -17,7 +17,7 @@ class CreateFacultyAccountsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
 
             $table->integer('user_id')->unsigned()->nullable();

@@ -19,12 +19,30 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::name('home')->get('/home', function () {
-        if ( Auth::user()->isAdmin() ) {
-            return redirect(route('admin.requests.unfulfilled'));
-        }
-        return redirect(route('customer.requests.index'));
+        return view('home');
     });
 
+    Route::name('admin')
+         ->get('/admin', function () {
+            if ( Auth::user()->isAdmin() ) {
+                return view('admin');
+            }
+            return abort(403, "Administrative Access Required");
+        });
+
+    if ( env('APP_ENV') === 'local' ) {
+    Route::name('impersonate')
+         ->get('/impersonate/{user}', function(App\User $user){
+            if ( Auth::user()->isAdmin() ) {
+                Auth::login($user);
+                return redirect(route('home'));
+            }
+            return abort(403, "Administrative Access Required");
+         });
+    }
+
+    Route::name('customer.requests.facacc')
+         ->get ('customer/requests/{esrequest}/facacc', 'Customer\EsrequestsController@facacc');
     Route::resource(
         'requests',
         'Customer\EsrequestsController',
@@ -48,6 +66,29 @@ Route::group(['middleware' => 'auth'], function(){
             'parameters' => [
                 'requests' => 'esrequest',
             ],
+        ]
+    );
+
+
+    Route::resource(
+        'facultyAccount',
+        'Customer\FacultyAccountController',
+        [
+            'as' => 'customer',
+        ]
+    );
+
+    Route::name('admin.facultyAccount.assign')
+         ->get ('admin/facultyAccount/assign/{user}', 'Admin\FacultyAccountController@assign');
+    Route::name('admin.facultyAccount.addplatform')
+         ->get ('admin/facultyAccount/{facultyAccount}/addplatform/{platform}', 'Admin\FacultyAccountController@addplatform');
+    Route::name('admin.facultyAccount.rmplatform')
+         ->get ('admin/facultyAccount/{facultyAccount}/rmplatform/{platform}', 'Admin\FacultyAccountController@rmplatform');
+    Route::resource(
+        'admin/facultyAccount',
+        'Admin\FacultyAccountController',
+        [
+            'as' => 'admin',
         ]
     );
 

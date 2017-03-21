@@ -44,7 +44,7 @@
                     @if (Auth::guest())
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
-                        <li><a href="{{ route('customer.requests.index') }}">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('customer.requests.create') }}">New</a></li>
                     @endif
                     <li><a href="{{ route('instructions') }}">Instructions</a></li>
@@ -60,7 +60,7 @@
                                 <li><a href="{{ route('report') }}">Reports</a></li>
                             @endcan
                             @can('administer', Esrequest::class)
-                                <li><a href="{{ route('admin.requests.unfulfilled') }}">Admin</a></li>
+                                <li><a href="{{ route('admin') }}">Admin</a></li>
                             @endcan
                             <li>
                                 <a href="{{ url('/logout') }}">
@@ -233,5 +233,35 @@
             $('.datatable').DataTable();
         });
     </script>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<script>
+function showAjaxModal(a){
+    $.ajax({
+            type: "GET",
+            url: $(a).attr('href'),
+            success: function (data) {
+                $('#myModal .modal-content').html(data);
+                $('#myModal').modal();
+                @unless ( empty($esrequest) )
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('customer.requests.facacc', $esrequest) }}",
+                    success: function (data) {
+                        $('#esrequests-partials-facacc').html(data);
+                    }
+                });
+                @endunless
+            }
+    });
+    return false;
+}
+</script>
+
 </body>
 </html>

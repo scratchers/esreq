@@ -274,3 +274,23 @@ tr.odd {
 .row-striped:nth-of-type(odd){
   background-color: #ffffff;
 }
+
+a label {
+    cursor: pointer;
+}
+
+.label-IBM {
+    background-color: #323232;
+}
+
+.label-Microsoft {
+    background-color: #609;
+}
+
+.label-SAP {
+    background-color: #008fd3;
+}
+
+.label-Teradata {
+    background-color: #ec881d;
+}

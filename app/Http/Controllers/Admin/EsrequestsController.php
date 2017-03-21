@@ -141,6 +141,6 @@ class EsrequestsController extends Controller
 
         flash('Request fulfilled.', 'success');
 
-        return $this->show($esrequest);
+        return back();
     }
 }

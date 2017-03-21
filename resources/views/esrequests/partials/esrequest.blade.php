@@ -2,12 +2,6 @@
     {{ $esrequest->user->first_name }} {{ $esrequest->user->last_name }}, {{ $esrequest->user->institution->name }}
     <br/>
     <a href="mailto:{{ $esrequest->user->email }}">{{ $esrequest->user->email }}</a>
-
-    @unless ( empty($esrequest->user->facultyAccounts) )
-        @foreach ( $esrequest->user->facultyAccounts as $facultyAccount )
-            <label class="label label-info">{{ $facultyAccount->username }}</label>
-        @endforeach
-    @endunless
 </p>
 
 <div class="well">
@@ -20,19 +14,37 @@
 </div>
 
 @unless ( empty($esrequest->user_comment) )
-<h2>User Comment</h2>
-<div class="well">
-    <p>{{ $esrequest->user_comment }}</p>
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">User Comment</h3>
+    </div>
+
+    <div class="panel-body">
+        <p>{{ $esrequest->user_comment }}</p>
+    </div>
+
 </div>
 @endunless
 
+<div id="esrequests-partials-facacc">
+@include('esrequests.partials.facacc')
+</div>
+
 @if (Auth::user()->can('administer', Esrequest::class) && Route::is('admin.requests.show'))
-    @include('esrequests.fulfill-inc')
+    @include('esrequests.partials.fulfill')
 @else
     @unless ( empty($esrequest->note) )
-        <h2>Admin Response</h2>
-        <div>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Admin Response</h3>
+        </div>
+
+        <div class="panel-body">
             <pre>{{ $esrequest->note }}</pre>
         </div>
+
+    </div>
     @endunless
 @endcan

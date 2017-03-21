@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\FacultyAccount;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FacultyAccountController extends Controller
 {
@@ -13,7 +15,9 @@ class FacultyAccountController extends Controller
      */
     public function index()
     {
-        //
+        $facultyAccounts = FacultyAccount::mine()->with('platforms')->get();
+
+        return view('facultyAccounts.index', compact('facultyAccounts'));
     }
 
     /**
@@ -40,21 +44,22 @@ class FacultyAccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FacultyAccount $facultyAccount)
     {
-        //
+        $this->authorize('view', $facultyAccount);
+        return view('facultyAccounts.partials.show-modal', compact('facultyAccount'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FacultyAccount $facultyAccount)
     {
         //
     }
@@ -63,10 +68,10 @@ class FacultyAccountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FacultyAccount $facultyAccount)
     {
         //
     }
@@ -74,10 +79,10 @@ class FacultyAccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\FacultyAccount  $facultyAccount
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FacultyAccount $facultyAccount)
     {
         //
     }

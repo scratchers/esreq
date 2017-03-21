@@ -33,6 +33,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Fix for SQL Server / Linux: https://github.com/laravel/framework/issues/1756#issuecomment-22780611
+     */
+    protected function getDateFormat()
+    {
+        return 'Y-m-d H:i:s.u';
+    }
+
     public function institution()
     {
         return $this->belongsTo('App\Institution');
@@ -70,5 +78,17 @@ class User extends Authenticatable
         }
 
         return $this->entitlements->contains('name', $admins);
+    }
+
+    /**
+     * Provide a friendly display name for the user.
+     *
+     * @return string
+     */
+    public function getNameAttribute() : string
+    {
+        $institution = $this->institution->name;
+
+        return "{$this->first_name} {$this->last_name}, $institution";
     }
 }

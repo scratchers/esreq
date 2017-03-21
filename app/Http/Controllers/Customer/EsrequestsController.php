@@ -91,6 +91,21 @@ class EsrequestsController extends Controller
     }
 
     /**
+     * Display the existing faculty accounts for the request's user.
+     *
+     * @param  \App\Esrequest  $esrequest
+     * @return \Illuminate\Http\Response
+     */
+    public function facacc(Esrequest $esrequest)
+    {
+        $data = [
+            'esrequest' => $esrequest,
+        ];
+
+        return view('esrequests.partials.facacc', $data);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Esrequest  $esrequest
