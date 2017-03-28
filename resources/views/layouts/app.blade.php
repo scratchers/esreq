@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="header-bg"></div>
+    <div id="header-bg" @if (!App::environment('production')) style="background-color:#D84156" @endif></div>
     <div class="container" id="opener" role="banner">
         <a class="brand" href="http://www.uark.edu/">University of Arkansas</a>
         <span id="site-heading" class="walton-name"><a href="/">{{ config('app.name') }}</a></span>
