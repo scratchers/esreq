@@ -2,7 +2,7 @@
 
 <p>
     There is a
-    <a href="{{ url('/admin/'.$esrequest->id) }}">new request</a>
+    <a href="{{ route('admin.requests.show', $esrequest) }}">new request</a>
     for access to Enterprise Systems.
 </p>
 
