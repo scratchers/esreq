@@ -9,6 +9,8 @@
 <p>
     {{ $esrequest->user->name }}
     <br/>
+    <a href="mailto:{{ $esrequest->user->email }}">{{ $esrequest->user->email }}</a>
+    <br/>
     <a href="mailto:{{ $esrequest->user_email }}">{{ $esrequest->user_email }}</a>
 </p>
 
