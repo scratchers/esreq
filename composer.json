@@ -11,7 +11,8 @@
         "laravelcollective/html": "^5.3",
         "laracasts/flash": "^2.0",
         "studentaffairsuwm/shibboleth": "dev-entitlements",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "razorbacks/style": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

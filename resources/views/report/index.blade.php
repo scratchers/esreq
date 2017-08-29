@@ -22,7 +22,7 @@
 @endunless
 
 @unless ( $rows->isEmpty() )
-    <table class="datatable datatable-report">
+    <table class="datatable-report">
         <thead>
             <tr>
                 @foreach ( $rows->first() ?? [] as $key => $value )
@@ -67,7 +67,9 @@
         Download CSV
     </a>
 </div>
+@endsection
 
+@push('scripts')
 <script>
 $(document).ready(function() {
 
@@ -133,4 +135,4 @@ $(document).ready(function() {
     }
 });
 </script>
-@endsection
+@endpush

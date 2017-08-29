@@ -150,14 +150,6 @@
     <div class="alert alert-warning" role="alert">
         If no end date is provided, then accounts are subject to deletion after 90 days.
     </div>
-
-    <script>
-        $( function() {
-            $( ".datepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        } );
-    </script>
   </div>
 </div>
 
@@ -187,3 +179,13 @@
 </div>
 {!! Form::close() !!}
 @endsection
+
+@push('scripts')
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        } );
+    </script>
+@endpush

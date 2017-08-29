@@ -171,6 +171,7 @@ return [
 
         Laracasts\Flash\FlashServiceProvider::class,
         StudentAffairsUwm\Shibboleth\ShibbolethServiceProvider::class,
+        razorbacks\style\laravel\StyleServiceProvider::class,
 
         /*
          * Application Service Providers...
