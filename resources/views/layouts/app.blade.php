@@ -25,7 +25,7 @@
             <li><a href="{{ route('admin') }}">Admin</a></li>
         @endcan
         <li>
-            <a href="{{ url('/logout') }}">
+            <a href="{{ route('shibboleth-logout') }}">
                 Logout {{ Auth::user()->first_name }}
             </a>
         </li>

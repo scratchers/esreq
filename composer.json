@@ -10,9 +10,9 @@
         "sbock/odbc-driver": "dev-master",
         "laravelcollective/html": "^5.3",
         "laracasts/flash": "^2.0",
-        "studentaffairsuwm/shibboleth": "dev-entitlements",
         "laravel/tinker": "^1.0",
-        "razorbacks/style": "^1.2"
+        "razorbacks/style": "^1.2",
+        "razorbacks/laravel-shibboleth": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -34,12 +34,6 @@
             "tests/TestCase.php"
         ]
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider.git"
-        }
-    ],
     "scripts": {
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""

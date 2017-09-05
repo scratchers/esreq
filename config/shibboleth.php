@@ -63,11 +63,16 @@ return array(
     |
      */
 
-    'idp_login_email'       => 'mail',
-    'idp_login_name'        => 'displayName',
-    'idp_login_first_name'  => 'givenName',
-    'idp_login_last_name'   => 'sn',
-    'idp_login_entitlement' => 'entitlement',
+    'entitlement' => 'entitlement',
+
+    'user' => [
+        // fillable user model attribute => server variable
+        'email'       => 'mail',
+        'name'        => 'displayName',
+        'first_name'  => 'givenName',
+        'last_name'   => 'sn',
+        'student_id'  => 'employeeNumber',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -80,4 +85,17 @@ return array(
 
     'add_new_users' => true, // Should new users be added automatically if they do not exist?
 
+    /*
+    |--------------------------------------------------------------------------
+    | JWT Auth
+    |--------------------------------------------------------------------------
+    |
+    | JWTs are for the front end to know it's logged in
+    |
+    | https://github.com/tymondesigns/jwt-auth
+    | https://github.com/StudentAffairsUWM/Laravel-Shibboleth-Service-Provider/issues/24
+    |
+     */
+
+    'jwtauth' => env('JWTAUTH', false),
 );
