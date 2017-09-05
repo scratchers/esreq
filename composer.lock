@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b98c31525522605d6a9391caf1d64550",
+    "content-hash": "3457609e63df4effb60c74b1395ca17b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -280,16 +280,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.35",
+            "version": "v5.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "54aa18a4e8495c4b6902d9665ec9fa4d3a1f3d2e"
+                "reference": "1062a22232071c3e8636487c86ec1ae75681bbf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/54aa18a4e8495c4b6902d9665ec9fa4d3a1f3d2e",
-                "reference": "54aa18a4e8495c4b6902d9665ec9fa4d3a1f3d2e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1062a22232071c3e8636487c86ec1ae75681bbf9",
+                "reference": "1062a22232071c3e8636487c86ec1ae75681bbf9",
                 "shasum": ""
             },
             "require": {
@@ -405,7 +405,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-08-24T12:30:18+00:00"
+            "time": "2017-08-30T09:26:16+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -472,16 +472,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.4.8",
+            "version": "v5.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "9b8f51e7a2368911c896f5d42757886bae0717b5"
+                "reference": "f04965dc688254f4c77f684ab0b42264f9eb9634"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/9b8f51e7a2368911c896f5d42757886bae0717b5",
-                "reference": "9b8f51e7a2368911c896f5d42757886bae0717b5",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/f04965dc688254f4c77f684ab0b42264f9eb9634",
+                "reference": "f04965dc688254f4c77f684ab0b42264f9eb9634",
                 "shasum": ""
             },
             "require": {
@@ -522,7 +522,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-            "time": "2017-05-22T06:35:07+00:00"
+            "time": "2017-08-12T15:52:38+00:00"
         },
         {
             "name": "league/flysystem",
@@ -686,100 +686,6 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
-            "name": "mrclay/shibalike",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrclay/shibalike.git",
-                "reference": "04242301ed18f5a1b02493bcc193f5efd255112e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrclay/shibalike/zipball/04242301ed18f5a1b02493bcc193f5efd255112e",
-                "reference": "04242301ed18f5a1b02493bcc193f5efd255112e",
-                "shasum": ""
-            },
-            "require": {
-                "mrclay/userland-session": "3.*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Shibalike\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Steve Clay",
-                    "homepage": "http://www.mrclay.org/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Provides a PHP library for emulating a Shibboleth environment.",
-            "homepage": "https://github.com/mrclay/shibalike",
-            "keywords": [
-                "SSO",
-                "http",
-                "session",
-                "shibboleth",
-                "single sign-on"
-            ],
-            "time": "2014-08-24T05:06:41+00:00"
-        },
-        {
-            "name": "mrclay/userland-session",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrclay/UserlandSession.git",
-                "reference": "12f2604248e9db03bee334612580574e9d776eed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrclay/UserlandSession/zipball/12f2604248e9db03bee334612580574e9d776eed",
-                "reference": "12f2604248e9db03bee334612580574e9d776eed",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.3.*@dev",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "UserlandSession\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steve Clay",
-                    "homepage": "http://www.mrclay.org/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Provides a an HTTP cookie-based session in plain PHP, allowing concurrent use with existing native sessions.",
-            "homepage": "https://github.com/mrclay/UserlandSession",
-            "keywords": [
-                "SSO",
-                "http",
-                "session",
-                "single sign-on"
-            ],
-            "time": "2014-05-25T01:38:09+00:00"
-        },
-        {
             "name": "mtdowling/cron-expression",
             "version": "v1.2.0",
             "source": {
@@ -822,69 +728,6 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
-        },
-        {
-            "name": "namshi/jose",
-            "version": "7.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/namshi/jose.git",
-                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/namshi/jose/zipball/89a24d7eb3040e285dd5925fcad992378b82bcff",
-                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff",
-                "shasum": ""
-            },
-            "require": {
-                "ext-date": "*",
-                "ext-hash": "*",
-                "ext-json": "*",
-                "ext-pcre": "*",
-                "ext-spl": "*",
-                "php": ">=5.5",
-                "symfony/polyfill-php56": "^1.0"
-            },
-            "require-dev": {
-                "phpseclib/phpseclib": "^2.0",
-                "phpunit/phpunit": "^4.5|^5.0",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "suggest": {
-                "ext-openssl": "Allows to use OpenSSL as crypto engine.",
-                "phpseclib/phpseclib": "Allows to use Phpseclib as crypto engine, use version ^2.0."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Namshi\\JOSE\\": "src/Namshi/JOSE/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alessandro Nadalin",
-                    "email": "alessandro.nadalin@gmail.com"
-                },
-                {
-                    "name": "Alessandro Cinelli (cirpo)",
-                    "email": "alessandro.cinelli@gmail.com"
-                }
-            ],
-            "description": "JSON Object Signing and Encryption library for PHP.",
-            "keywords": [
-                "JSON Web Signature",
-                "JSON Web Token",
-                "JWS",
-                "json",
-                "jwt",
-                "token"
-            ],
-            "time": "2016-12-05T07:27:31+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -941,16 +784,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b"
+                "reference": "a1e8e1a30e1352f118feff1a8481066ddc2f234a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4d4896e553f2094e657fe493506dc37c509d4e2b",
-                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a1e8e1a30e1352f118feff1a8481066ddc2f234a",
+                "reference": "a1e8e1a30e1352f118feff1a8481066ddc2f234a",
                 "shasum": ""
             },
             "require": {
@@ -988,7 +831,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-07-28T14:45:09+00:00"
+            "time": "2017-09-02T17:10:46+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1343,67 +1186,6 @@
                 "odbc"
             ],
             "time": "2016-08-19T00:03:25+00:00"
-        },
-        {
-            "name": "studentaffairsuwm/shibboleth",
-            "version": "dev-entitlements",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider.git",
-                "reference": "1ab3886c4eb504b253254ca5eac371d7ebfe8320"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/uawcob/Laravel-Shibboleth-Service-Provider/zipball/1ab3886c4eb504b253254ca5eac371d7ebfe8320",
-                "reference": "1ab3886c4eb504b253254ca5eac371d7ebfe8320",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.*",
-                "laravel/framework": "^5.4",
-                "mrclay/shibalike": "1.0.0",
-                "tymon/jwt-auth": "^0.5.10"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.4.*",
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "StudentAffairsUwm\\Shibboleth\\": "src/StudentAffairsUwm/Shibboleth"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "StudentAffairsUwm\\Shibboleth\\Tests\\Stubs\\": "tests/setup/Stubs",
-                    "App\\": "tests/setup/app"
-                }
-            },
-            "authors": [
-                {
-                    "name": "Christopher Maio",
-                    "email": "cjmaio@uwm.edu"
-                },
-                {
-                    "name": "Michael Schuett",
-                    "email": "michaeljs1990@gmail.com"
-                },
-                {
-                    "name": "Taylor Donald Harvey Smith",
-                    "email": "smit2482@uwm.edu"
-                },
-                {
-                    "name": "Jeff Puckett",
-                    "email": "jeff@jeffpuckett.com"
-                }
-            ],
-            "description": "Enable basic Shibboleth support for Laravel 5.x",
-            "support": {
-                "source": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider/tree/entitlements",
-                "issues": "https://github.com/uawcob/Laravel-Shibboleth-Service-Provider/issues"
-            },
-            "time": "2017-02-27 19:48:21"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1947,114 +1729,6 @@
             "time": "2017-06-14T15:44:48+00:00"
         },
         {
-            "name": "symfony/polyfill-php56",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e85ebdef569b84e8709864e1a290c40f156b30ca",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/polyfill-util": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php56\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2017-06-14T15:44:48+00:00"
-        },
-        {
-            "name": "symfony/polyfill-util",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/67925d1cf0b84bd234a83bebf26d4eb281744c6d",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Util\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony utilities for portability of PHP codes",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compat",
-                "compatibility",
-                "polyfill",
-                "shim"
-            ],
-            "time": "2017-07-05T15:09:33+00:00"
-        },
-        {
             "name": "symfony/process",
             "version": "v3.3.8",
             "source": {
@@ -2362,69 +2036,6 @@
             "time": "2016-09-20T12:50:39+00:00"
         },
         {
-            "name": "tymon/jwt-auth",
-            "version": "0.5.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "614ee3410a1cc18ef13c8d5ffd491b5608afabd8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/614ee3410a1cc18ef13c8d5ffd491b5608afabd8",
-                "reference": "614ee3410a1cc18ef13c8d5ffd491b5608afabd8",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "~5.0",
-                "illuminate/support": "~5.0",
-                "namshi/jose": "^5.0 || ^7.0",
-                "nesbot/carbon": "~1.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/auth": "~5.0",
-                "illuminate/console": "~5.0",
-                "illuminate/database": "~5.0",
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tymon\\JWTAuth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sean Tymon",
-                    "email": "tymon148@gmail.com",
-                    "homepage": "http://tymondesigns.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "JSON Web Token Authentication for Laravel 4 and 5",
-            "homepage": "https://github.com/tymondesigns/jwt-auth",
-            "keywords": [
-                "Authentication",
-                "JSON Web Token",
-                "auth",
-                "jwt",
-                "laravel",
-                "tymon"
-            ],
-            "time": "2017-06-07T21:32:02+00:00"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -2691,6 +2302,100 @@
             "time": "2017-02-28T12:52:32+00:00"
         },
         {
+            "name": "mrclay/shibalike",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/shibalike.git",
+                "reference": "04242301ed18f5a1b02493bcc193f5efd255112e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/shibalike/zipball/04242301ed18f5a1b02493bcc193f5efd255112e",
+                "reference": "04242301ed18f5a1b02493bcc193f5efd255112e",
+                "shasum": ""
+            },
+            "require": {
+                "mrclay/userland-session": "3.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Shibalike\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Clay",
+                    "homepage": "http://www.mrclay.org/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a PHP library for emulating a Shibboleth environment.",
+            "homepage": "https://github.com/mrclay/shibalike",
+            "keywords": [
+                "SSO",
+                "http",
+                "session",
+                "shibboleth",
+                "single sign-on"
+            ],
+            "time": "2014-08-24T05:06:41+00:00"
+        },
+        {
+            "name": "mrclay/userland-session",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/UserlandSession.git",
+                "reference": "12f2604248e9db03bee334612580574e9d776eed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/UserlandSession/zipball/12f2604248e9db03bee334612580574e9d776eed",
+                "reference": "12f2604248e9db03bee334612580574e9d776eed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.3.*@dev",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "UserlandSession\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Clay",
+                    "homepage": "http://www.mrclay.org/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a an HTTP cookie-based session in plain PHP, allowing concurrent use with existing native sessions.",
+            "homepage": "https://github.com/mrclay/UserlandSession",
+            "keywords": [
+                "SSO",
+                "http",
+                "session",
+                "single sign-on"
+            ],
+            "time": "2014-05-25T01:38:09+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.6.1",
             "source": {
@@ -2731,6 +2436,69 @@
                 "object graph"
             ],
             "time": "2017-04-12T18:52:22+00:00"
+        },
+        {
+            "name": "namshi/jose",
+            "version": "7.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namshi/jose.git",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namshi/jose/zipball/89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "shasum": ""
+            },
+            "require": {
+                "ext-date": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-spl": "*",
+                "php": ">=5.5",
+                "symfony/polyfill-php56": "^1.0"
+            },
+            "require-dev": {
+                "phpseclib/phpseclib": "^2.0",
+                "phpunit/phpunit": "^4.5|^5.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "ext-openssl": "Allows to use OpenSSL as crypto engine.",
+                "phpseclib/phpseclib": "Allows to use Phpseclib as crypto engine, use version ^2.0."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Namshi\\JOSE\\": "src/Namshi/JOSE/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Nadalin",
+                    "email": "alessandro.nadalin@gmail.com"
+                },
+                {
+                    "name": "Alessandro Cinelli (cirpo)",
+                    "email": "alessandro.cinelli@gmail.com"
+                }
+            ],
+            "description": "JSON Object Signing and Encryption library for PHP.",
+            "keywords": [
+                "JSON Web Signature",
+                "JSON Web Token",
+                "JWS",
+                "json",
+                "jwt",
+                "token"
+            ],
+            "time": "2016-12-05T07:27:31+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2788,22 +2556,22 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.2.2",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "4aada1f93c72c35e22fb1383b47fee43b8f1d157"
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/4aada1f93c72c35e22fb1383b47fee43b8f1d157",
-                "reference": "4aada1f93c72c35e22fb1383b47fee43b8f1d157",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2d3d238c433cf69caeb4842e97a3223a116f94b2",
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
+                "php": "^7.0",
                 "phpdocumentor/reflection-common": "^1.0@dev",
-                "phpdocumentor/type-resolver": "^0.3.0",
+                "phpdocumentor/type-resolver": "^0.4.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
@@ -2829,20 +2597,20 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-08-08T06:39:58+00:00"
+            "time": "2017-08-30T18:51:59+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "fb3933512008d8162b3cdf9e18dba9309b7c3773"
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/fb3933512008d8162b3cdf9e18dba9309b7c3773",
-                "reference": "fb3933512008d8162b3cdf9e18dba9309b7c3773",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
                 "shasum": ""
             },
             "require": {
@@ -2876,26 +2644,26 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2017-06-03T08:32:36+00:00"
+            "time": "2017-07-14T14:27:02+00:00"
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.7.0",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
-                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
                 "sebastian/comparator": "^1.1|^2.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
@@ -2906,7 +2674,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -2939,7 +2707,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-03-02T20:05:34+00:00"
+            "time": "2017-09-04T11:05:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3901,6 +3669,114 @@
             "time": "2017-01-21T17:13:55+00:00"
         },
         {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e85ebdef569b84e8709864e1a290c40f156b30ca",
+                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2017-06-14T15:44:48+00:00"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/67925d1cf0b84bd234a83bebf26d4eb281744c6d",
+                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2017-07-05T15:09:33+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.3.8",
             "source": {
@@ -3956,6 +3832,69 @@
             "time": "2017-07-29T21:54:42+00:00"
         },
         {
+            "name": "tymon/jwt-auth",
+            "version": "0.5.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "614ee3410a1cc18ef13c8d5ffd491b5608afabd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/614ee3410a1cc18ef13c8d5ffd491b5608afabd8",
+                "reference": "614ee3410a1cc18ef13c8d5ffd491b5608afabd8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/support": "~5.0",
+                "namshi/jose": "^5.0 || ^7.0",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/auth": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "http://tymondesigns.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Web Token Authentication for Laravel 4 and 5",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
+                "laravel",
+                "tymon"
+            ],
+            "time": "2017-06-07T21:32:02+00:00"
+        },
+        {
             "name": "webmozart/assert",
             "version": "1.2.0",
             "source": {
@@ -4009,8 +3948,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "sbock/odbc-driver": 20,
-        "studentaffairsuwm/shibboleth": 20
+        "sbock/odbc-driver": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
