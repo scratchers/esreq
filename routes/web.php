@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::name('welcome')->get('/', 'WelcomeController@index');
 
 Auth::routes();
 
