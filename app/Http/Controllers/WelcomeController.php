@@ -10,4 +10,9 @@ class WelcomeController extends Controller
     {
         return redirect(route('login'));
     }
+
+    public function home()
+    {
+        return view('home');
+    }
 }
