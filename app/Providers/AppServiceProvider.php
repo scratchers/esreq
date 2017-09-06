@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use DB;
 use Event;
+use App;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (env('APP_ENV') === 'local') {
+        if (App::Environment() === 'local') {
             DB::connection()->enableQueryLog();
             Event::listen('kernel.handled', function ($request, $response) {
                 if ( $request->has('sql-debug') ) {

@@ -2,6 +2,9 @@
 
 return array(
 
+    'reporters' => env('SHIBBOLETH_REPORTS'),
+    'admins' => env('SHIBBOLETH_ADMINS'),
+
     /*
     |--------------------------------------------------------------------------
     | Views / Endpoints

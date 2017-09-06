@@ -81,7 +81,7 @@ class EsrequestPolicy
      */
     public function report(User $user)
     {
-        $reports = env('SHIBBOLETH_REPORTS');
+        $reports = config('shibboleth.reporters');
 
         if ( empty($reports) ) {
             return false;

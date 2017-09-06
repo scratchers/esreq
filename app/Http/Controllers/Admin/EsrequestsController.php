@@ -136,7 +136,7 @@ class EsrequestsController extends Controller
         $esrequest->save();
 
         Mail::to($esrequest->user()->get())
-            ->cc(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
+            ->cc(config('mail.from.address'))
             ->send(new FulfillEsrequest($esrequest));
 
         flash('Request fulfilled.', 'success');

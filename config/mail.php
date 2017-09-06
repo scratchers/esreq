@@ -60,6 +60,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Walton College Enterprise Systems Requests'),
     ],
 
+    'error' => env('MAIL_ERROR_TO_ADDRESS', 'jpucket@uark.edu'),
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

@@ -67,7 +67,7 @@ class EsrequestsController extends Controller
 
         $esrequest->platforms()->sync($platforms);
 
-        Mail::to(env('MAIL_FROM_ADDRESS', 'esreq@uark.edu'))
+        Mail::to(config('mail.from.address'))
             ->send(new NewEsrequest($esrequest));
 
         flash('Request submitted.', 'success');

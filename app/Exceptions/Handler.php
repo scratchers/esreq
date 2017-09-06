@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
             ];
 
             Mail::send('emails.exception', $data, function ($message) {
-                $message->to(env('MAIL_ERROR_TO_ADDRESS', 'jpucket@uark.edu'))
+                $message->to(config('mail.error'))
                         ->subject( 'EXCEPTION THROWN in '.config('app.name') );
             });
         }

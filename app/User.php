@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function isAdmin() : bool
     {
-        $admins = env('SHIBBOLETH_ADMINS');
+        $admins = config('shibboleth.admins');
 
         if ( empty($admins) ) {
             return false;
