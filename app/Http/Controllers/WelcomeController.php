@@ -15,4 +15,9 @@ class WelcomeController extends Controller
     {
         return view('home');
     }
+
+    public function instructions()
+    {
+        return view('instructions');
+    }
 }
