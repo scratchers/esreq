@@ -12,7 +12,8 @@
         "laracasts/flash": "^2.0",
         "laravel/tinker": "^1.0",
         "razorbacks/style": "^1.2",
-        "razorbacks/laravel-shibboleth": "^2.2"
+        "razorbacks/laravel-shibboleth": "^2.2",
+        "appstract/laravel-opcache": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
