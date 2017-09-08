@@ -14,7 +14,7 @@
         <tbody>
             @foreach($institutions as $institution)
                 <tr>
-                    <td>{{ $institution->name }}</td>
+                    <td><a href="{{ route('institutions.show', $institution) }}">{{ $institution->name }}</a></td>
                     <td><a href="{{ $institution->url }}">{{ $institution->url }}</a></td>
                 </tr>
             @endforeach

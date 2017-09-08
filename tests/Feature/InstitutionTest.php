@@ -20,5 +20,10 @@ class InstitutionTest extends TestCase
             ->get('/institutions')
             ->assertSee($institution->name)
         ;
+
+        $this
+            ->get("/institutions/{$institution->id}")
+            ->assertSee($institution->name)
+        ;
     }
 }
