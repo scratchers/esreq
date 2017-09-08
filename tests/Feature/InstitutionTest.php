@@ -18,12 +18,19 @@ class InstitutionTest extends TestCase
 
         $this
             ->get('/institutions')
-            ->assertSee($institution->name)
+            ->assertSee(e($institution->name))
         ;
+    }
+
+    public function test_shows_institution()
+    {
+        $institution = create(Institution::class);
 
         $this
             ->get("/institutions/{$institution->id}")
-            ->assertSee($institution->name)
+            ->assertSee(e($institution->name))
+            ->assertSee((string)$institution->latitude)
+            ->assertSee((string)$institution->longitude)
         ;
     }
 }

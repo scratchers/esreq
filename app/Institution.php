@@ -12,7 +12,10 @@ class Institution extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'url',
+        'name',
+        'url',
+        'latitude',
+        'longitude',
     ];
 
     // https://github.com/laravel/framework/issues/1756

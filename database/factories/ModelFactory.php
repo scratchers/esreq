@@ -28,5 +28,7 @@ $factory->define(App\Institution::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->company,
         'url' => $faker->unique()->domainName,
+        'latitude' => $faker->latitude,
+        'longitude' => $faker->longitude,
     ];
 });
