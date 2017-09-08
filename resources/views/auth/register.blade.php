@@ -12,7 +12,7 @@
                         Just login with your UARK credentials using campus central authentication.
                     </p>
                     <div>
-                        <a href="{{ url('/idp') }}" class="btn btn-primary">Login</a>
+                        <a href="{{ route('shibboleth-login') }}" class="btn btn-primary">Login</a>
                     </div>
                 </div>
             </div>
