@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Institution;
 
 class InstitutionTest extends TestCase
 {
@@ -13,9 +14,11 @@ class InstitutionTest extends TestCase
 
     public function test_shows_institutions()
     {
+        $institution = create(Institution::class);
+
         $this
             ->get('/institutions')
-            ->assertSee('Institutions')
+            ->assertSee($institution->name)
         ;
     }
 }
