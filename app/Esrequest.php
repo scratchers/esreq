@@ -59,7 +59,7 @@ class Esrequest extends Model
     // https://github.com/laravel/framework/issues/1756
     protected function getDateFormat()
     {
-        return 'Y-m-d H:i:s.u';
+        return 'Y-m-d H:i:s';
     }
 
     public function getAllValuesFor(String ...$static_methods)

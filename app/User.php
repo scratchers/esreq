@@ -38,7 +38,7 @@ class User extends Authenticatable
      */
     protected function getDateFormat()
     {
-        return 'Y-m-d H:i:s.u';
+        return 'Y-m-d H:i:s';
     }
 
     public function institution()

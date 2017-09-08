@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "84cc2bd567eebfb3484edcc0b85232f9",
+    "content-hash": "b772f80bf5d5b09a1a47949dc850eb17",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1865,57 +1865,6 @@
                 "uark"
             ],
             "time": "2017-07-26T20:16:52+00:00"
-        },
-        {
-            "name": "sbock/odbc-driver",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/StevenBock/odbc-driver.git",
-                "reference": "8dfaa1edcc9a6a9b7256a6f2cd8f41ddd26d45f8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/StevenBock/odbc-driver/zipball/8dfaa1edcc9a6a9b7256a6f2cd8f41ddd26d45f8",
-                "reference": "8dfaa1edcc9a6a9b7256a6f2cd8f41ddd26d45f8",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pdo_odbc": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Ccovey\\ODBCDriver": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Cody Covey",
-                    "email": "ccovey14@gmail.com"
-                },
-                {
-                    "name": "Rodrigo Troncoso",
-                    "email": "rod.tronco@gmail.com"
-                },
-                {
-                    "name": "Gary Locke",
-                    "email": "gary.locke.dev@gmail.com"
-                }
-            ],
-            "description": "Laravel 5 ODBC Driver",
-            "keywords": [
-                "5",
-                "driver",
-                "laravel",
-                "odbc"
-            ],
-            "time": "2016-08-19T00:03:25+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4520,9 +4469,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "sbock/odbc-driver": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
