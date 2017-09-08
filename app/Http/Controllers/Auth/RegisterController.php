@@ -103,7 +103,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         if ( strpos($request->input('email'), '@uark.edu') !== false ) {
-            return redirect(url('/idp'));
+            return redirect(route('shibboleth-login'));
         }
 
         return $this->registersUsersRegister($request);
