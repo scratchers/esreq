@@ -13,6 +13,10 @@ class MigrateFacultyAccountsData extends Migration
      */
     public function up()
     {
+        if (App::environment() === 'testing') {
+            return;
+        }
+
         DB::insert('
             INSERT INTO [faculty_accounts]
                 ( [user_id], [username], [password] )

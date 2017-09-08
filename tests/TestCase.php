@@ -1,25 +1,57 @@
 <?php
 
-abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
+namespace Tests;
+
+use App\Exceptions\Handler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
 {
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'http://localhost';
+    use CreatesApplication;
 
-    /**
-     * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
+    protected function setUp()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        parent::setUp();
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        $this->disableExceptionHandling();
+    }
 
-        return $app;
+    protected function signIn($user = null)
+    {
+        $user = $user ?: create('App\User');
+
+        $this->actingAs($user);
+
+        return $this;
+    }
+
+    protected function signInAdmin($user = null)
+    {
+        return $this
+            ->signIn($user)
+            ->withServerVariables(['entitlement' => 'admin'])
+        ;
+    }
+
+    // Hat tip, @adamwathan.
+    protected function disableExceptionHandling()
+    {
+        $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
+
+        $this->app->instance(ExceptionHandler::class, new class extends Handler {
+            public function __construct() {}
+            public function report(\Exception $e) {}
+            public function render($request, \Exception $e) {
+                throw $e;
+            }
+        });
+    }
+
+    protected function withExceptionHandling()
+    {
+        $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
+
+        return $this;
     }
 }

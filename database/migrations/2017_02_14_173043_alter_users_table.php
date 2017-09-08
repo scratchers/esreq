@@ -15,10 +15,11 @@ class AlterUsersTable extends Migration
     public function up()
     {
         // this is about the sloppiest, hackiest, worst workaround so far
-        DB::statement('ALTER TABLE users ADD CONSTRAINT def_inst_uark DEFAULT(40) FOR institution_id;');
+        // DB::statement('ALTER TABLE users ADD CONSTRAINT def_inst_uark DEFAULT(40) FOR institution_id;');
 
         Schema::table('users', function (Blueprint $table) {
             $table->softDeletes();
+            $table->integer('institution_id')->unsigned()->default(40)->change();
         });
     }
 
@@ -29,6 +30,10 @@ class AlterUsersTable extends Migration
      */
     public function down()
     {
+        if (App::environment() === 'testing') {
+            return;
+        }
+
         DB::statement('ALTER TABLE users DROP CONSTRAINT def_inst_uark;');
         DB::statement('ALTER TABLE users DROP COLUMN deleted_at;');
     }

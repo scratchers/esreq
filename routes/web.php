@@ -94,3 +94,5 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::name('instructions')->get('/instructions', 'WelcomeController@instructions');
+
+Route::resource('institutions', 'InstitutionController');
