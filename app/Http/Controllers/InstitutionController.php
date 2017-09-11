@@ -57,7 +57,7 @@ class InstitutionController extends Controller
      */
     public function edit(Institution $institution)
     {
-        //
+        return view('institutions.edit', ['institution' => $institution]);
     }
 
     /**
