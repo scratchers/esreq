@@ -1,0 +1,14 @@
+language: php
+env:
+  - APP_ENV=testing
+php:
+  - 7.1
+  - 7.0.22
+install:
+  - cp .env.example .env
+  - composer install
+  - php artisan key:generate
+script:
+  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
