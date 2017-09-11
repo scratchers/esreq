@@ -33,4 +33,37 @@ class InstitutionTest extends TestCase
             ->assertSee((string)$institution->longitude)
         ;
     }
+
+    public function test_updates_institution()
+    {
+        $institution = create(Institution::class, [
+            'latitude' => 37.4419,
+            'longitude' => -122.1419,
+        ]);
+
+        $updatedLat = 35.998093;
+        $updatedLon = -94.089991;
+
+        $this
+            ->get("/institutions/{$institution->id}")
+            ->assertSee(e($institution->name))
+            ->assertSee((string)$institution->latitude)
+            ->assertSee((string)$institution->longitude)
+        ;
+
+        $this
+            ->patch("/institutions/{$institution->id}", [
+                'latitude' => $updatedLat,
+                'longitude' => $updatedLon,
+            ])
+            ->assertStatus(204)
+        ;
+
+        $this
+            ->get("/institutions/{$institution->id}")
+            ->assertSee(e($institution->name))
+            ->assertSee((string)$updatedLat)
+            ->assertSee((string)$updatedLon)
+        ;
+    }
 }
