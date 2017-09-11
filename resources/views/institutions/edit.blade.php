@@ -15,11 +15,23 @@
     <script>
     var map;
 
-    function initMap() {
-        var arkansas = {lat: 35.998093, lng: -94.089991};
+    function initMap()
+    {
+        var wcob = {lat: 36.06463197792664, lng: -94.17427137166595};
         map = new google.maps.Map(document.getElementById('map'), {
-          center: arkansas,
-          zoom: 13
+            center: wcob,
+            zoom: 13
+        });
+
+        var marker = new google.maps.Marker({
+            position: wcob,
+            map: map,
+            draggable: true,
+            title: "Drag me!"
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            console.log('lat: ' + evt.latLng.lat() + ' lng: ' + evt.latLng.lng());
         });
     }
     </script>
