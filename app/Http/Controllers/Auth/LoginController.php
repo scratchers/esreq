@@ -49,7 +49,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if ( strpos($request->input('email'), '@uark.edu') !== false ) {
-            return redirect(url('/idp'));
+            return redirect(route('shibboleth-login'));
         }
 
         return $this->authenticatesUsersLogin($request);
