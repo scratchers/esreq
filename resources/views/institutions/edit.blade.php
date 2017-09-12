@@ -63,7 +63,7 @@
     }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ config('google-maps.key') }}&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap&key={{ config('google-maps.key') }}">
     </script>
 
     <div class="modal fade" id="saveLocationConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
