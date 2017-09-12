@@ -126,23 +126,24 @@
         </div>
     </div>
 </div>
-
-<script>
-$( function() {
-    $( "#institution" ).autocomplete({
-        source: [
-            @foreach (App\Institution::get() as $institution)
-            { label: "{{ $institution->name }}", id: {{ $institution->id }}, url: "{{ $institution->url }}" },
-            @endforeach
-        ],
-        select: function( event, ui ) {
-            $( "#institution" ).val(  ui.item.label  ).attr( "readonly", true );
-            $( "#institution_url" ).val( ui.item.url ).attr( "readonly", true );
-            $( "#institution_id"  ).val( ui.item.id );
-            return false;
-        }
-    });
-} );
-</script>
-
 @endsection
+
+@push('scripts')
+    <script>
+    $( function() {
+        $( "#institution" ).autocomplete({
+            source: [
+                @foreach (App\Institution::get() as $institution)
+                { label: "{{ $institution->name }}", id: {{ $institution->id }}, url: "{{ $institution->url }}" },
+                @endforeach
+            ],
+            select: function( event, ui ) {
+                $( "#institution" ).val(  ui.item.label  ).attr( "readonly", true );
+                $( "#institution_url" ).val( ui.item.url ).attr( "readonly", true );
+                $( "#institution_id"  ).val( ui.item.id );
+                return false;
+            }
+        });
+    } );
+    </script>
+@endpush
