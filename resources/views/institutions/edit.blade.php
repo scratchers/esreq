@@ -10,10 +10,6 @@
 
     <p><a href="{{ $institution->url }}">{{ $institution->url }}</a></p>
 
-    @unless (empty($institution->latitude))
-    <p>Location: {{ $institution->latitude }}, {{ $institution->longitude }}</p>
-    @endunless
-
     <div class="panel panel-default">
         <div class="panel-body">
             <p>
