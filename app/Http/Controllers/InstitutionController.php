@@ -14,7 +14,13 @@ class InstitutionController extends Controller
      */
     public function index()
     {
-        return view('institutions.index', ['institutions' => Institution::all()]);
+        $institutions = Institution::all();
+
+        if (requestExpectsJson()) {
+            return $institutions;
+        }
+
+        return view('institutions.index', ['institutions' => $institutions]);
     }
 
     /**
