@@ -52,6 +52,10 @@ class InstitutionController extends Controller
      */
     public function show(Institution $institution)
     {
+        if (requestExpectsJson()) {
+            return $institution;
+        }
+
         return view('institutions.show', ['institution' => $institution]);
     }
 

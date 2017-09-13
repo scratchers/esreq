@@ -32,6 +32,16 @@ class InstitutionTest extends TestCase
         ;
     }
 
+    public function test_shows_institution_json()
+    {
+        $institution = create(Institution::class);
+
+        $this
+            ->get("/institutions/{$institution->id}?json")
+            ->assertJson($institution->toArray())
+        ;
+    }
+
     public function test_shows_institution()
     {
         $institution = create(Institution::class);
