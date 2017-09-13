@@ -5,7 +5,11 @@
     <p><a href="{{ $institution->url }}">{{ $institution->url }}</a></p>
 
     @unless (empty($institution->latitude))
-        <div id="map" style="height:800px"></div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="map" style="height:800px"></div>
+            </div>
+        </div>
     @endunless
 @endsection
 
