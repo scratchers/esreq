@@ -13,7 +13,8 @@
         "razorbacks/style": "^1.2",
         "razorbacks/laravel-shibboleth": "^2.2",
         "appstract/laravel-opcache": "^1.2",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "kitetail/zttp": "^0.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
