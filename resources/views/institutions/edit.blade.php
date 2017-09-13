@@ -6,25 +6,30 @@
         <a href="{{ route('institutions.show', $institution) }}" class="btn btn-warning">Cancel Editing</a>
     </div>
 
-    <h1>{{ $institution->name }}</h1>
+    <form action="{{ route('institutions.update', $institution) }}" method="post">
+        {{ method_field('PUT') }}
+        {{ csrf_field() }}
 
-    <p><a href="{{ $institution->url }}">{{ $institution->url }}</a></p>
+        <input type="hidden" name="latitude" value="{{ $institution->latitude }}">
+        <input type="hidden" name="longitude" value="{{ $institution->longitude }}">
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <p>
-                Drag and drop the position marker
-                to show the institution's location.
-                Then click the save button.
-            </p>
-            <div id="map" style="height:800px"></div>
+        <h1><input type="text" name="name" value="{{ $institution->name }}" required></h1>
+
+        <p><input type="text" name="url" value="{{ $institution->url }}" required></p>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    Drag and drop the position marker
+                    to show the institution's location.
+                </p>
+                <div id="map" style="height:800px"></div>
+            </div>
         </div>
-        <div class="panel-footer">
-            <button onclick="saveLocation()" class="btn btn-primary">
-                Save
-            </button>
-        </div>
-    </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
 @endsection
 
 @push('scripts')
@@ -46,38 +51,14 @@
             draggable: true,
             title: "Drag me!",
         });
-    }
 
-    function saveLocation()
-    {
-        $.ajax({
-            type: "PATCH",
-            url: "{{ route('institutions.update', $institution) }}",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "latitude": marker.position.lat(),
-                "longitude": marker.position.lng(),
-            },
-            success: function (data) {
-                $('#saveLocationConfirmation').modal();
-            }
+        google.maps.event.addListener(marker, 'dragend', function(){
+            $('input[name=latitude]').val(marker.position.lat());
+            $('input[name=longitude]').val(marker.position.lng());
         });
     }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap&key={{ config('google-maps.key') }}">
     </script>
-
-    <div class="modal fade" id="saveLocationConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-              The institution has been updated successfully!
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-          </div>
-        </div>
-      </div>
-    </div>
 @endpush

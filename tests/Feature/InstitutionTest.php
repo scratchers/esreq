@@ -71,12 +71,19 @@ class InstitutionTest extends TestCase
             ->assertSee((string)$institution->longitude)
         ;
 
-        $this
-            ->patch("/institutions/{$institution->id}", [
+        $response = $this
+            ->put("/institutions/{$institution->id}", [
                 'latitude' => $updatedLat,
                 'longitude' => $updatedLon,
             ])
-            ->assertStatus(204)
+            ->assertStatus(302)
+        ;
+
+        $this
+            ->get($response->headers->get('Location'))
+            ->assertSee(e($institution->name))
+            ->assertSee((string)$updatedLat)
+            ->assertSee((string)$updatedLon)
         ;
 
         $this

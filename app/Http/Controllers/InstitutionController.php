@@ -80,7 +80,7 @@ class InstitutionController extends Controller
     public function update(Request $request, Institution $institution)
     {
         if ($institution->update($request->all())) {
-            return response(null, 204);
+            return redirect(route('institutions.show', $institution));
         }
 
         return abort(500);
