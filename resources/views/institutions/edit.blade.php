@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="pull-right">
+        <a href="{{ route('institutions.index') }}" class="btn btn-default">All Institutions</a>
+        <a href="{{ route('institutions.show', $institution) }}" class="btn btn-warning">Cancel Editing</a>
+    </div>
+
     <h1>{{ $institution->name }}</h1>
+
     <p><a href="{{ $institution->url }}">{{ $institution->url }}</a></p>
 
     @unless (empty($institution->latitude))
