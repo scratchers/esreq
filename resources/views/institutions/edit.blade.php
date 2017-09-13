@@ -35,7 +35,7 @@
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: location,
-            zoom: 13,
+            zoom: 5,
         });
 
         marker = new google.maps.Marker({
