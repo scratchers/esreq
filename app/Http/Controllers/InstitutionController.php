@@ -30,7 +30,7 @@ class InstitutionController extends Controller
      */
     public function create()
     {
-        //
+        return view('institutions.create');
     }
 
     /**
