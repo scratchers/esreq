@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Institution;
 use Illuminate\Http\Request;
+use App\Http\Requests\InstitutionRequest;
 
 class InstitutionController extends Controller
 {
@@ -36,10 +37,10 @@ class InstitutionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\InstitutionRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstitutionRequest $request)
     {
         $institution = Institution::create($request->all());
 

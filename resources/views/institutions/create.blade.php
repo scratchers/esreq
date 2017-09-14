@@ -61,7 +61,7 @@
 
     function initMap()
     {
-        var location = {lat: {{ old('latitude', 36.06463197792664) }}, lng: {{ old('longitude', -94.17427137166595) }}};
+        var location = {lat: {{ old('latitude') ?: 36.06463197792664 }}, lng: {{ old('longitude') ?: -94.17427137166595 }}};
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: location,

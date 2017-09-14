@@ -27,7 +27,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Institution::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->company,
-        'url' => $faker->unique()->domainName,
+        'url' => "https://example.com/{$faker->unique()->slug}",
         'latitude' => $faker->latitude,
         'longitude' => $faker->longitude,
     ];
