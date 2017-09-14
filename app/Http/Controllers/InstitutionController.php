@@ -29,8 +29,17 @@ class InstitutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->has('institution_id')) {
+            session(['institution_id' => $request->institution_id]);
+            return redirect('/register');
+        }
+
+        if ($request->has('institution')) {
+            return view('institutions.create', ['name' => $request->institution]);
+        }
+
         return view('institutions.create');
     }
 
@@ -43,6 +52,11 @@ class InstitutionController extends Controller
     public function store(InstitutionRequest $request)
     {
         $institution = Institution::create($request->all());
+
+        if (is_null($request->user())) {
+            session(['institution_id' => $institution->id]);
+            return redirect('/register');
+        }
 
         return redirect(route('institutions.show', $institution));
     }

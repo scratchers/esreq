@@ -43,6 +43,15 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        if (session()->has('institution_id')) {
+            return view('auth.register');
+        }
+
+        return view('auth.institution');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -56,14 +65,8 @@ class RegisterController extends Controller
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'institution_id' => 'required|exists:institutions,id',
         ];
-
-        if ( empty($data['institution_id']) ) {
-            $rules['institution'] =  'required|string|max:255|unique:institutions,name';
-            $rules['institution_url'] = 'required|url|max:255|unique:institutions,url|active_url';
-        } else {
-            $rules['institution_id'] = 'integer|min:1|exists:institutions,id';
-        }
 
         return Validator::make($data, $rules);
     }

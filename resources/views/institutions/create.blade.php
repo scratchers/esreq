@@ -14,7 +14,7 @@
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="name" class="col-md-1 control-label">Name</label>
         <div class="col-md-6">
-            <input name="name" id="name" class="form-control" value="{{ old('name') }}" required>
+            <input name="name" id="name" class="form-control" value="{{ $name or old('name') }}" required>
 
             @if ($errors->has('name'))
                 <span class="help-block">

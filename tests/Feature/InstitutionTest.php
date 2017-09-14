@@ -99,6 +99,7 @@ class InstitutionTest extends TestCase
         $institution = make(Institution::class)->toArray();
 
         $response = $this
+            ->signIn()
             ->post('/institutions', $institution)
             ->assertStatus(302)
         ;
