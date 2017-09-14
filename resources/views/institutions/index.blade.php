@@ -34,6 +34,8 @@
 
     function initMap()
     {
+        var infoWindow = new google.maps.InfoWindow;
+
         var wcob = {lat: 36.06463197792664, lng: -94.17427137166595};
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -49,10 +51,18 @@
             success: function (data) {
                 $.each(data, function(index, institution){
                     if (institution.latitude) {
-                        new google.maps.Marker({
+                        var marker = new google.maps.Marker({
                             position: {lat: institution.latitude, lng: institution.longitude},
                             map: map,
                             title: institution.name,
+                        });
+
+                        var infowincontent = document.createElement('div');
+                        infowincontent.innerHTML = '<a href="/institutions/'+ institution.id +'">'+ institution.name +'</a>';
+
+                        marker.addListener('click', function() {
+                            infoWindow.setContent(infowincontent);
+                            infoWindow.open(map, marker);
                         });
                     }
                 });
