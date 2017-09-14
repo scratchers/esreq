@@ -41,7 +41,9 @@ class InstitutionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $institution = Institution::create($request->all());
+
+        return redirect(route('institutions.show', $institution));
     }
 
     /**

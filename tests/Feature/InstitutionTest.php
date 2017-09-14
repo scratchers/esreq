@@ -93,4 +93,19 @@ class InstitutionTest extends TestCase
             ->assertSee((string)$updatedLon)
         ;
     }
+
+    public function test_creates_institution()
+    {
+        $institution = make(Institution::class)->toArray();
+
+        $response = $this
+            ->post('/institutions', $institution)
+            ->assertStatus(302)
+        ;
+
+        $this
+            ->getJson($response->headers->get('Location'))
+            ->assertJson($institution)
+        ;
+    }
 }
