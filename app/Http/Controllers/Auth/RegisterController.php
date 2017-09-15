@@ -79,15 +79,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ( empty($data['institution_id']) ) {
-            $institution = Institution::create([
-                'name' => $data['institution'],
-                'url'  => $data['institution_url'],
-            ]);
-
-            $data['institution_id'] = $institution->id;
-        }
-
         return User::create([
             'institution_id' => $data['institution_id'],
             'first_name' => $data['first_name'],
