@@ -8,5 +8,5 @@ function requestExpectsJson() : bool
         return true;
     }
 
-    return $request->json === '';
+    return $request->exists('json');
 }
