@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Institution;
-use Zttp\Zttp;
+use App\GoogleMaps;
 
 class GoogleLocations extends Command
 {
@@ -27,8 +27,10 @@ class GoogleLocations extends Command
      *
      * @return void
      */
-    public function __construct()
+    protected $gmaps;
+    public function __construct(GoogleMaps $gmaps)
     {
+        $this->gmaps = $gmaps;
         parent::__construct();
     }
 
@@ -51,14 +53,9 @@ class GoogleLocations extends Command
                 sleep(1);
             }
 
-            $data = Zttp::get('https://maps.googleapis.com/maps/api/geocode/json', [
-                'address' => $institution->name,
-                'key' => config('google-maps.key'),
-            ])->json();
+            $location = $this->gmaps->queryLatLng($institution->name);
 
             $bar->advance();
-
-            $location = $data['results'][0]['geometry']['location'] ?? null;
 
             if (empty($location['lat'])) {
                 continue;
