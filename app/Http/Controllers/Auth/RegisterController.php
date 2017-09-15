@@ -45,8 +45,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        if (session()->has('institution_id')) {
-            return view('auth.register');
+        if (session()->has('institution')) {
+            return view('auth.register', ['institution' => session('institution')]);
         }
 
         return view('auth.institution');

@@ -8,7 +8,15 @@
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    <input name="institution_id" id="institution_id" type="hidden" value="{{ session('institution_id') }}">
+                    <input name="institution_id" id="institution_id" type="hidden" value="{{ $institution->id }}">
+
+                    <div class="form-group">
+                        <label for="institution" class="col-md-4 control-label">Institution</label>
+
+                        <div class="col-md-6">
+                            <p id="institution">{{ $institution->name }}</p>
+                        </div>
+                    </div>
 
                     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                         <label for="first_name" class="col-md-4 control-label">First Name</label>

@@ -40,7 +40,7 @@ class InstitutionController extends Controller
     public function create(Request $request)
     {
         if ($request->has('institution_id')) {
-            session(['institution_id' => $request->institution_id]);
+            session(['institution' => Institution::findOrFail($request->institution_id)]);
             return redirect('/register');
         }
 
@@ -68,7 +68,7 @@ class InstitutionController extends Controller
         $institution = Institution::create($request->all());
 
         if (is_null($request->user())) {
-            session(['institution_id' => $institution->id]);
+            session(['institution' => $institution]);
             return redirect('/register');
         }
 
