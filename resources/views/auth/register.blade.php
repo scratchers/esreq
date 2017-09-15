@@ -14,7 +14,10 @@
                         <label for="institution" class="col-md-4 control-label">Institution</label>
 
                         <div class="col-md-6">
-                            <p id="institution">{{ $institution->name }}</p>
+                            <p id="institution">
+                                {{ $institution->name }}
+                                <a href="?clear" style="color:red"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </p>
                         </div>
                     </div>
 

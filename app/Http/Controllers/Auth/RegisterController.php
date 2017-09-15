@@ -43,8 +43,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
+        if ($request->exists('clear')) {
+            $request->session()->forget('institution');
+        }
+
         if (session()->has('institution')) {
             return view('auth.register', ['institution' => session('institution')]);
         }
