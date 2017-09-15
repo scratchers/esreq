@@ -32,6 +32,9 @@ class GoogleMaps
 
     protected function extractLatLng(ZttpResponse $response) : array
     {
-        return $response->json()['results'][0]['geometry']['location'] ?? [];
+        return $response->json()['results'][0]['geometry']['location'] ?? [
+            'lat' => null,
+            'lng' => null,
+        ];
     }
 }

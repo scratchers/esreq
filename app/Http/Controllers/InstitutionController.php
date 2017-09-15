@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Institution;
 use Illuminate\Http\Request;
 use App\Http\Requests\InstitutionRequest;
+use App\GoogleMaps;
 
 class InstitutionController extends Controller
 {
+    protected $gmaps;
+
+    public function __construct(GoogleMaps $gmaps)
+    {
+        $this->gmaps = $gmaps;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +45,13 @@ class InstitutionController extends Controller
         }
 
         if ($request->has('institution')) {
-            return view('institutions.create', ['name' => $request->institution]);
+            $location = $this->gmaps->queryLatLng($request->institution);
+
+            return view('institutions.create', [
+                'name' => $request->institution,
+                'latitude' => $location['lat'],
+                'longitude' => $location['lng'],
+            ]);
         }
 
         return view('institutions.create');
