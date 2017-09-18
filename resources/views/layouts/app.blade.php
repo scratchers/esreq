@@ -14,6 +14,7 @@
         <li><a href="{{ route('register') }}">Register</a></li>
     @endauth
     <li><a href="{{ route('instructions') }}">Instructions</a></li>
+    <li><a href="{{ route('institutions.index') }}">Institutions</a></li>
 @endsection
 
 @section('navbar-right')
