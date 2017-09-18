@@ -43,6 +43,15 @@
             zoom: 2,
         });
 
+        var circle = {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: 'red',
+            fillOpacity: .4,
+            scale: 4.5,
+            strokeColor: 'white',
+            strokeWeight: 1
+        };
+
         $.ajax({
             url: "{{ route('institutions.index') }}",
             headers: {
@@ -54,6 +63,7 @@
                         var marker = new google.maps.Marker({
                             position: {lat: institution.latitude, lng: institution.longitude},
                             map: map,
+                            icon: circle,
                             title: institution.name,
                         });
 
