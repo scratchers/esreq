@@ -37,8 +37,8 @@
         </div>
     </div>
 
-    <input type="hidden" name="latitude" value="{{ old('latitude') }}">
-    <input type="hidden" name="longitude" value="{{ old('longitude') }}">
+    <input type="hidden" name="latitude" value="{{ $latitude or old('latitude') ?: 36.06463197792664 }}">
+    <input type="hidden" name="longitude" value="{{ $longitude or old('longitude') ?: -94.17427137166595 }}">
     <div class="panel panel-default">
         <div class="panel-body">
             <p>
