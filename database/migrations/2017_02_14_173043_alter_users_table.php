@@ -14,11 +14,19 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        // this is about the sloppiest, hackiest, worst workaround so far
-        // DB::statement('ALTER TABLE users ADD CONSTRAINT def_inst_uark DEFAULT(40) FOR institution_id;');
-
         Schema::table('users', function (Blueprint $table) {
             $table->softDeletes();
+        });
+
+        // this is about the sloppiest, hackiest, worst workaround so far:
+        // hard-coding ID 40 (uark) for shib logins that bypass institution registration
+        // TSQL
+        if (config('database.default') === 'sqlsrv') {
+            DB::statement('ALTER TABLE users ADD CONSTRAINT def_inst_uark DEFAULT(40) FOR institution_id;');
+            return;
+        }
+        // everyone else
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('institution_id')->unsigned()->default(40)->change();
         });
     }
@@ -30,11 +38,9 @@ class AlterUsersTable extends Migration
      */
     public function down()
     {
-        if (App::environment() === 'testing') {
-            return;
+        if (config('database.default') === 'sqlsrv') {
+            DB::statement('ALTER TABLE users DROP CONSTRAINT def_inst_uark;');
+            DB::statement('ALTER TABLE users DROP COLUMN deleted_at;');
         }
-
-        DB::statement('ALTER TABLE users DROP CONSTRAINT def_inst_uark;');
-        DB::statement('ALTER TABLE users DROP COLUMN deleted_at;');
     }
 }
