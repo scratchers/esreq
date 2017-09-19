@@ -15,6 +15,12 @@
             My Faculty Accounts
         </a>
     </li>
+
+    <li>
+        <a href="{{ route('users.show', Auth::user()) }}">
+            My Profile
+        </a>
+    </li>
 </ul>
 
 @endsection
