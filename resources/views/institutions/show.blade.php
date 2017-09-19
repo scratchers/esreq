@@ -3,7 +3,10 @@
 @section('content')
     <div class="pull-right">
         <a href="{{ route('institutions.index') }}" class="btn btn-default">All Institutions</a>
+
+        @can ('update', $institution)
         <a href="{{ route('institutions.edit', $institution) }}" class="btn btn-default">Edit</a>
+        @endcan
     </div>
 
     <h1>{{ $institution->name }}</h1>

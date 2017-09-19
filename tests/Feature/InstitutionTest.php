@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Institution;
+use App\User;
 
 class InstitutionTest extends TestCase
 {
@@ -61,6 +62,8 @@ class InstitutionTest extends TestCase
             'longitude' => -122.1419,
         ]);
 
+        $user = create(User::class, ['institution_id' => $institution->id]);
+
         $updatedLat = 35.998093;
         $updatedLon = -94.089991;
 
@@ -72,6 +75,7 @@ class InstitutionTest extends TestCase
         ;
 
         $response = $this
+            ->signIn($user)
             ->put("/institutions/{$institution->id}", [
                 'latitude' => $updatedLat,
                 'longitude' => $updatedLon,
@@ -107,6 +111,20 @@ class InstitutionTest extends TestCase
         $this
             ->getJson($response->headers->get('Location'))
             ->assertJson($institution)
+        ;
+    }
+
+    public function test_user_can_only_update_their_institution()
+    {
+        $elsewhere = create(Institution::class, ['name' => 'elsewhere']);
+
+        $this
+            ->withExceptionHandling()
+            ->signIn()
+            ->patch("/institutions/{$elsewhere->id}", [
+                'name' => 'somewhere',
+            ])
+            ->assertStatus(403)
         ;
     }
 }

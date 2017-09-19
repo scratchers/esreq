@@ -99,6 +99,8 @@ class InstitutionController extends Controller
      */
     public function edit(Institution $institution)
     {
+        $this->authorize('update', $institution);
+
         return view('institutions.edit', ['institution' => $institution]);
     }
 
@@ -111,6 +113,8 @@ class InstitutionController extends Controller
      */
     public function update(Request $request, Institution $institution)
     {
+        $this->authorize('update', $institution);
+
         if ($institution->update($request->all())) {
             return redirect(route('institutions.show', $institution));
         }
