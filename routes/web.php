@@ -91,6 +91,8 @@ Route::group(['middleware' => 'auth'], function(){
          ->get ('report/requests', 'ReportsController@requests');
     Route::name('report.requests.show')
          ->get ('report/requests/{esrequest}', 'ReportsController@request');
+
+    Route::resource('users', 'UserController');
 });
 
 Route::name('instructions')->get('/instructions', 'WelcomeController@instructions');

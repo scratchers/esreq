@@ -8,6 +8,8 @@ use App\{Esrequest,FacultyAccount};
 use App\Policies\{EsrequestPolicy,FacultyAccountPolicy};
 use App\Institution;
 use App\Policies\InstitutionPolicy;
+use App\User;
+use App\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         Esrequest::class => EsrequestPolicy::class,
         FacultyAccount::class => FacultyAccountPolicy::class,
         Institution::class => InstitutionPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
