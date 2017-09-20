@@ -10,11 +10,8 @@
     @auth
         <li><a href="{{ route('home') }}">Home</a></li>
         <li><a href="{{ route('customer.requests.create') }}">New</a></li>
-    @else
-        <li><a href="{{ route('register') }}">Register</a></li>
     @endauth
     <li><a href="{{ route('instructions') }}">Instructions</a></li>
-    <li><a href="{{ route('institutions.index') }}">Institutions</a></li>
 @endsection
 
 @section('navbar-right')
@@ -31,6 +28,7 @@
             </a>
         </li>
     @else
+        <li><a href="{{ route('register') }}">Register</a></li>
         <li><a href="{{ route('login') }}">Login</a></li>
     @endauth
 @endsection

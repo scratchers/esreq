@@ -15,6 +15,8 @@
             Faculty Accounts
         </a>
     </li>
+
+    <li><a href="{{ route('institutions.index') }}">Institutions</a></li>
 </ul>
 
 @endsection
