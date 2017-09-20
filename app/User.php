@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use StudentAffairsUwm\Shibboleth\Entitlement;
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -90,5 +91,16 @@ class User extends Authenticatable
         $institution = $this->institution->name;
 
         return "{$this->first_name} {$this->last_name}, $institution";
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }
