@@ -68,9 +68,15 @@ class InstitutionController extends Controller
     {
         $institution = Institution::create($request->all());
 
-        if (is_null($request->user())) {
+        $user = $request->user();
+
+        if (is_null($user)) {
             session(['institution' => $institution]);
             return redirect('/register');
+        }
+
+        if (!$user->isAdmin()) {
+            $user->update(['institution_id' => $institution->id]);
         }
 
         return redirect(route('institutions.show', $institution));

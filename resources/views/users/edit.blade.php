@@ -22,6 +22,7 @@
                     <option value="{{ $institution->id }}" @if ($institution->id === $user->institution_id) selected @endif>{{ $institution->name }}</option>
                 @endforeach
             </select>
+            <p><a href="{{ route('institutions.create') }}">Create New Institution</a></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>

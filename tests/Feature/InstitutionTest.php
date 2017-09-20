@@ -100,17 +100,26 @@ class InstitutionTest extends TestCase
 
     public function test_creates_institution()
     {
+        $user = create(User::class);
         $institution = make(Institution::class)->toArray();
 
-        $response = $this
-            ->signIn()
+        $response1 = $this
+            ->signIn($user)
             ->post('/institutions', $institution)
             ->assertStatus(302)
         ;
 
-        $this
-            ->getJson($response->headers->get('Location'))
+        $response2 = $this
+            ->getJson($response1->headers->get('Location'))
             ->assertJson($institution)
+        ;
+
+        $institution = $response2->decodeResponseJson();
+
+        // assert newly created institution belongs to authenticated user
+        $this
+            ->getJson("/users/{$user->id}")
+            ->assertJson(['institution_id' => $institution['id']])
         ;
     }
 
