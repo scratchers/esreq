@@ -16,6 +16,25 @@
 
         <p><input type="email" name="email" value="{{ $user->email }}" placeholder="Email" required></p>
 
+        <div class="form-group">
+            <select name="institution_id" style="width:50%">
+                @foreach (App\Institution::all() as $institution)
+                    <option value="{{ $institution->id }}" @if ($institution->id === $user->institution_id) selected @endif>{{ $institution->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+@endsection
+
+@section('head')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $('select').select2();
+    </script>
 @endsection
