@@ -6,6 +6,11 @@
 
 <h1>{{ $h1 or 'Reports' }}</h1>
 
+<p class="lead">
+    Note drilling down into request counts varies from entity counts
+    because not all users have made a request.
+</p>
+
 @include('report.partials.breadcrumb')
 
 @unless( Route::is('report') )
