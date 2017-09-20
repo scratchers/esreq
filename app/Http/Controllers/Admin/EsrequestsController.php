@@ -50,7 +50,7 @@ class EsrequestsController extends Controller
     public function unfulfilled()
     {
         $data = [
-            'esrequests' => Esrequest::whereNull('fulfilled_at')->get(),
+            'esrequests' => Esrequest::with('user.institution')->whereNull('fulfilled_at')->get(),
             'h1' => 'New Requests',
         ];
 

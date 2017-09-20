@@ -30,7 +30,7 @@ class FacultyAccountController extends Controller
      */
     public function index()
     {
-        $facultyAccounts = FacultyAccount::whereNotNull('user_id')->with('user', 'platforms')->get();
+        $facultyAccounts = FacultyAccount::whereNotNull('user_id')->with('user.institution', 'platforms')->get();
 
         return view('facultyAccounts.index', compact('facultyAccounts'));
     }
