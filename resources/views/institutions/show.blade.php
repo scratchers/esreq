@@ -5,7 +5,7 @@
         <a href="{{ route('institutions.index') }}" class="btn btn-default">All Institutions</a>
 
         @can ('update', $institution)
-        <a href="{{ route('institutions.edit', $institution) }}" class="btn btn-default">Edit</a>
+        <a href="{{ route('institutions.edit', $institution) }}" class="btn btn-default">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         @endcan
     </div>
 

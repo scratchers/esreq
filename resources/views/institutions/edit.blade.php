@@ -3,7 +3,7 @@
 @section('content')
     <div class="pull-right">
         <a href="{{ route('institutions.index') }}" class="btn btn-default">All Institutions</a>
-        <a href="{{ route('institutions.show', $institution) }}" class="btn btn-warning">Cancel Editing</a>
+        <a href="{{ route('institutions.show', $institution) }}" class="btn btn-warning">Cancel Editing <i class="fa fa-ban" aria-hidden="true"></i></a>
     </div>
 
     <form action="{{ route('institutions.update', $institution) }}" method="post">
