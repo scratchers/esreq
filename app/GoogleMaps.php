@@ -25,7 +25,7 @@ class GoogleMaps
     {
         return $this->zttp->get('https://maps.googleapis.com/maps/api/geocode/json',
             array_merge($options, [
-                'key' => config('google-maps.key')
+                'key' => config('google-maps.server-key')
             ])
         );
     }

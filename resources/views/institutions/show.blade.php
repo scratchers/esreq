@@ -44,7 +44,7 @@
     }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap&key={{ config('google-maps.key') }}">
+        src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap&key={{ config('google-maps.client-key') }}">
     </script>
     @endunless
 @endpush
