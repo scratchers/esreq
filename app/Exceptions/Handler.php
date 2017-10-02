@@ -10,6 +10,7 @@ use Auth;
 use Request;
 use App;
 use App\Exceptions\FilteredServerVariable;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -47,6 +48,10 @@ class Handler extends ExceptionHandler
                 'user'      => Auth::user(),
                 'server'    => print_r($server->get(), true),
             ];
+
+            if ($exception instanceof ValidationException) {
+                $data['validations'] = print_r($exception->validator->failed(), true);
+            }
 
             Mail::send('emails.exception', $data, function ($message) {
                 $message->to(config('mail.error'))

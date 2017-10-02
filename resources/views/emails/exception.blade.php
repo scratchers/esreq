@@ -10,6 +10,11 @@
     {{ $exception }}
 </pre>
 
+@unless(empty($validations))
+    <h2>Validation</h2>
+    <pre>{{ $validations }}</pre>
+@endunless
+
 <h2>Request</h2>
 
 <pre>
