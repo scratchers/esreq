@@ -36,7 +36,7 @@ class EsrequestsController extends Controller
     public function index()
     {
         $data = [
-            'esrequests' => Esrequest::all(),
+            'esrequests' => Esrequest::with('user.institution')->get(),
         ];
 
         return view('esrequests.index', $data);

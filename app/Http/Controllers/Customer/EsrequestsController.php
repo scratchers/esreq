@@ -34,7 +34,7 @@ class EsrequestsController extends Controller
     public function index()
     {
         $data = [
-            'esrequests' => Auth::user()->esrequests,
+            'esrequests' => Esrequest::with('user.institution')->where('user_id', Auth::user()->id)->get(),
         ];
 
         return view('esrequests.index', $data);
