@@ -27,8 +27,8 @@ class CreateEsrequest extends FormRequest
         return [
             'platform' => 'required',
             'faculty_accounts' => 'required_without_all:student_accounts',
-            'date_begin' => 'date',
-            'date_end'   => 'date',
+            'date_begin' => 'nullable|date',
+            'date_end'   => 'nullable|date',
         ];
     }
 
