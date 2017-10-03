@@ -3,15 +3,20 @@
 @section('content')
 <h1>Instructions</h1>
 
-<h2>Remote Desktop Connection</h2>
-<ul>
-    @foreach ( App\Platform::all() as $platform )
+<h2>Remote Access</h2>
+<div>
+    <ul>
         <li>
-            <a href='{{ asset("downloads/remote-desktop-{$platform->name}.pdf") }}'>
-                {{ $platform->name }}
+            <a href="https://walton.uark.edu/enterprise/downloads/remote-access-external.pdf">
+                External Users
             </a>
         </li>
-    @endforeach
-</ul>
+        <li>
+            <a href="https://walton.uark.edu/enterprise/downloads/remote-access-walton.pdf">
+                Internal Users (Sam M. Walton College of Business only)
+            </a>
+        </li>
+    </ul>
+</div>
 
 @endsection

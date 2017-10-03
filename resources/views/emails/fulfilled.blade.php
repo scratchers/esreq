@@ -23,15 +23,18 @@
 </p>
 
 <p>
-    Remote Desktop Connection Instructions:
+    Remote Access Instructions:
     <ul>
-    @foreach ( $esrequest->platforms as $platform )
         <li>
-            <a href='{{ asset("downloads/remote-desktop-{$platform->name}.pdf") }}'>
-                {{ $platform->name }}
+            <a href="https://walton.uark.edu/enterprise/downloads/remote-access-external.pdf">
+                External Users
             </a>
         </li>
-    @endforeach
+        <li>
+            <a href="https://walton.uark.edu/enterprise/downloads/remote-access-walton.pdf">
+                Internal Users (Sam M. Walton College of Business only)
+            </a>
+        </li>
     </ul>
 </p>
 
