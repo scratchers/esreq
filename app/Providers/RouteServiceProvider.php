@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\User;
+use App\Esrequest;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('user', function ($value) {
             return User::with('entitlements')->findOrFail($value);
+        });
+
+        Route::bind('esrequest', function ($value) {
+            return Esrequest::with('user.facultyAccounts.platforms')->findOrFail($value);
         });
     }
 
