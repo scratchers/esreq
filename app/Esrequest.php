@@ -34,11 +34,6 @@ class Esrequest extends Model
     }
 
     protected $fillable = [
-        'IBM',
-        'Microsoft',
-        'SAP',
-        'SAS',
-        'Teradata',
         'faculty_accounts',
         'student_accounts',
         'course_name',
