@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NewEsrequest;
 use App\Platform;
 use App\Esrequest;
+use App\User;
 
 class SasRequestTest extends TestCase
 {
@@ -24,8 +25,10 @@ class SasRequestTest extends TestCase
         $sas = Platform::where('name', 'SAS')->first();
         $data['platform'] = [$sas->id];
 
+        $razorback = create(User::class, ['email' => 'tusk@uark.edu']);
+
         $response = $this
-            ->signIn()
+            ->signIn($razorback)
             ->post('/requests', $data)
             ->assertStatus(302)
         ;
@@ -51,18 +54,22 @@ class SasRequestTest extends TestCase
         });
     }
 
-    public function test_non_uark_users_cannot_request_sas()
+    public function test_validates_requests_for_sas()
     {
         Mail::fake();
+
+        session()->setPreviousUrl('/requests/create');
 
         $data = make(Esrequest::class)->toArray();
         $sas = Platform::where('name', 'SAS')->first();
         $data['platform'] = [$sas->id];
 
         $this
+            ->withExceptionHandling()
             ->signIn()
             ->post('/requests', $data)
-            ->assertStatus(403)
+            ->assertRedirect('/requests/create')
+            ->assertSessionHasErrors('platform')
         ;
     }
 }
