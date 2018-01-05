@@ -50,8 +50,8 @@
   </div>
 </div>
 
-@unless ( Auth::user()->facultyAccounts->isEmpty() )
-<div class="panel panel-default">
+@unless ( $facultyAccounts->isEmpty() )
+<div id="faculty-accounts-panel" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Here are your existing faculty accounts:</h3>
   </div>
@@ -59,7 +59,7 @@
   <div class="panel-body">
     <p>Click on username for more details:</p>
     <ul>
-        @foreach ( Auth::user()->facultyAccounts as $facultyAccount )
+        @foreach ( $facultyAccounts as $facultyAccount )
             <li>
                 <a
                     href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
@@ -89,21 +89,32 @@
         <label for="faculty_accounts" class="control-label col-sm-2">
             <input
                 type="checkbox"
-                onclick="$('#faculty_accounts').toggle()"
+                onclick="$('#faculty-account-input-div').toggle(); $('#faculty_accounts').val('')"
                 {{ old('faculty_accounts') ? 'checked' : '' }}
             >
             Faculty:
         </label>
-        <div class="col-sm-10">
+        <div id="faculty-account-input-div"
+            class="col-sm-10"
+            style="{{ old('faculty_accounts') ? '' : 'display:none' }}"
+        >
             <input
                 id="faculty_accounts"
                 class="form-control"
-                min="0"
+                min="1"
+                max="32767"
                 name="faculty_accounts"
+                placeholder="How many instructors are teaching the class?"
                 type="number"
-                style="{{ old('faculty_accounts') ? '' : 'display:none' }}"
                 value="{{ old('faculty_accounts') }}"
             >
+            @unless ($facultyAccounts->isEmpty())
+                <div class="alert alert-warning">
+                    You already have <a href="#faculty-accounts-panel">{{ $facultyAccounts->count() }} faculty accounts</a>.
+                    They can be reused for other classes and student account requests.
+                    Are you sure you need another one?
+                </div>
+            @endunless
         </div>
     </div>
 
@@ -111,7 +122,7 @@
         <label for="student_accounts" class="control-label col-sm-2">
             <input
                 type="checkbox"
-                onclick="$('#student_accounts').toggle()"
+                onclick="$('#student_accounts').toggle(); $('#student_accounts').val('')"
                 {{ old('student_accounts') ? 'checked' : '' }}
             >
             Student:
@@ -120,8 +131,10 @@
             <input
                 id="student_accounts"
                 class="form-control"
-                min="0"
+                min="1"
+                max="32767"
                 name="student_accounts"
+                placeholder="How many students are in the class?"
                 type="number"
                 style="{{ old('student_accounts') ? '' : 'display:none' }}"
                 value="{{ old('student_accounts') }}"
