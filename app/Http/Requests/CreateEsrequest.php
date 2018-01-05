@@ -26,7 +26,8 @@ class CreateEsrequest extends FormRequest
     {
         return [
             'platform' => 'required|sas_razorback',
-            'faculty_accounts' => 'required_without_all:student_accounts',
+            'faculty_accounts' => 'nullable|required_without_all:student_accounts|integer|min:1|max:32767',
+            'student_accounts' => 'nullable|integer|min:1|max:32767',
             'date_begin' => 'nullable|date',
             'date_end'   => 'nullable|date',
         ];

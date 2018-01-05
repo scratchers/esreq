@@ -101,7 +101,8 @@
             <input
                 id="faculty_accounts"
                 class="form-control"
-                min="0"
+                min="1"
+                max="32767"
                 name="faculty_accounts"
                 placeholder="How many instructors are teaching the class?"
                 type="number"
@@ -130,7 +131,8 @@
             <input
                 id="student_accounts"
                 class="form-control"
-                min="0"
+                min="1"
+                max="32767"
                 name="student_accounts"
                 placeholder="How many students are in the class?"
                 type="number"
