@@ -25,7 +25,7 @@ class CreateEsrequest extends FormRequest
     public function rules()
     {
         return [
-            'platform' => 'required',
+            'platform' => 'required|sas_razorback',
             'faculty_accounts' => 'required_without_all:student_accounts',
             'date_begin' => 'nullable|date',
             'date_end'   => 'nullable|date',
@@ -35,9 +35,8 @@ class CreateEsrequest extends FormRequest
     public function messages()
     {
         return [
-            'IBM.required_without_all' => 'At least one platform is required.',
-            'faculty_accounts.required_without_all' =>
-                'You must request at least one faculty or student account.',
+            'faculty_accounts.required_without_all' => 'You must request at least one faculty or student account.',
+            'platform.sas_razorback' => 'The SAS platform is only available to University of Arkansas users.',
         ];
     }
 }

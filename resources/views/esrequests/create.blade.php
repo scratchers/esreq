@@ -22,6 +22,7 @@
   <div class="panel-body">
 
     @foreach ( App\Platform::all() as $platform )
+        @if ($platform->name !== 'SAS' || Auth::user()->isRazorback())
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
@@ -34,10 +35,17 @@
                         <div class="alert alert-warning" role="alert">
                             Must be an <a href="https://go.sap.com/training-certification/university-alliances.html" target="_blank">SAP University Alliances</a> member.
                         </div>
+                    @elseif ( $platform->name === 'SAS' )
+                        <div class="alert alert-warning" role="alert">
+                            If you're requesting student accounts for SAS,
+                            then please provide their usernames in the
+                            <a href="#comment-section">comment section</a>.
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
+        @endif
     @endforeach
   </div>
 </div>
@@ -157,7 +165,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Anything else you would like us to know?</h3>
+    <h3 id="comment-section" class="panel-title">Anything else you would like us to know?</h3>
   </div>
 
   <div class="panel-body">

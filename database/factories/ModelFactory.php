@@ -36,3 +36,12 @@ $factory->define(App\Institution::class, function (Faker\Generator $faker) {
         'longitude' => $faker->longitude,
     ];
 });
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Esrequest::class, function (Faker\Generator $faker) {
+    return [
+        'faculty_accounts' => 1,
+        'student_accounts' => $faker->numberBetween(20, 100),
+        'user_comment' => $faker->text,
+    ];
+});

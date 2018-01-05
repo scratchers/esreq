@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use DB;
-use Event;
-use App;
 use Laravel\Dusk\DuskServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Auth;
+use App\Platform;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,15 +17,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (App::Environment() === 'local') {
-            DB::connection()->enableQueryLog();
-            Event::listen('kernel.handled', function ($request, $response) {
-                if ( $request->has('sql-debug') ) {
-                    $queries = DB::getQueryLog();
-                    dd($queries);
-                }
-            });
-        }
+        Validator::extend('sas_razorback', function ($attribute, $value, $parameters, $validator) {
+            $sas = Platform::where('name', 'SAS')->first();
+
+            if (!in_array($sas->id, $value)) {
+                return true;
+            }
+
+            return Auth::user()->isRazorback();
+        });
     }
 
     /**
