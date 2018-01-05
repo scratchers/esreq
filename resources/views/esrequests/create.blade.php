@@ -22,6 +22,7 @@
   <div class="panel-body">
 
     @foreach ( App\Platform::all() as $platform )
+        @if ($platform->name !== 'SAS' || Auth::user()->isRazorback())
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
@@ -44,6 +45,7 @@
                 </div>
             </div>
         </div>
+        @endif
     @endforeach
   </div>
 </div>

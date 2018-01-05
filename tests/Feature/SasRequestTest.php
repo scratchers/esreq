@@ -69,4 +69,19 @@ class SasRequestTest extends TestCase
             ->assertSessionHasErrors('platform')
         ;
     }
+
+    public function test_hides_sas_from_foreigners()
+    {
+        $this
+            ->signIn()
+            ->get('/requests/create')
+            ->assertDontSeeText(' SAS'.PHP_EOL)
+        ;
+
+        $this
+            ->signInRazorback()
+            ->get('/requests/create')
+            ->assertSeeText(' SAS'.PHP_EOL)
+        ;
+    }
 }
