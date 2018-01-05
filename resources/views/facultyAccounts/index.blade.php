@@ -14,7 +14,9 @@
             <th>User</th>
             <th>Username</th>
             @foreach ( $platforms as $platform )
-                <th>{{ $platform->name }}</th>
+                @unless ($platform->name === 'SAS')
+                    <th>{{ $platform->name }}</th>
+                @endunless
             @endforeach
         </tr>
     </thead>
@@ -33,7 +35,9 @@
             </td>
 
             @foreach ( $platforms as $platform )
-                <td>{{ $facultyAccount->platforms->contains($platform) ? $platform->name : '' }}</td>
+                @unless ($platform->name === 'SAS')
+                    <td>{{ $facultyAccount->platforms->contains($platform) ? $platform->name : '' }}</td>
+                @endunless
             @endforeach
         </tr>
         @endforeach

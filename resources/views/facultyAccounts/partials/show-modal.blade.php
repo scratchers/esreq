@@ -30,6 +30,7 @@
     <p>Associate Platforms with Faculty Account</p>
     <ul>
         @foreach ( App\Platform::all() as $platform )
+        @unless ($platform->name === 'SAS')
         <li style="padding:5px">
             <a
                 href="{{ route('admin.facultyAccount.addplatform', ['facultyAccount' => $facultyAccount, 'platform' => $platform]) }}"
@@ -39,6 +40,7 @@
                 Associate {{ $platform->name }}
             </a>
         </li>
+        @endunless
         @endforeach
     </ul>
 </div>
