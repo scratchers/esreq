@@ -11,6 +11,7 @@ use Mail;
 use App\Http\Requests\CreateEsrequest;
 use App\Mail\NewEsrequest;
 use App\Platform;
+use App\FacultyAccount;
 
 class EsrequestsController extends Controller
 {
@@ -47,7 +48,11 @@ class EsrequestsController extends Controller
      */
     public function create()
     {
-        return view('esrequests.create');
+        $facultyAccounts = FacultyAccount::with('platforms')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        return view('esrequests.create', compact('facultyAccounts'));
     }
 
     /**

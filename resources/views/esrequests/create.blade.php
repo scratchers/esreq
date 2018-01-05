@@ -50,7 +50,7 @@
   </div>
 </div>
 
-@unless ( Auth::user()->facultyAccounts->isEmpty() )
+@unless ( $facultyAccounts->isEmpty() )
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Here are your existing faculty accounts:</h3>
@@ -59,7 +59,7 @@
   <div class="panel-body">
     <p>Click on username for more details:</p>
     <ul>
-        @foreach ( Auth::user()->facultyAccounts as $facultyAccount )
+        @foreach ( $facultyAccounts as $facultyAccount )
             <li>
                 <a
                     href="{{ route('customer.facultyAccount.show', $facultyAccount) }}"
