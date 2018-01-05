@@ -35,8 +35,7 @@ class CreateEsrequest extends FormRequest
     public function messages()
     {
         return [
-            'faculty_accounts.required_without_all' =>
-                'You must request at least one faculty or student account.',
+            'faculty_accounts.required_without_all' => 'You must request at least one faculty or student account.',
         ];
     }
 }
