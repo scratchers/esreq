@@ -50,4 +50,19 @@ class SasRequestTest extends TestCase
             return $mail->esrequest->id === $request->id;
         });
     }
+
+    public function test_non_uark_users_cannot_request_sas()
+    {
+        Mail::fake();
+
+        $data = make(Esrequest::class)->toArray();
+        $sas = Platform::where('name', 'SAS')->first();
+        $data['platform'] = [$sas->id];
+
+        $this
+            ->signIn()
+            ->post('/requests', $data)
+            ->assertStatus(403)
+        ;
+    }
 }
