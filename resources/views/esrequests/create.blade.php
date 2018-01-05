@@ -89,7 +89,7 @@
         <label for="faculty_accounts" class="control-label col-sm-2">
             <input
                 type="checkbox"
-                onclick="$('#faculty-account-input-div').toggle()"
+                onclick="$('#faculty-account-input-div').toggle(); $('#faculty_accounts').val('')"
                 {{ old('faculty_accounts') ? 'checked' : '' }}
             >
             Faculty:
@@ -122,7 +122,7 @@
         <label for="student_accounts" class="control-label col-sm-2">
             <input
                 type="checkbox"
-                onclick="$('#student_accounts').toggle()"
+                onclick="$('#student_accounts').toggle(); $('#student_accounts').val('')"
                 {{ old('student_accounts') ? 'checked' : '' }}
             >
             Student:
