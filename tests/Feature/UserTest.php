@@ -64,4 +64,13 @@ class UserTest extends TestCase
             ->assertStatus(403)
         ;
     }
+
+    public function test_validates_user_is_a_razorback()
+    {
+        $foreigner = create(User::class);
+        $this->assertFalse($foreigner->isRazorback());
+
+        $razorback = create(User::class, ['email' => 'tusk@uark.edu']);
+        $this->assertTrue($razorback->isRazorback());
+    }
 }

@@ -82,6 +82,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Is this user from the University of Arkansas?
+     *
+     * @return bool
+     */
+    public function isRazorback() : bool
+    {
+        return strstr($this->attributes['email'], '@') === '@uark.edu';
+    }
+
+    /**
      * Provide a friendly display name for the user.
      *
      * @return string
