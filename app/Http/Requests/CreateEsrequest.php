@@ -35,7 +35,6 @@ class CreateEsrequest extends FormRequest
     public function messages()
     {
         return [
-            'IBM.required_without_all' => 'At least one platform is required.',
             'faculty_accounts.required_without_all' =>
                 'You must request at least one faculty or student account.',
         ];
