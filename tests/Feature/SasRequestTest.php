@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NewEsrequest;
 use App\Platform;
 use App\Esrequest;
-use App\User;
 
 class SasRequestTest extends TestCase
 {
@@ -25,10 +24,8 @@ class SasRequestTest extends TestCase
         $sas = Platform::where('name', 'SAS')->first();
         $data['platform'] = [$sas->id];
 
-        $razorback = create(User::class, ['email' => 'tusk@uark.edu']);
-
         $response = $this
-            ->signIn($razorback)
+            ->signInRazorback()
             ->post('/requests', $data)
             ->assertStatus(302)
         ;

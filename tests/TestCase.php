@@ -5,6 +5,7 @@ namespace Tests;
 use App\Exceptions\Handler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use App\User;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -32,6 +33,13 @@ abstract class TestCase extends BaseTestCase
             ->signIn($user)
             ->withServerVariables(['entitlement' => 'admin'])
         ;
+    }
+
+    protected function signInRazorback()
+    {
+        $razorback = create(User::class, ['email' => 'tusk@uark.edu']);
+
+        return $this->signIn($razorback);
     }
 
     // Hat tip, @adamwathan.
