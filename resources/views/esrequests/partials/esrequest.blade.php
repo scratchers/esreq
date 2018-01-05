@@ -21,7 +21,7 @@
     </div>
 
     <div class="panel-body">
-        <p>{{ $esrequest->user_comment }}</p>
+        {!! nl2br(e($esrequest->user_comment)) !!}
     </div>
 
 </div>

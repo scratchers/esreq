@@ -27,8 +27,8 @@
     </table>
 </p>
 
-<p>
-    {{ $esrequest->user_comment }}
-</p>
+<div>
+    {!! nl2br(e($esrequest->user_comment)) !!}
+</div>
 
 </body></html>
