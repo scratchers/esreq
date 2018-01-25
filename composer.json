@@ -14,7 +14,8 @@
         "razorbacks/laravel-shibboleth": "^2.2",
         "appstract/laravel-opcache": "^1.2",
         "doctrine/dbal": "^2.5",
-        "kitetail/zttp": "^0.3.0"
+        "kitetail/zttp": "^0.3.0",
+        "jpuck/laravel-exception-mailer": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

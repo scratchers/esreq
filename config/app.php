@@ -173,6 +173,7 @@ return [
         StudentAffairsUwm\Shibboleth\ShibbolethServiceProvider::class,
         razorbacks\style\laravel\StyleServiceProvider::class,
         Appstract\Opcache\OpcacheServiceProvider::class,
+        jpuck\laravel\exception\mailer\Provider::class,
 
         /*
          * Application Service Providers...

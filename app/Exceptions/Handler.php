@@ -5,12 +5,6 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\Mail;
-use Auth;
-use Request;
-use App;
-use App\Exceptions\FilteredServerVariable;
-use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -26,6 +20,8 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        \Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class,
+        \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException::class,
     ];
 
     /**
@@ -38,27 +34,6 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        if ( Reporter::wants($exception) ) {
-            $server = App::make(FilteredServerVariable::class);
-
-            $data = [
-                'exception' => $exception,
-                'request'   => Request::fullUrl() . PHP_EOL
-                            . print_r(Request::all(), true),
-                'user'      => Auth::user(),
-                'server'    => print_r($server->get(), true),
-            ];
-
-            if ($exception instanceof ValidationException) {
-                $data['validations'] = print_r($exception->validator->failed(), true);
-            }
-
-            Mail::send('emails.exception', $data, function ($message) {
-                $message->to(config('mail.error'))
-                        ->subject( 'EXCEPTION THROWN in '.config('app.name') );
-            });
-        }
-
         parent::report($exception);
     }
 
