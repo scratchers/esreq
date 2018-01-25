@@ -50,6 +50,15 @@ class ReportsController extends Controller
                 ON ep.platform_id = p.id
             WHERE p.name = 'Microsoft'
         ) microsoft ON e.id = microsoft.id
+        LEFT JOIN (
+            SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
+            FROM esrequests e
+            JOIN esrequest_platform ep
+                ON e.id = ep.esrequest_id
+            JOIN platforms p
+                ON ep.platform_id = p.id
+            WHERE p.name = 'SAS'
+        ) sas ON e.id = sas.id
     ";
 
     /**
@@ -237,6 +246,7 @@ class ReportsController extends Controller
                 SUM(sap.Accounts) AS 'SAP',
                 SUM(ibm.Accounts) AS 'IBM',
                 SUM(teradata.Accounts) AS 'Teradata',
+                SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM institutions i
             JOIN users u
@@ -282,6 +292,7 @@ class ReportsController extends Controller
                 SUM(sap.Accounts) AS 'SAP',
                 SUM(ibm.Accounts) AS 'IBM',
                 SUM(teradata.Accounts) AS 'Teradata',
+                SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM users u
             JOIN esrequests e
@@ -329,6 +340,7 @@ class ReportsController extends Controller
                 SUM(sap.Accounts) AS 'SAP',
                 SUM(ibm.Accounts) AS 'IBM',
                 SUM(teradata.Accounts) AS 'Teradata',
+                SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM users u
             JOIN esrequests e
@@ -371,6 +383,7 @@ class ReportsController extends Controller
                 SUM(sap.Accounts) AS 'SAP',
                 SUM(ibm.Accounts) AS 'IBM',
                 SUM(teradata.Accounts) AS 'Teradata',
+                SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM esrequests e
             {$this->joinPlatforms}
@@ -419,6 +432,7 @@ class ReportsController extends Controller
                 SUM(sap.Accounts) AS 'SAP',
                 SUM(ibm.Accounts) AS 'IBM',
                 SUM(teradata.Accounts) AS 'Teradata',
+                SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
             FROM esrequests e
             {$this->joinPlatforms}
