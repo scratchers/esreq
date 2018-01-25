@@ -21,7 +21,7 @@
 
   <div class="panel-body">
 
-    @foreach ( App\Platform::all() as $platform )
+    @foreach ( App\Platform::orderBy('name')->get() as $platform )
         @if ($platform->name !== 'SAS' || Auth::user()->isRazorback())
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
