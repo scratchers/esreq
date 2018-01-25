@@ -30,8 +30,8 @@ class ReportsController extends Controller
                 ON e.id = ep.esrequest_id
             JOIN platforms p
                 ON ep.platform_id = p.id
-            WHERE p.name = 'IBM'
-        ) ibm ON e.id = ibm.id
+            WHERE p.name = 'IBM-TSO'
+        ) ibmtso ON e.id = ibmtso.id
         LEFT JOIN (
             SELECT e.id, faculty_accounts + student_accounts AS 'Accounts'
             FROM esrequests e
@@ -244,7 +244,7 @@ class ReportsController extends Controller
                 COUNT(DISTINCT u.id) AS 'Users',
                 COUNT(DISTINCT e.id) AS 'Requests',
                 SUM(sap.Accounts) AS 'SAP',
-                SUM(ibm.Accounts) AS 'IBM',
+                SUM(ibmtso.Accounts) AS 'IBM-TSO',
                 SUM(teradata.Accounts) AS 'Teradata',
                 SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
@@ -290,7 +290,7 @@ class ReportsController extends Controller
                 u.id,
                 COUNT(DISTINCT e.id) AS 'Requests',
                 SUM(sap.Accounts) AS 'SAP',
-                SUM(ibm.Accounts) AS 'IBM',
+                SUM(ibmtso.Accounts) AS 'IBM-TSO',
                 SUM(teradata.Accounts) AS 'Teradata',
                 SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
@@ -338,7 +338,7 @@ class ReportsController extends Controller
                 u.id,
                 COUNT(DISTINCT e.id) AS 'Requests',
                 SUM(sap.Accounts) AS 'SAP',
-                SUM(ibm.Accounts) AS 'IBM',
+                SUM(ibmtso.Accounts) AS 'IBM-TSO',
                 SUM(teradata.Accounts) AS 'Teradata',
                 SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
@@ -381,7 +381,7 @@ class ReportsController extends Controller
                 e.created_at AS 'Created',
                 e.id,
                 SUM(sap.Accounts) AS 'SAP',
-                SUM(ibm.Accounts) AS 'IBM',
+                SUM(ibmtso.Accounts) AS 'IBM-TSO',
                 SUM(teradata.Accounts) AS 'Teradata',
                 SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
@@ -430,7 +430,7 @@ class ReportsController extends Controller
                 e.created_at AS 'Created',
                 e.id,
                 SUM(sap.Accounts) AS 'SAP',
-                SUM(ibm.Accounts) AS 'IBM',
+                SUM(ibmtso.Accounts) AS 'IBM-TSO',
                 SUM(teradata.Accounts) AS 'Teradata',
                 SUM(sas.Accounts) AS 'SAS',
                 SUM(microsoft.Accounts) AS 'Microsoft'
