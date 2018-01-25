@@ -17,6 +17,8 @@ class AddIbmZlinux extends Migration
         $ibm = Platform::where('name', 'IBM')->get()->first();
         $ibm->name = 'IBM-TSO';
         $ibm->save();
+
+        Platform::create(['name' => 'IBM-zLinux']);
     }
 
     /**
@@ -29,5 +31,7 @@ class AddIbmZlinux extends Migration
         $ibm = Platform::where('name', 'IBM-TSO')->get()->first();
         $ibm->name = 'IBM';
         $ibm->save();
+
+        Platform::where('name', 'IBM-zLinux')->get()->first()->delete();
     }
 }
