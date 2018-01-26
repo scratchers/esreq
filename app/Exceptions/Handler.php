@@ -14,6 +14,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
+        \Illuminate\Foundation\Http\Exceptions\MaintenanceModeException::class,
         \Illuminate\Auth\AuthenticationException::class,
         \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
